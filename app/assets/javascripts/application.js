@@ -12,4 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require jquery-ui.min
+//= require jquery-ui-touch-punch
+//= require jquery.placeholder
+//= require bootstrap
+//= require gmapapis
+//= require infobox
+//= require jquery.visible
+//= require home
