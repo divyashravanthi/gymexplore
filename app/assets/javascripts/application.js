@@ -10,13 +10,23 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require json2
 //= require jquery
+//= require underscore
+//= require moment-2.5.1
 //= require jquery_ujs
 //= require jquery-ui.min
 //= require jquery-ui-touch-punch
 //= require jquery.placeholder
 //= require bootstrap
-//= require gmapapis
-//= require infobox
+//= require jquery.touchSwipe.min
+//= require jquery.slimscroll.min
 //= require jquery.visible
+//= require infobox
+//= require clndr
+//= require jquery.tagsinput.min
+//= require bootstrap-datepicker
+//= require fileinput.min
+//= require calendar
+//= require app
 //= require home
