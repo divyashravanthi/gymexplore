@@ -1,0 +1,24 @@
+.search-box{
+	width: 85%;
+	border: 2px solid gray;
+	border-radius: 7px;
+	font-size: 18px;
+	font-family: sans-serif;
+	padding: 12px;
+}
+.search-btn{
+	padding: 17px;
+	margin-top: -6px;
+	font-size: 16px;
+	border-radius: 5px;
+	background-color: #0eaaa6 !important;
+}
+.search-section{
+	background-color: rgba(0, 0, 0, 0.50);
+	text-align: center;
+	margin-top: 1%;
+	padding: 25px;
+	width: 55%;
+	margin-left: 22%;
+	border-radius: 8px;
+}

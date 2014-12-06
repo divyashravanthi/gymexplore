@@ -15,5 +15,6 @@
  *= require fullscreen-slider
  *= require bootstrap
  *= require app
+ *= require screen
  *= require_self
  */
