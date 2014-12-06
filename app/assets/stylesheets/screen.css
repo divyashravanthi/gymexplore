@@ -1,17 +1,17 @@
 .search-box{
 	width: 85%;
 	border: 2px solid gray;
-	border-radius: 7px;
+	border-radius: 2px;
 	font-size: 18px;
 	font-family: sans-serif;
 	padding: 12px;
 	border: 0px;
 }
 .search-btn{
-	padding: 17px;
+	padding: 18px;
 	margin-top: -6px;
 	font-size: 16px;
-	border-radius: 5px;
+	border-radius: 2px;
 	background-color: #0eaaa6 !important;
 	border: 0px;
 }
@@ -22,5 +22,5 @@
 	padding: 25px;
 	width: 55%;
 	margin-left: 22%;
-	border-radius: 8px;
+	border-radius: 2px;
 }
