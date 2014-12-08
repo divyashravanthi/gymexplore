@@ -356,7 +356,26 @@
 
         map.mapTypes.set('Styled', styledMapType);
         map.setCenter(new google.maps.LatLng(parseFloat($("#form_lat").val()),parseFloat($("#form_lon").val())));
-        map.setZoom(14);
+        map.setZoom(16);
+
+        if ($('#mapView').length > 0) {
+            newMarker = new google.maps.Marker({
+                position: new google.maps.LatLng(parseFloat($("#form_lat").val()),parseFloat($("#form_lon").val())),
+                map: map,
+                icon: new google.maps.MarkerImage( 
+                    '/assets/marker-new.png',
+                    null,
+                    null,
+                    // new google.maps.Point(0,0),
+                    null,
+                    new google.maps.Size(36, 36)
+                ),
+                draggable: true,
+                animation: google.maps.Animation.DROP,
+            });
+
+            newMarker.setVisible(true);
+        }
 
         if ($('#address').length > 0) {
             newMarker = new google.maps.Marker({

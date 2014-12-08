@@ -30,4 +30,3 @@
 //= require app
 //= require calendar
 //= require home
-//= require gyms
