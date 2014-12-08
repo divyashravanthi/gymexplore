@@ -30,10 +30,14 @@
                 <!-- <div class="home-subtitle">With Reales - Real Estate HTML Template</div> -->
                 <!-- <a href="#" class="btn btn-lg btn-black">Learn More</a> -->
                 <div class="search-section">
-                    <form>
-                    <input type="text" id="address" placeholder="Search by locality or landmark" class="search-box" autocomplete="off"/>
-                    <input type="button" value="Search" class="btn btn-primary search-btn"/>
-                    </form>
+                    <form method="post" action="<%=explore_gyms_path%>">
+                    <%= form_for :gym_search, url: explore_gyms_path do |f| %>
+                        <!-- <input type="text" id="locality" placeholder="Search by locality or landmark" class="search-box" autocomplete="off"/> -->
+                        <%= f.text_field :locality, :class => "search-box", :id => "locality", :placeholder => "Search by locality or landmark", :autocomplete => false %>
+                        <input type="hidden" value="" id="form_lat" name="form_lat"/>
+                        <input type="hidden" value="" id="form_lon" name="form_lon" />
+                        <input type="submit" value="Search" class="btn btn-primary search-btn"/>
+                    <% end %>
                 </div>
             </div>
             <!-- <div class="search-panel">

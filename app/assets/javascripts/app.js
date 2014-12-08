@@ -190,7 +190,7 @@
         pixelOffset: new google.maps.Size(-101, -285),
         zIndex: null,
         boxStyle: {
-            background: "url('images/infobox-bg.png') no-repeat",
+            background: "url('/assets/infobox-bg.png') no-repeat",
             opacity: 1,
             width: "202px",
             height: "245px"
@@ -210,7 +210,7 @@
                 position: latlng,
                 map: map,
                 icon: new google.maps.MarkerImage( 
-                    'images/' + prop.markerIcon,
+                    '/assets/' + prop.markerIcon,
                     null,
                     null,
                     null,
@@ -221,7 +221,7 @@
             });
             var infoboxContent = '<div class="infoW">' +
                                     '<div class="propImg">' +
-                                        '<img src="images/prop/' + prop.image + '">' +
+                                        '<img src="/assets/prop/' + prop.image + '">' +
                                         '<div class="propBg">' +
                                             '<div class="propPrice">' + prop.price + '</div>' +
                                             '<div class="propType">' + prop.type + '</div>' +
@@ -355,15 +355,15 @@
         });
 
         map.mapTypes.set('Styled', styledMapType);
-        map.setCenter(new google.maps.LatLng(40.6984237,-73.9890044));
+        map.setCenter(new google.maps.LatLng(parseFloat($("#form_lat").val()),parseFloat($("#form_lon").val())));
         map.setZoom(14);
 
         if ($('#address').length > 0) {
             newMarker = new google.maps.Marker({
-                position: new google.maps.LatLng(40.6984237,-73.9890044),
+                position: new google.maps.LatLng(parseFloat($("#form_lat").val()),parseFloat($("#form_lon").val())),
                 map: map,
                 icon: new google.maps.MarkerImage( 
-                    'images/marker-new.png',
+                    '/assets/marker-new.png',
                     null,
                     null,
                     // new google.maps.Point(0,0),
@@ -685,8 +685,30 @@
             }
             newMarker.setPosition(place.geometry.location);
             newMarker.setVisible(true);
+
             $('#latitude').text(newMarker.getPosition().lat());
             $('#longitude').text(newMarker.getPosition().lng());
+
+            return false;
+        });
+    }
+
+    if ($('#locality').length > 0) {
+        var address = document.getElementById('locality');
+        var addressAuto = new google.maps.places.Autocomplete(address);
+        newMarker = new google.maps.Marker({});
+        google.maps.event.addListener(addressAuto, 'place_changed', function() {
+            var place = addressAuto.getPlace();
+
+            if (!place.geometry) {
+                return;
+            }
+
+            newMarker.setPosition(place.geometry.location);
+            newMarker.setVisible(true);
+
+            $('#form_lat').val(newMarker.getPosition().lat());
+            $('#form_lon').val(newMarker.getPosition().lng());
 
             return false;
         });

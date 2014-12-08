@@ -27,6 +27,7 @@
 //= require jquery.tagsinput.min
 //= require bootstrap-datepicker
 //= require fileinput.min
-//= require calendar
 //= require app
+//= require calendar
 //= require home
+//= require gyms
