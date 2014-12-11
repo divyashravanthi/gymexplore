@@ -14,5 +14,20 @@ $(document).ready(function() {
     
     $(wrapper).on("click",".remove-pricing", function(e){ //user click on remove text
         e.preventDefault(); $(this).parent('div').remove(); x--;
-    })
+    });
+
+    if($(".notice-alert").length > 0){
+        var n = noty({
+            text: $(".notice-alert").text(),
+            layout: 'bottomRight',
+            type: 'information',
+            animation: {
+                open: 'animated flipInX', // Animate.css class names
+                close: 'animated flipOutX', // Animate.css class names
+            },
+            theme: 'relax',
+            killer: false,
+            closeWith: ['click', 'button']
+        });
+    }
 });

@@ -9,6 +9,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="notransition no-hidden">
+<% if notice.present? || alert.present? %>
+  <div class="hide notice-alert"><%= notice || alert %></div>
+<% end %>
 <div id="header">
             <div class="logo">
                 <a href="<%=root_path%>">

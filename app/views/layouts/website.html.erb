@@ -9,6 +9,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="notransition no-hidden">
+<% if notice.present? || alert.present? %>
+  <div class="hide notice-alert"><%= notice || alert %></div>
+<% end %>
 <%= yield %>
 <script src="http://maps.googleapis.com/maps/api/js?sensor=true&amp;libraries=geometry&amp;libraries=places" type="text/javascript"></script>
  <%= javascript_include_tag 'application' %>

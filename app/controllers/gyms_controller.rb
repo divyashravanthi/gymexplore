@@ -1,10 +1,12 @@
 class GymsController < ApplicationController
 
-	before_filter :authenticate_agency!, :except => [:explore]
+	before_filter :authenticate_agency!, :except => [:explore, :get_gyms]
+	skip_before_filter :verify_authenticity_token, :only => [:get_gyms]
 
 	def explore
 		@lat = params[:form_lat]
 		@lon = params[:form_lon]
+		@gyms = Gym.where(:lang => (@lat.to_f-1.00)..(@lat.to_f+1.00), :long => (@lon.to_f-1.00)..(@lon.to_f+1.00), :verified => true)
 	end
 
 	def new
@@ -30,5 +32,12 @@ class GymsController < ApplicationController
 		else
 			redirect_to new_gym_path, :notice => "Something Went Wrong"
 		end
+	end
+
+	def get_gyms
+		@lat = params[:lan]
+		@lon = params[:lon]
+		@gyms = Gym.where(:lang => (@lat.to_f-1.00)..(@lat.to_f+1.00), :long => (@lon.to_f-1.00)..(@lon.to_f+1.00), :verified => true)
+		render :json => @gyms.to_json(:include => {:pictures => {:methods => [:url_json]}})
 	end
 end

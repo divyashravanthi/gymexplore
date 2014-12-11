@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :gyms do
     collection do
       post :explore
+      post :get_gyms
     end
   end
 
