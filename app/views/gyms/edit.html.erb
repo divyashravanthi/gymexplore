@@ -1,0 +1,103 @@
+
+        <!-- Content -->
+
+        <div id="wrapper">
+            <input type="hidden" value="<%=@gym.lang%>" id="form_lat" />
+            <input type="hidden" value="<%=@gym.long%>" id="form_lon" />
+            <div id="mapView" class="mob-min"><div class="mapPlaceholder"><span class="fa fa-spin fa-spinner"></span> Loading map...</div></div>
+            <div id="content" class="mob-max">
+                <div class="rightContainer">
+                    <h1>Update Gym</h1>
+                    <%= form_for @gym do |f| %>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="form-group">
+                                    <label>Name</label>
+                                    <input type="text" class="form-control" name="name" value="<%=@gym.name%>">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea class="form-control" rows="4" name="description"><%=@gym.description%></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Address <input type="hidden" id="latitude" name="latitude" value="<%=@gym.lang%>" /> <input type="hidden" id="longitude" name="longitude" value="<%=@gym.long%>" /></label>
+                            <input class="form-control" type="text" id="address" name="address" placeholder="Enter a Location" autocomplete="off" value="<%=@gym.address%>">
+                            <p class="help-block">You can drag the black marker to gym position</p>
+                        </div>
+                        <div class="pricing-wrapper">
+                            <% @gym.pricings.each_with_index do |p,i| %>
+                                <% if i==0 %>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label>Duration</label>
+                                                <div class="input-group">
+                                                    <input class="form-control" type="number" placeholder="Ex: 3" name="duration[]" value="<%=p.duration%>">
+                                                    <div class="input-group-addon">Month(s)</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+                                            <div class="form-group">
+                                                <label>Price</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">Rs.</div>
+                                                    <input class="form-control" type="text" placeholder="Ex: 5000.00" name="price[]" value="<%=p.price%>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <% else %>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" type="number" placeholder="Ex: 3" name="duration[]" value="<%=p.duration%>">
+                                                    <div class="input-group-addon">Month(s)</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">Rs.</div>
+                                                    <input class="form-control" type="text" placeholder="Ex: 5000.00" name="price[]" value="<%=p.price%>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="#" class="btn btn-danger remove-pricing"> - </a>
+                                    </div>
+                                <% end %>
+                            <% end %>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3"><button id="add-pricing" class="btn btn-green btn-xs margin-b-10">Add Field</button></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="form-group">
+                                    <label>Image Gallery</label>
+                                    <%= f.file_field :images, :class => "file", :multiple => true, :data => { :'show-upload' => "false", :'show-caption' => "false", :'show-remove' => "false", :'browse-class' => "btn btn-o btn-default", :'browse-label' => "Browse Images" }, :accept => "image/jpeg,image/png" %>
+                                    <!-- <input type="file" class="file" multiple data-show-upload="false" data-show-caption="false" data-show-remove="false" accept="image/jpeg,image/png" data-browse-class="btn btn-o btn-default" data-browse-label="Browse Images" name="images[]"> -->
+                                    <p class="help-block">You can select multiple images at once</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="form-group">
+                                    <label>Other Facilities</label>
+                                    <input type="text" class="form-control" name="other_facilities" id="tags" placeholder="Add Facilities" value="<%=@gym.facility%>">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-green btn-lg">Update Gym</button>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>

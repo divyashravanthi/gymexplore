@@ -6,7 +6,7 @@ class GymsController < ApplicationController
 	def explore
 		@lat = params[:form_lat]
 		@lon = params[:form_lon]
-		@gyms = Gym.where(:lang => (@lat.to_f-0.03)..(@lat.to_f+0.03), :long => (@lon.to_f-0.03)..(@lon.to_f+0.03), :verified => true)
+		@gyms = Gym.where(:lang => (@lat.to_f-0.015)..(@lat.to_f+0.015), :long => (@lon.to_f-0.015)..(@lon.to_f+0.015), :verified => true)
 	end
 
 	def new
@@ -38,11 +38,46 @@ class GymsController < ApplicationController
 	def get_gyms
 		@lat = params[:lan]
 		@lon = params[:lon]
-		@gyms = Gym.where(:lang => (@lat.to_f-0.03)..(@lat.to_f+0.03), :long => (@lon.to_f-0.03)..(@lon.to_f+0.03), :verified => true)
+		@gyms = Gym.where(:lang => (@lat.to_f-0.015)..(@lat.to_f+0.015), :long => (@lon.to_f-0.015)..(@lon.to_f+0.015), :verified => true)
 		render :json => @gyms.to_json(:include => {:pictures => {:methods => [:url_json]}})
 	end
 
 	def show
 		@gym = Gym.find(params[:id])
+	end
+
+	def edit
+		@gym = Gym.find(params[:id])
+	end
+
+	def update
+		gym = Gym.find(params[:id])
+		gym.name = params[:name]
+		gym.description = params[:description]
+		gym.lang = params[:latitude]
+		gym.long = params[:longitude]
+		gym.address = params[:address]
+		gym.facility = params[:other_facilities]
+		if gym.save
+			if params[:gym][:images].count > 0
+				gym.pictures.destroy_all
+				params[:gym][:images].each do |img|
+					gym.pictures.create(:image => img)
+				end
+			end
+			if params[:duration].count > 0
+				gym.pricings.destroy_all
+				params[:duration].each_with_index do |value, index|
+					gym.pricings.create(:duration => params[:duration][index], :price => params[:price][index])
+				end
+			end
+			redirect_to new_gym_path, :notice => "Successfully Updated"
+		else
+			redirect_to new_gym_path, :notice => "Something Went Wrong"
+		end
+	end
+
+	def contact
+		AgencyMailer.send_message(params[:name], params[:email], params[:message], params[:gym]).deliver
 	end
 end

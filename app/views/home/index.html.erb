@@ -18,6 +18,7 @@
                             <li><a href="#" data-toggle="modal" data-target="#signin">Sign In</a></li>
                         <% else %>
                             <li>Hello, <%=current_agency.name%></li>
+                            <li><a href="<%=edit_agency_registration_path%>">My Profile</a></li>
                             <li><a href="<%=destroy_agency_session_path%>" data-method="delete">Sign Out</a></li>
                         <% end %>
                         <li><a href="<%=new_gym_path%>" class="btn btn-green">Submit Your Gym</a></li>

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     collection do
       post :explore
       post :get_gyms
+      post :contact
     end
   end
 

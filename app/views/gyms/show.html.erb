@@ -46,6 +46,7 @@
                                 <div class="summaryItem">
                                     <h1 class="pageTitle"><%=@gym.name%></h1>
                                     <div class="address"><span class="icon-pointer"></span> <%=@gym.address%></div>
+                                    <div class="address"><span class="fa fa-phone"></span> <%=@gym.agency.mobile%></div>
                                     <% if @gym.featured %>
                                         <ul class="rating">
                                             <li><a href="#"><span class="fa fa-star"></span></a> Featured</li>
@@ -75,7 +76,7 @@
                                      <div class="clearfix"></div>
                                     <!-- <img class="avatar agentAvatarImg" src="/assets/avatar-2.png" alt="avatar"> -->
                                     <div class="agentName"><%=@gym.agency.name%></div>
-                                    <a data-toggle="modal" href="#contactAgent" class="btn btn-lg btn-round btn-green contactBtn">Contact Gym</a>
+                                    <a data-toggle="modal" href="#contactAgent" class="btn btn-lg btn-round btn-green contactBtn">Send Message</a>
                                 </div>
                             </div>
                         </div>
@@ -223,31 +224,42 @@
         <div class="modal fade" id="contactAgent" role="dialog" aria-labelledby="contactLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h4 class="modal-title" id="contactLabel">Contact Gym</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form class="contactForm">
+                    <%= form_for :contact_gym, url: contact_gyms_path, :html => {:class => "contactForm"}, :remote => true do |f| %>
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 class="modal-title" id="contactLabel">Message Gym</h4>
+                        </div>
+                        <div class="modal-body">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cfItem">
-                                    <input type="text" placeholder="Name" class="form-control">
+                                    <input type="text" placeholder="Name" name="name" class="form-control">
                                  </div>
                                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cfItem">
-                                    <input type="text" placeholder="Email" class="form-control">
+                                    <input type="email" placeholder="Email" name="email" class="form-control">
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cfItem">
-                                    <input type="text" placeholder="Subject" class="form-control">
+                                    <textarea placeholder="Message" rows="3" name="message" class="form-control"></textarea>
                                 </div>
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cfItem">
-                                    <textarea placeholder="Message" rows="3" class="form-control"></textarea>
-                                </div>
+                                <input type="hidden" name="gym" value="<%=@gym.id%>" />
                             </div>
-                        </form>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#" data-dismiss="modal" class="btn btn-round btn-o btn-gray">Close</a>
+                            <button type="submit" class="btn btn-round btn-green">Send</button>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="successMessage" role="dialog" aria-labelledby="contactLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <p>Succefully Sent.</p>
                     </div>
                     <div class="modal-footer">
                         <a href="#" data-dismiss="modal" class="btn btn-round btn-o btn-gray">Close</a>
-                        <a href="#" class="btn btn-round btn-green">Send message</a>
                     </div>
                 </div>
             </div>
