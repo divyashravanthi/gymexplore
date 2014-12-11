@@ -1,6 +1,6 @@
 <div id="header">
             <div class="logo">
-                <a href="index.html">
+                <a href="<%=root_path%>">
                     <span class="fa fa-home marker"></span>
                     <span class="logoText">reales</span>
                 </a>
@@ -77,7 +77,9 @@
         <!-- Content -->
 
         <div id="wrapper">
-            <div id="addMapView" class="mob-min"><div class="mapPlaceholder"><span class="fa fa-spin fa-spinner"></span> Loading map...</div></div>
+            <input type="hidden" value="12.929588" id="form_lat" />
+            <input type="hidden" value="77.630596" id="form_lon" />
+            <div id="mapView" class="mob-min"><div class="mapPlaceholder"><span class="fa fa-spin fa-spinner"></span> Loading map...</div></div>
             <div id="content" class="mob-max">
                 <div class="rightContainer">
                     <h1>List a New Property</h1>
