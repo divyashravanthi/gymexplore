@@ -82,7 +82,7 @@
                     <div class="row">
                         <% @gyms.each do |g| %>
                             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                                <a href="single.html" class="card">
+                                <a href="<%=gym_path(g)%>" class="card">
                                     <div class="figure">
                                         <img src="<%=g.pictures.first.image.url(:thumb)%>" alt="image">
                                         <!-- <div class="figCaption">
@@ -97,7 +97,7 @@
                                         <% end %>
                                     </div>
                                     <h2><%=g.name%></h2>
-                                    <div class="cardAddress"><span class="icon-pointer"></span> <%=g.address%></div>
+                                    <div class="cardAddress" style="white-space: normal;"><span class="icon-pointer"></span> <%=g.address%></div>
                                     <!-- <div class="cardRating">
                                         <span class="fa fa-star"></span>
                                         <span class="fa fa-star"></span>

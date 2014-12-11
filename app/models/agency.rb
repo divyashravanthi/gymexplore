@@ -4,6 +4,8 @@ class Agency < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :gyms
+
   def update_with_password(params={}) 
     if params[:password].blank? 
       params.delete(:password) 

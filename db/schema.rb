@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141211144136) do
+ActiveRecord::Schema.define(version: 20141211180239) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,7 +48,10 @@ ActiveRecord::Schema.define(version: 20141211144136) do
     t.float    "rating",      default: 0.0
     t.text     "facility"
     t.boolean  "verified",    default: false
+    t.integer  "agency_id"
   end
+
+  add_index "gyms", ["agency_id"], name: "index_gyms_on_agency_id", using: :btree
 
   create_table "pictures", force: true do |t|
     t.integer  "gym_id"
@@ -72,6 +75,7 @@ ActiveRecord::Schema.define(version: 20141211144136) do
 
   add_index "pricings", ["gym_id"], name: "index_pricings_on_gym_id", using: :btree
 
+  add_foreign_key "gyms", "agencies"
   add_foreign_key "pictures", "gyms"
   add_foreign_key "pricings", "gyms"
 end

@@ -109,12 +109,11 @@
                                     '</div>' +
                                     '<div class="paWrapper">' +
                                         '<div class="propTitle">' + prop.name + '</div>' +
-                                        '<div class="propAddress">' + prop.address + '</div>' +
                                     '</div>' +
                                     '<div class="clearfix"></div>' +
                                     '<div class="infoButtons">' +
                                         '<a class="btn btn-sm btn-round btn-gray btn-o closeInfo">Close</a>' +
-                                        '<a href="single.html" class="btn btn-sm btn-round btn-green viewInfo">View</a>' +
+                                        '<a href="/gyms/'+prop.id+'" class="btn btn-sm btn-round btn-green viewInfo">View</a>' +
                                     '</div>' +
                                  '</div>';
 

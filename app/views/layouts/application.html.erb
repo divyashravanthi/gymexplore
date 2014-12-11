@@ -16,7 +16,7 @@
             <div class="logo">
                 <a href="<%=root_path%>">
                     <span class="fa fa-home marker"></span>
-                    <span class="logoText">reales</span>
+                    <span class="logoText">gYmEx</span>
                 </a>
             </div>
             <a href="#" class="navHandler"><span class="fa fa-bars"></span></a>
@@ -29,10 +29,10 @@
         <div id="leftSide">
             <nav class="leftNav scrollable">
                 <ul>
-                    <li><a href="explore.html"><span class="navIcon icon-compass"></span><span class="navLabel">Explore</span></a></li>
-                    <li><a href="single.html"><span class="navIcon icon-home"></span><span class="navLabel">Single</span></a></li>
-                    <li><a href="<%=new_gym_path%>"><span class="navIcon icon-plus"></span><span class="navLabel">New</span></a></li>
-                    <li class="hasSub">
+                    <!-- <li><%#= link_to "<span class='navIcon icon-compass'></span><span class='navLabel'>Back</span>".html_safe, :back %></li> -->
+                    <!-- <li><a href="single.html"><span class="navIcon icon-home"></span><span class="navLabel">Single</span></a></li> -->
+                    <li><a href="<%=new_gym_path%>"><span class="navIcon icon-plus"></span><span class="navLabel">Add</span></a></li>
+                   <!--  <li class="hasSub">
                         <a href="#"><span class="navIcon icon-drop"></span><span class="navLabel">Colors</span><span class="fa fa-angle-left arrowRight"></span><span class="badge bg-yellow">5</span></a>
                         <ul class="colors">
                             <li><a href="#">Red <span class="fa fa-circle-o c-red icon-right"></span></a></li>
@@ -66,25 +66,27 @@
                             <li><a href="blog.html">Blog</a></li>
                             <li><a href="blog-post.html">Blog Post</a></li>
                         </ul>
-                    </li>
+                    </li> -->
                 </ul>
             </nav>
-            <div class="leftUserWraper dropup">
-                <a href="#" class="avatarAction dropdown-toggle" data-toggle="dropdown">
-                    <img class="avatar" src="/assets/avatar-1.png" alt="avatar"><span class="counter">5</span>
-                    <div class="userBottom pull-left">
-                        <span class="bottomUserName">John Smith</span> <span class="fa fa-angle-up pull-right arrowUp"></span>
-                    </div>
-                    <div class="clearfix"></div>
-                </a>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="#"><span class="icon-settings"></span>Settings</a></li>
-                    <li><a href="profile.html"><span class="icon-user"></span>Profile</a></li>
-                    <li><a href="#"><span class="icon-bell"></span>Notifications <span class="badge pull-right bg-red">5</span></a></li>
-                    <li class="divider"></li>
-                    <li><a href="#"><span class="icon-power"></span>Logout</a></li>
-                </ul>
-            </div>
+            <% if agency_signed_in? %>
+	            <div class="leftUserWraper dropup">
+	                <a href="#" class="avatarAction dropdown-toggle" data-toggle="dropdown">
+	                    <img class="avatar" src="/assets/avatar-1.png" alt="avatar">
+	                    <div class="userBottom pull-left">
+	                        <span class="bottomUserName"><%=current_agency.name%></span> <span class="fa fa-angle-up pull-right arrowUp"></span>
+	                    </div>
+	                    <div class="clearfix"></div>
+	                </a>
+	                <ul class="dropdown-menu" role="menu">
+	                    <!-- <li><a href="#"><span class="icon-settings"></span>Settings</a></li> -->
+	                    <li><a href="profile.html"><span class="icon-user"></span>Profile</a></li>
+	                    <!-- <li><a href="#"><span class="icon-bell"></span>Notifications <span class="badge pull-right bg-red">5</span></a></li> -->
+		                <li class="divider"></li>
+		                <li><a href="<%=destroy_agency_session_path%>" data-method="delete"><span class="icon-power"></span>Logout</a></li>
+	                </ul>
+	            </div>
+            <% end %>
         </div>
         <div class="closeLeftSide"></div>
 <%= yield %>
