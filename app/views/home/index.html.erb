@@ -16,12 +16,11 @@
                         <% if !agency_signed_in? %>
                             <li><a href="#" data-toggle="modal" data-target="#signup">Sign Up</a></li>
                             <li><a href="#" data-toggle="modal" data-target="#signin">Sign In</a></li>
-                            <li><a href="#" data-toggle="modal" data-target="#signin" class="btn btn-green">Submit Your Gym</a></li>
                         <% else %>
                             <li>Hello, <%=current_agency.name%></li>
                             <li><a href="<%=destroy_agency_session_path%>" data-method="delete">Sign Out</a></li>
-                            <li><a href="#" class="btn btn-green">Submit Your Gym</a></li>
                         <% end %>
+                        <li><a href="<%=new_gym_path%>" class="btn btn-green">Submit Your Gym</a></li>
                     </ul>
                 </div>
             </div>

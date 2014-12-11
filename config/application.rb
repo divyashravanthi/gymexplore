@@ -22,7 +22,7 @@ module Gymexplore
     config.to_prepare do
        Devise::SessionsController.layout "website" 
        Devise::PasswordsController.layout "website"
-       Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application" : "website" }
+       Devise::RegistrationsController.layout proc{ |controller| agency_signed_in? ? "application" : "website" }
     end
 
     # Do not swallow errors in after_commit/after_rollback callbacks.

@@ -395,8 +395,8 @@
             google.maps.event.addListener(newMarker, "mouseup", function(event) {
                 var latitude = this.position.lat();
                 var longitude = this.position.lng();
-                $('#latitude').text(this.position.lat());
-                $('#longitude').text(this.position.lng());
+                $('#latitude').val(this.position.lat());
+                $('#longitude').val(this.position.lng());
             });
         }
 
@@ -679,8 +679,7 @@
 
     $('#tags').tagsInput({
         'height': 'auto',
-        'width': '100%',
-        'defaultText': 'Add a tag',
+        'width': '100%'
     });
 
     $('#datepicker').datepicker();
@@ -704,8 +703,8 @@
             newMarker.setPosition(place.geometry.location);
             newMarker.setVisible(true);
 
-            $('#latitude').text(newMarker.getPosition().lat());
-            $('#longitude').text(newMarker.getPosition().lng());
+            $('#latitude').val(newMarker.getPosition().lat());
+            $('#longitude').val(newMarker.getPosition().lng());
 
             return false;
         });
