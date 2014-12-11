@@ -13,7 +13,9 @@
  *= require font-awesome
  *= require simple-line-icons
  *= require jquery-ui
+ *= require datepicker
  *= require fullscreen-slider
+ *= require fileinput.min
  *= require bootstrap
  *= require app
  *= require screen

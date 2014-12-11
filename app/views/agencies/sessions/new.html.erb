@@ -1,26 +1,50 @@
-<h2>Log in</h2>
+<div id="page-container">
+    <ul class="cb-slideshow">
+        <li><span></span></li>
+        <li><span></span></li>
+        <li><span></span></li>
+        <li><span></span></li>
+        <li><span></span></li>
+        <li><span></span></li>
+    </ul>
+</div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="modal fade" id="signin_form" role="dialog" aria-labelledby="signinLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="signLogo osLight"><span class="fa fa-home"></span> gYmExplore</div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="signinLabel">Sign In</h4>
+            </div>
+            <div class="modal-body">
+                <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:role => "form"}) do |f| %>
+                    <div class="form-group">
+                        <%= f.email_field :email, autofocus: true, :class => "form-control", :placeholder => "Email Address" %>
+                    </div>
+                    <div class="form-group">
+                        <%= f.password_field :password, autocomplete: "off", :class => "form-control", :placeholder => "Password" %>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <% if devise_mapping.rememberable? -%>
+                                <div class="checkbox custom-checkbox"><label><%= f.check_box :remember_me %><span class="fa fa-check"></span> Remember me</label></div>
+                                <% end -%>
+                            </div>
+                            <div class="col-xs-6 align-right">
+                                <p class="help-block"><a href="#" class="text-green">Forgot password?</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="btn-group-justified">
+                            <%= f.submit "Sign in", :class => "btn btn-lg btn-green width-100" %>
+                        </div>
+                    </div>
+                    <p class="help-block">Don't have an account? <a href="<%=new_agency_registration_path%>" class="modal-su text-green">Sign Up</a></p>
+                <% end %>
+            </div>
+        </div>
+        <div class="signFooter">InZak Software Services Pvt Ltd<br>&copy; 2014</div>
     </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "agencies/shared/links" %>
+</div>

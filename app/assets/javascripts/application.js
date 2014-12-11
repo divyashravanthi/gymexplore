@@ -30,3 +30,5 @@
 //= require app
 //= require calendar
 //= require home
+//= require signin
+//= require signup

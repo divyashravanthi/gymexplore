@@ -1,29 +1,47 @@
-<h2>Sign up</h2>
+<div id="page-container">
+    <ul class="cb-slideshow">
+        <li><span></span></li>
+        <li><span></span></li>
+        <li><span></span></li>
+        <li><span></span></li>
+        <li><span></span></li>
+        <li><span></span></li>
+    </ul>
+</div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @validatable %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "agencies/shared/links" %>
+<div class="modal fade" id="signup_form" role="dialog" aria-labelledby="signupLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="signLogo osLight"><span class="fa fa-home"></span> gYmExplore</div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="signupLabel">Sign Up</h4>
+            </div>
+            <div class="modal-body">
+                <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:role => "role"}) do |f| %>
+                    <div class="form-group">
+                        <%= f.text_field :name, autofocus: true, :class => "form-control", :placeholder => "Agency Name (Ex: GE Gym)" %>
+                    </div>
+                    <div class="form-group">
+                        <%= f.text_field :mobile, :class => "form-control", :placeholder => "Mobile (Ex: +918884xxxxx7)" %>
+                    </div>
+                    <div class="form-group">
+                        <%= f.email_field :email, :class => "form-control", :placeholder => "Email Address" %>
+                    </div>
+                    <div class="form-group">
+                        <%= f.password_field :password, autocomplete: "off", :class => "form-control", :placeholder => "Password" %>
+                    </div>
+                    <div class="form-group">
+                        <%= f.password_field :password_confirmation, autocomplete: "off", :class => "form-control", :placeholder => "Confirm Password" %>
+                    </div>
+                    <div class="form-group">
+                        <div class="btn-group-justified">
+                            <%= f.submit "Sign up", :class => "btn btn-lg btn-green width-100" %>
+                        </div>
+                    </div>
+                    <p class="help-block">Already a registered agency? <a href="<%=new_agency_session_path%>" class="modal-si text-green">Sign In</a></p>
+                <% end %>
+            </div>
+        </div>
+        <div class="signFooter">InZak Software Services Pvt Ltd<br>&copy; 2014</div>
+    </div>
+</div>

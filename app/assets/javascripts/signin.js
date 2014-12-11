@@ -9,7 +9,7 @@
         $('body').addClass('no-touch');
     }
 
-    $('#signin').modal({
+    $('#signin_form').modal({
         backdrop: 'static',
         keyboard: false
     }).modal('show');

@@ -363,14 +363,13 @@
                 position: new google.maps.LatLng(parseFloat($("#form_lat").val()),parseFloat($("#form_lon").val())),
                 map: map,
                 icon: new google.maps.MarkerImage( 
-                    '/assets/marker-new.png',
+                    '/assets/marker-magenta.png',
                     null,
                     null,
                     // new google.maps.Point(0,0),
                     null,
                     new google.maps.Size(36, 36)
                 ),
-                draggable: true,
                 animation: google.maps.Animation.DROP,
             });
 
