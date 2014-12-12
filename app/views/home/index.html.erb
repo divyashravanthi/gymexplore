@@ -30,7 +30,6 @@
                 <!-- <div class="home-subtitle">With Reales - Real Estate HTML Template</div> -->
                 <!-- <a href="#" class="btn btn-lg btn-black">Learn More</a> -->
                 <div class="search-section">
-                    <form method="post" action="<%=explore_gyms_path%>">
                     <%= form_for :gym_search, url: explore_gyms_path do |f| %>
                         <!-- <input type="text" id="locality" placeholder="Search by locality or landmark" class="search-box" autocomplete="off"/> -->
                         <%= f.text_field :locality, :class => "search-box", :id => "locality", :placeholder => "Search by locality or landmark", :autocomplete => false %>
