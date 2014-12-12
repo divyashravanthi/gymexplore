@@ -19,8 +19,8 @@ $(document).ready(function() {
     if($(".notice-alert").length > 0){
         var n = noty({
             text: $(".notice-alert").text(),
-            layout: 'bottomRight',
-            type: 'information',
+            layout: 'top',
+            type: 'alert',
             animation: {
                 open: 'animated flipInX', // Animate.css class names
                 close: 'animated flipOutX', // Animate.css class names
