@@ -53,3 +53,7 @@ group :development, :test do
   gem 'spring'
 end
 
+gem 'capistrano', '2.15.5'
+
+gem 'rails_12factor', group: :production
+
