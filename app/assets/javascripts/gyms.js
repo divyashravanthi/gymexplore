@@ -30,5 +30,11 @@ $(document).ready(function() {
             closeWith: ['click', 'button']
         });
     }
-    
+    // $('.search_form').keydown(function(event) {
+    //     if (event.keyCode == 13) {
+    //         event.preventDefault();
+    //         $('.search_form').submit();
+    //         return false;
+    //      }
+    // });
 });
