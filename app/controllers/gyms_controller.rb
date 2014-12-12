@@ -29,7 +29,7 @@ class GymsController < ApplicationController
 			params[:duration].each_with_index do |value, index|
 				gym.pricings.create(:duration => params[:duration][index], :price => params[:price][index])
 			end
-			redirect_to new_gym_path, :notice => "Thanks for adding. We will contact you to verify."
+			redirect_to new_gym_path, :notice => "Your gym listing has been submitted for approval."
 		else
 			redirect_to new_gym_path, :notice => "Something Went Wrong."
 		end
