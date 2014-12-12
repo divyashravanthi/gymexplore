@@ -29,9 +29,9 @@ class GymsController < ApplicationController
 			params[:duration].each_with_index do |value, index|
 				gym.pricings.create(:duration => params[:duration][index], :price => params[:price][index])
 			end
-			redirect_to new_gym_path, :notice => "Successfully Added"
+			redirect_to new_gym_path, :notice => "Thanks for adding. We will contact you to verify."
 		else
-			redirect_to new_gym_path, :notice => "Something Went Wrong"
+			redirect_to new_gym_path, :notice => "Something Went Wrong."
 		end
 	end
 
@@ -71,9 +71,9 @@ class GymsController < ApplicationController
 					gym.pricings.create(:duration => params[:duration][index], :price => params[:price][index])
 				end
 			end
-			redirect_to new_gym_path, :notice => "Successfully Updated"
+			redirect_to new_gym_path, :notice => "Successfully Updated."
 		else
-			redirect_to new_gym_path, :notice => "Something Went Wrong"
+			redirect_to new_gym_path, :notice => "Something Went Wrong."
 		end
 	end
 
