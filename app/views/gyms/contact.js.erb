@@ -1,2 +1,13 @@
 $("#contactAgent").modal('hide');
-$("#successMessage").modal('show');
+noty({
+    text: "Successfully Sent",
+    layout: 'top',
+    type: 'information',
+    animation: {
+        open: 'animated flipInX', // Animate.css class names
+        close: 'animated flipOutX', // Animate.css class names
+    },
+    theme: 'relax',
+    killer: false,
+    closeWith: ['click', 'button']
+});
