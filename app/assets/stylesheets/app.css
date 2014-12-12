@@ -2471,6 +2471,7 @@ h1.pageTitle {
 }
 .propWidget-2 .fig img {
     width: 100%;
+    height: 255px;
     position: relative;
     display: block;
 }
@@ -2542,8 +2543,8 @@ h1.pageTitle {
     transform: scale(1);
 }
 .propWidget-2 .fig h3 {
-    font-size: 18px !important;
-    line-height: 20px !important;
+    font-size: 22px !important;
+    line-height: 40px !important;
     font-weight: normal !important;
     margin: 0;
     padding: 0 20px 0 20px !important;
@@ -2561,7 +2562,7 @@ h1.pageTitle {
     -webkit-transform: translate3d(0,20px,0);
     transform: translate3d(0,20px,0);
     opacity: 0;
-    top: 50%;
+    top: 35%;
 }
 .no-touch .propWidget-2:hover .fig h3 {
     -webkit-transform: translate3d(0,-10px,0);
@@ -4356,7 +4357,7 @@ a.home-navHandler.active {
     padding: 0 30%;
 }
 .home-wrapper {
-    width: 1140px;
+    /*width: 1140px;*/
     margin: 0 auto;
     padding: 40px 20px;
 }
@@ -4526,6 +4527,7 @@ h3.s-sub {
 }
 .pb40 {
     padding-bottom: 40px;
+    margin: 0 10px;
 }
 .agent {
     text-align: center;
