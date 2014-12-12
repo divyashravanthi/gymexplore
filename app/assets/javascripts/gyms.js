@@ -20,7 +20,7 @@ $(document).ready(function() {
         var n = noty({
             text: $(".notice-alert").text(),
             layout: 'top',
-            type: 'alert',
+            type: 'information',
             animation: {
                 open: 'animated flipInX', // Animate.css class names
                 close: 'animated flipOutX', // Animate.css class names
