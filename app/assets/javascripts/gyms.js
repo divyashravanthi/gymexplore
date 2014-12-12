@@ -19,7 +19,7 @@ $(document).ready(function() {
     if($(".notice-alert").length > 0){
         var n = noty({
             text: $(".notice-alert").text(),
-            layout: 'bottomRight',
+            layout: 'top',
             type: 'information',
             animation: {
                 open: 'animated flipInX', // Animate.css class names
