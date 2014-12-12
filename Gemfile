@@ -25,6 +25,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
 
+gem 'rails_admin'
+
+gem "cancan"
+
 gem "paperclip", "~> 4.2"
 
 # Use ActiveModel has_secure_password
