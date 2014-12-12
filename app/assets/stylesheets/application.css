@@ -16,8 +16,10 @@
  *= require datepicker
  *= require fullscreen-slider
  *= require fileinput.min
+ *= require jquery.tagsinput
  *= require bootstrap
  *= require app
  *= require screen
+ *= require animate
  *= require_self
  */

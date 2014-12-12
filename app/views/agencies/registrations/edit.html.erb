@@ -1,39 +1,76 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+<div id="wrapper" class="full">
+    <div id="mapView" class="min"><div class="mapPlaceholder"><span class="fa fa-spin fa-spinner"></span> Loading map...</div></div>
+    <div id="content" class="max">
+        <div class="row whiteBg">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+              <h4>Edit Profile</h4>
+              <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+                <div class="form-group">
+                    <%= f.text_field :name, autofocus: true, :class => "form-control", :placeholder => "Agency Name (Ex: GE Gym)" %>
+                </div>
+                <div class="form-group">
+                    <%= f.text_field :mobile, :class => "form-control", :placeholder => "Mobile (Ex: +918884xxxxx7)" %>
+                </div>
+                <div class="form-group">
+                    <%= f.email_field :email, :class => "form-control", :placeholder => "Email Address" %>
+                </div>
+                <div class="form-group">
+                    <%= f.password_field :password, autocomplete: "off", :class => "form-control", :placeholder => "Password" %>
+                </div>
+                <div class="form-group">
+                    <%= f.password_field :password_confirmation, autocomplete: "off", :class => "form-control", :placeholder => "Confirm Password" %>
+                </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+                <div class="actions">
+                  <%= f.submit "Update", :class => "btn btn-lg btn-green width-100" %>
+                </div>
+              <% end %>
+                
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <h4>Your Gyms (Click to Edit)</h4>
+                <div class="row">
+                  <% current_agency.gyms.each do |g| %>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <a href="<%=edit_gym_path(g)%>" class="card">
+                            <div class="figure">
+                                <img src="<%=g.pictures.first.image.url(:thumb)%>" alt="image">
+                                <!-- <div class="figCaption">
+                                    <div>$1,550,000</div>
+                                    <span class="icon-eye"> 200</span>
+                                    <span class="icon-heart"> 54</span>
+                                    <span class="icon-bubble"> 13</span>
+                                </div> -->
+                                <div class="figView"><span class="icon-eye"></span></div>
+                                <% if g.featured %>
+                                  <div class="figType">FEATURED</div>
+                                <% end %>
+                            </div>
+                            <h2><%=g.name%></h2>
+                            <div class="cardAddress" style="white-space: normal;"><span class="icon-pointer"></span> <%=g.address%></div>
+                            <!-- <div class="cardRating">
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star-o"></span>
+                                (146)
+                            </div> -->
+                            <!-- <ul class="cardFeat">
+                                <li><span class="fa fa-moon-o"></span> 3</li>
+                                <li><span class="icon-drop"></span> 2</li>
+                                <li><span class="icon-frame"></span> 3430 Sq Ft</li>
+                            </ul> -->
+                            <div class="clearfix"></div>
+                        </a>
+                    </div>
+                  <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="clearfix"></div>
+</div>

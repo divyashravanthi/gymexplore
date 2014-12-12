@@ -32,3 +32,5 @@
 //= require home
 //= require signin
 //= require signup
+//= require gyms
+//= require jquery.noty.packaged.min
