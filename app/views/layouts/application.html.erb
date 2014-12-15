@@ -14,6 +14,7 @@
   <div class="hide notice-alert"><%= notice || alert %></div>
 <% end %>
 <div id="header">
+        <%= form_for :gym_search, :html => {:class => "search_form"}, url: explore_gyms_path do |f| %>
             <div class="logo">
                 <a href="<%=root_path%>">
                     <span class="fa fa-home marker"></span>
@@ -23,7 +24,6 @@
             <a href="#" class="navHandler"><span class="fa fa-bars"></span></a>
             <div class="search" style="width: 80%;">
                 <span class="searchIcon icon-magnifier"></span>
-                <%= form_for :gym_search, :html => {:class => "search_form"}, url: explore_gyms_path do |f| %>
 	                <% if @locality.nil? %>
 		                <%= f.text_field :locality, :id => "locality", :placeholder => "Search by locality or landmark", :autocomplete => false %>
 	                <% else %>
@@ -36,8 +36,10 @@
 		            	<input type="hidden" value="12.929588" id="form_lat" name="form_lat"/>
 		                <input type="hidden" value="77.630596" id="form_lon" name="form_lon" />
 		            <% end %>
-                <% end %>
             </div>
+            <button type="submit" class="searchHandler btn-green" style="float: right; border: 0px;"><span class="fa fa-search"></span></button>
+        <% end %>
+
             <a href="#" class="mapHandler"><span class="icon-map"></span></a>
             <div class="clearfix"></div>
         </div>

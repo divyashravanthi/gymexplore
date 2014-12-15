@@ -31,3 +31,15 @@
 .margin-b-10{
 	margin-bottom: 10px;
 }
+
+button.searchHandler {
+	display: block;
+	width: 60px;
+	height: 60px;
+	float: left;
+	text-align: center;
+	font-size: 18px;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+}
