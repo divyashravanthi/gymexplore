@@ -580,22 +580,24 @@
     if ($('#locality').length > 0) {
         var address = document.getElementById('locality');
         var addressAuto = new google.maps.places.Autocomplete(address);
-        newMarker = new google.maps.Marker({});
         google.maps.event.addListener(addressAuto, 'place_changed', function() {
             var place = addressAuto.getPlace();
 
             if (!place.geometry) {
                 return;
             }
+            console.log(place.geometry.location['k']);
 
-            newMarker.setPosition(place.geometry.location);
-            newMarker.setVisible(true);
-
-            $('#form_lat').val(newMarker.getPosition().lat());
-            $('#form_lon').val(newMarker.getPosition().lng());
+            $('#form_lat').val(place.geometry.location['k']);
+            $('#form_lon').val(place.geometry.location['D']);
 
             return false;
         });
+
+        if ($('#mapView').length > 0 && $('.resultsList').length > 0) {
+            
+            addMarkers(props, map);
+        }
     }
 
     $('input, textarea').placeholder();

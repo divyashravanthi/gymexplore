@@ -1,6 +1,6 @@
 class GymsController < ApplicationController
 
-	before_filter :authenticate_agency!, :except => [:explore]
+	before_filter :authenticate_agency!, :only => [:new, :create, :edit, :update]
 	skip_before_filter :verify_authenticity_token, :only => [:get_gyms]
 
 	def explore
@@ -48,10 +48,14 @@ class GymsController < ApplicationController
 
 	def show
 		@gym = Gym.find(params[:id])
+		@lat = @gym.lang
+		@lon = @gym.long
 	end
 
 	def edit
 		@gym = Gym.find(params[:id])
+		@lat = @gym.lang
+		@lon = @gym.long
 	end
 
 	def update

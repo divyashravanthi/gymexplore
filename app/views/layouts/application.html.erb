@@ -24,13 +24,18 @@
             <div class="search" style="width: 80%;">
                 <span class="searchIcon icon-magnifier"></span>
                 <%= form_for :gym_search, :html => {:class => "search_form"}, url: explore_gyms_path do |f| %>
-                <% if @locality.nil? %>
-	                <%= f.text_field :locality, :id => "locality", :placeholder => "Search by locality or landmark", :autocomplete => false %>
-                <% else %>
-	                <%= f.text_field :locality, :value => @locality, :id => "locality", :placeholder => "Search by locality or landmark", :autocomplete => false %>
-                <% end %>
-	                <input type="hidden" value="" id="form_lat" name="form_lat"/>
-	                <input type="hidden" value="" id="form_lon" name="form_lon" />
+	                <% if @locality.nil? %>
+		                <%= f.text_field :locality, :id => "locality", :placeholder => "Search by locality or landmark", :autocomplete => false %>
+	                <% else %>
+		                <%= f.text_field :locality, :value => @locality, :id => "locality", :placeholder => "Search by locality or landmark", :autocomplete => false %>
+	                <% end %>
+	                <% if !@lat.nil? %>
+		                <input type="hidden" value="<%=@lat%>" id="form_lat" name="form_lat"/>
+		                <input type="hidden" value="<%=@lon%>" id="form_lon" name="form_lon" />
+		            <% else %>
+		            	<input type="hidden" value="12.929588" id="form_lat" name="form_lat"/>
+		                <input type="hidden" value="77.630596" id="form_lon" name="form_lon" />
+		            <% end %>
                 <% end %>
             </div>
             <a href="#" class="mapHandler"><span class="icon-map"></span></a>
