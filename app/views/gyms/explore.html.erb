@@ -80,6 +80,10 @@
                 </div> -->
                 <div class="resultsList">
                     <div class="row">
+                        <% if @gyms.empty? %>
+                            <b>We're sorry, there are no gyms registered for this area yet.</b><br/>
+                            Try searching for an other area. 
+                        <% end %>
                         <% @gyms.each do |g| %>
                             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                                 <a href="<%=gym_path(g)%>" class="card">
