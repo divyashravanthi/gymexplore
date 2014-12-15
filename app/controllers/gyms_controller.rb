@@ -23,8 +23,10 @@ class GymsController < ApplicationController
 		gym.facility = [params[:facilities].join(","), params[:other_facilities]].join(",")
 		gym.agency_id = current_agency.id
 		if gym.save
-			params[:gym][:images].each do |img|
-				gym.pictures.create(:image => img)
+			if params[:gym][:images].count > 0
+				params[:gym][:images].each do |img|
+					gym.pictures.create(:image => img)
+				end
 			end
 			params[:duration].each_with_index do |value, index|
 				gym.pricings.create(:duration => params[:duration][index], :price => params[:price][index])
