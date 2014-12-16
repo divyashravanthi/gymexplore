@@ -22,7 +22,7 @@
                 </a>
             </div>
             <a href="#" class="navHandler"><span class="fa fa-bars"></span></a>
-            <div class="search" style="width: 80%;">
+            <div class="search" style="width: 60%;">
                 <span class="searchIcon icon-magnifier"></span>
 	                <% if @locality.nil? %>
 		                <%= f.text_field :locality, :id => "locality", :placeholder => "Search by locality or landmark", :autocomplete => false %>
@@ -37,77 +37,47 @@
 		                <input type="hidden" value="77.630596" id="form_lon" name="form_lon" />
 		            <% end %>
             </div>
-            <button type="submit" class="searchHandler btn-green" style="float: right; border: 0px;"><span class="fa fa-search"></span></button>
-        <% end %>
-
+            <!-- <button type="submit" class="searchHandler btn-green" style="border: 0px;"><span class="fa fa-search"></span></button> -->
+			<% if agency_signed_in? %>
+				<div class="headerUserWraper">
+	                <a href="#" class="userHandler dropdown-toggle" data-toggle="dropdown"><span class="icon-user"></span><span class="counter">5</span></a>
+	                <a href="#" class="headerUser dropdown-toggle" data-toggle="dropdown">
+	                    <!-- <img class="avatar headerAvatar pull-left" src="images/avatar-1.png" alt="avatar"> -->
+	                    <div class="userTop pull-left">
+	                        <span class="headerUserName"><%=current_agency.name%></span> <span class="fa fa-angle-down"></span>
+	                    </div>
+	                    <div class="clearfix"></div>
+	                </a>
+	                <div class="dropdown-menu pull-right userMenu" role="menu">
+	                    <div class="mobAvatar">
+	                        <!-- <img class="avatar mobAvatarImg" src="images/avatar-1.png" alt="avatar"> -->
+	                        <div class="mobAvatarName"><%=current_agency.name%></div>
+	                    </div>
+	                    <ul>
+	                        <li><a href="<%=edit_agency_registration_path%>l"><span class="icon-user"></span>Profile</a></li>
+	                        <li class="divider"></li>
+	                        <li><a href="<%=destroy_agency_session_path%>" data-method="delete"><span class="icon-power"></span>Logout</a></li>
+	                    </ul>
+	                </div>
+	            </div>
+            <% end %>
+            <div class="headerNotifyWraper">
+                <a href="<%=new_gym_path%>" class="headerNotify dropdown-toggle">
+                    <span class="notifyIcon icon-plus"></span>
+                </a>
+            </div>
+            <div class="headerNotifyWraper">
+                <a href="#" class="headerNotify dropdown-toggle" id="submit-search">
+                    <span class="notifyIcon icon-magnifier"></span>
+                </a>
+            </div>
             <a href="#" class="mapHandler"><span class="icon-map"></span></a>
             <div class="clearfix"></div>
+        	<% end %>
         </div>
 
         <!-- Left Side Navigation -->
 
-        <div id="leftSide">
-            <nav class="leftNav scrollable">
-                <ul>
-                    <!-- <li><%#= link_to "<span class='navIcon icon-compass'></span><span class='navLabel'>Back</span>".html_safe, :back %></li> -->
-                    <!-- <li><a href="single.html"><span class="navIcon icon-home"></span><span class="navLabel">Single</span></a></li> -->
-                    <li><a href="<%=new_gym_path%>"><span class="navIcon icon-plus"></span><span class="navLabel">Add</span></a></li>
-                   <!--  <li class="hasSub">
-                        <a href="#"><span class="navIcon icon-drop"></span><span class="navLabel">Colors</span><span class="fa fa-angle-left arrowRight"></span><span class="badge bg-yellow">5</span></a>
-                        <ul class="colors">
-                            <li><a href="#">Red <span class="fa fa-circle-o c-red icon-right"></span></a></li>
-                            <li><a href="#">Green <span class="fa fa-circle-o c-green icon-right"></span></a></li>
-                            <li><a href="#">Blue <span class="fa fa-circle-o c-blue icon-right"></span></a></li>
-                            <li><a href="#">Yellow <span class="fa fa-circle-o c-yellow icon-right"></span></a></li>
-                            <li><a href="#">Magenta <span class="fa fa-circle-o c-magenta icon-right"></span></a></li>
-                        </ul>
-                    </li>
-                    <li class="hasSub">
-                        <a href="#"><span class="navIcon icon-layers"></span><span class="navLabel">Elements</span><span class="fa fa-angle-left arrowRight"></span></a>
-                        <ul>
-                            <li><a href="buttons.html">Buttons</a></li>
-                            <li><a href="icons.html">Icons <span class="badge pull-right bg-yellow">841</span></a></li>
-                            <li><a href="grid.html">Grid</a></li>
-                            <li><a href="widgets.html">Widgets</a></li>
-                            <li><a href="components.html">Components</a></li>
-                            <li><a href="lists.html">Lists</a></li>
-                            <li><a href="tables.html">Tables</a></li>
-                            <li><a href="form.html">Form</a></li>
-                        </ul>
-                    </li>
-                    <li class="hasSub">
-                        <a href="#"><span class="navIcon icon-link"></span><span class="navLabel">Pages</span><span class="fa fa-angle-left arrowRight"></span></a>
-                        <ul>
-                            <li><a href="signin.html">Sign In</a></li>
-                            <li><a href="signup.html">Sign Up</a></li>
-                            <li><a href="profile.html">Profile</a></li>
-                            <li><a href="index.html">Homepage Slideshow</a></li>
-                            <li><a href="index-map.html">Homepage Map</a></li>
-                            <li><a href="blog.html">Blog</a></li>
-                            <li><a href="blog-post.html">Blog Post</a></li>
-                        </ul>
-                    </li> -->
-                </ul>
-            </nav>
-            <% if agency_signed_in? %>
-	            <div class="leftUserWraper dropup">
-	                <a href="#" class="avatarAction dropdown-toggle" data-toggle="dropdown">
-	                    <img class="avatar" src="/assets/avatar-1.png" alt="avatar">
-	                    <div class="userBottom pull-left">
-	                        <span class="bottomUserName"><%=current_agency.name%></span> <span class="fa fa-angle-up pull-right arrowUp"></span>
-	                    </div>
-	                    <div class="clearfix"></div>
-	                </a>
-	                <ul class="dropdown-menu" role="menu">
-	                    <!-- <li><a href="#"><span class="icon-settings"></span>Settings</a></li> -->
-	                    <li><a href="<%=edit_agency_registration_path%>"><span class="icon-user"></span>Profile</a></li>
-	                    <!-- <li><a href="#"><span class="icon-bell"></span>Notifications <span class="badge pull-right bg-red">5</span></a></li> -->
-		                <li class="divider"></li>
-		                <li><a href="<%=destroy_agency_session_path%>" data-method="delete"><span class="icon-power"></span>Logout</a></li>
-	                </ul>
-	            </div>
-            <% end %>
-        </div>
         <div class="closeLeftSide"></div>
 <%= yield %>
 <script src="http://maps.googleapis.com/maps/api/js?sensor=true&amp;libraries=geometry&amp;libraries=places" type="text/javascript"></script>

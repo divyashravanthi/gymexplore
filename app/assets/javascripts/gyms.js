@@ -37,4 +37,9 @@ $(document).ready(function() {
     //         return false;
     //      }
     // });
+
+    $("#submit-search").click(function(){
+        $(".search_form").submit();
+    });
+
 });

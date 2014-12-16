@@ -36,10 +36,7 @@ button.searchHandler {
 	display: block;
 	width: 60px;
 	height: 60px;
-	float: left;
+	/*float: right;*/
 	text-align: center;
 	font-size: 18px;
-	position: absolute;
-	right: 0px;
-	top: 0px;
 }
