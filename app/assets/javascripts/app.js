@@ -8,6 +8,10 @@
             disableDefaultUI: true,
             mapTypeControlOptions : {
                 mapTypeIds : [ 'Styled' ]
+            },
+            zoomControl: true,
+            zoomControlOptions: {
+                style: google.maps.ZoomControlStyle.SMALL
             }
         };
     var styles = [{
