@@ -27,9 +27,12 @@ $(document).ready(function() {
             },
             theme: 'relax',
             killer: false,
-            closeWith: ['click', 'button']
+            closeWith: ['click', 'button'],
+            timeout: 3000
         });
+        
     }
+
     // $('.search_form').keydown(function(event) {
     //     if (event.keyCode == 13) {
     //         event.preventDefault();
