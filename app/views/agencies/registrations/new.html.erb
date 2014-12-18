@@ -11,7 +11,7 @@
 
 <div class="modal fade" id="signup_form" role="dialog" aria-labelledby="signupLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm">
-        <div class="signLogo osLight"><span class="fa fa-home"></span> gYmExplore</div>
+        <div class="signLogo osLight"><span class="fa fa-search"></span> gYmExplore</div>
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="signupLabel">Sign Up</h4>
@@ -38,7 +38,7 @@
                             <%= f.submit "Sign up", :class => "btn btn-lg btn-green width-100" %>
                         </div>
                     </div>
-                    <p class="help-block">Already a registered agency? <a href="<%=new_agency_session_path%>" class="modal-si text-green">Sign In</a></p>
+                    <p class="help-block">Already a registered agency? <a href="<%=new_agency_session_path%>" class="modal-si text-green">Sign In</a> or <a href="<%=root_path%>" class="text-green">Search</a></p>
                 <% end %>
             </div>
         </div>
