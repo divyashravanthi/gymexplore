@@ -582,18 +582,17 @@
     }
 
     if ($('#locality').length > 0) {
-        var address = document.getElementById('locality');
-        var addressAuto = new google.maps.places.Autocomplete(address);
-        google.maps.event.addListener(addressAuto, 'place_changed', function() {
-            var place = addressAuto.getPlace();
+        var address1 = document.getElementById('locality');
+        var addressAuto1 = new google.maps.places.Autocomplete(address1);
+        google.maps.event.addListener(addressAuto1, 'place_changed', function() {
+            var place1 = addressAuto1.getPlace();
 
-            if (!place.geometry) {
+            if (!place1.geometry) {
                 return;
             }
-            console.log(place.geometry.location['k']);
 
-            $('#form_lat').val(place.geometry.location['k']);
-            $('#form_lon').val(place.geometry.location['D']);
+            $('#form_lat').val(place1.geometry.location['k']);
+            $('#form_lon').val(place1.geometry.location['D']);
 
             return false;
         });
