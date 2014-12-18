@@ -5,79 +5,61 @@
                 <div class="mapPlaceholder"><span class="fa fa-spin fa-spinner"></span> Loading map...</div>
             </div>
             <div id="content">
-                <!-- <div class="filter">
+                <div class="filter">
                     <h1 class="osLight">Filter your results</h1>
                     <a href="#" class="handleFilter"><span class="icon-equalizer"></span></a>
                     <div class="clearfix"></div>
-                    <form class="filterForm">
-                        <div class="row">
+                    <form class="filterForm" id="filter-form">
+                        <!-- <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 formItem">
                                 <div class="formField">
-                                    <label>Property Type</label>
+                                    <label>Price Range (Per Month in Rs.)</label>
                                     <a href="#" data-toggle="dropdown" class="btn btn-gray dropdown-btn dropdown-toggle propTypeSelect">
                                         <span class="dropdown-label">All</span>
                                         <span class="fa fa-angle-down dsArrow"></span>
                                     </a>
                                     <ul class="dropdown-menu dropdown-select full" role="menu">
-                                        <li class="active"><input type="radio" name="pType" checked="checked"><a href="#">All</a></li>
-                                        <li><input type="radio" name="pType"><a href="#">Rent</a></li>
-                                        <li><input type="radio" name="pType"><a href="#">Sale</a></li>
+                                        <li class="active"><input type="radio" name="pType" checked="checked" value="0"><a href="#" class="filter-click">All</a></li>
+                                        <li><input type="radio" name="pType" value="1"><a href="#" class="filter-click">0 - 500</a></li>
+                                        <li><input type="radio" name="pType" value="2"><a href="#" class="filter-click">500 - 1000</a></li>
+                                        <li><input type="radio" name="pType" value="3"><a href="#" class="filter-click">1000 - 2000</a></li>
+                                        <li><input type="radio" name="pType" value="4"><a href="#" class="filter-click">2000 - 5000</a></li>
+                                        <li><input type="radio" name="pType" value="5"><a href="#" class="filter-click">5000 - 10000</a></li>
+                                        <li><input type="radio" name="pType" value="6"><a href="#" class="filter-click">10000 +</a></li>
                                     </ul>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
+                        <input type="hidden" name="filter_lat" value="<%=@lat%>" />
+                        <input type="hidden" name="filter_lon" value="<%=@lon%>" />
                         <div class="row">
-                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 formItem">
-                                <div class="formField">
-                                    <label>Price Range</label>
-                                    <div class="slider priceSlider">
-                                        <div class="sliderTooltip">
-                                            <div class="stArrow"></div>
-                                            <div class="stLabel"></div>
-                                        </div>
-                                    </div>
+                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <div class="checkbox custom-checkbox"><label><input type="checkbox" class="filter-click" value="Personal Training" name="facilities[]"><span class="fa fa-check"></span> Personal Training</label></div>
+                                    <div class="checkbox custom-checkbox"><label><input type="checkbox" class="filter-click" value="Cardio" name="facilities[]"><span class="fa fa-check"></span> Cardio</label></div>
+                                    <div class="checkbox custom-checkbox"><label><input type="checkbox" class="filter-click" value="Group Exercise / Aerobics" name="facilities[]"><span class="fa fa-check"></span> Group Exercise / Aerobics</label></div>
+                                    
                                 </div>
                             </div>
-                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 formItem">
-                                <div class="formField">
-                                    <label>Area Range</label>
-                                    <div class="slider areaSlider">
-                                        <div class="sliderTooltip">
-                                            <div class="stArrow"></div>
-                                            <div class="stLabel"></div>
-                                        </div>
-                                    </div>
+                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <div class="checkbox custom-checkbox"><label><input type="checkbox" class="filter-click" value="Steam Room" name="facilities[]"><span class="fa fa-check"></span> Steam Room</label></div>
+                                    <div class="checkbox custom-checkbox"><label><input type="checkbox" class="filter-click" value="Physiotherapist" name="facilities[]"><span class="fa fa-check"></span> Physiotherapist</label></div>
+                                    <div class="checkbox custom-checkbox"><label><input type="checkbox" class="filter-click" value="Nutrition" name="facilities[]"><span class="fa fa-check"></span> Nutrition</label></div>
+                                    
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 formItem">
-                                <div class="formField">
-                                    <label>Bedrooms</label>
-                                    <div class="volume">
-                                        <a href="#" class="btn btn-gray btn-round-left"><span class="fa fa-angle-left"></span></a>
-                                        <input type="text" class="form-control" readonly="readonly" value="1">
-                                        <a href="#" class="btn btn-gray btn-round-right"><span class="fa fa-angle-right"></span></a>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 formItem">
-                                <div class="formField">
-                                    <label>Bathrooms</label>
-                                    <div class="volume">
-                                        <a href="#" class="btn btn-gray btn-round-left"><span class="fa fa-angle-left"></span></a>
-                                        <input type="text" class="form-control" readonly="readonly" value="1">
-                                        <a href="#" class="btn btn-gray btn-round-right"><span class="fa fa-angle-right"></span></a>
-                                        <div class="clearfix"></div>
-                                    </div>
+                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <div class="checkbox custom-checkbox"><label><input type="checkbox" class="filter-click" value="Fitness Assessment" name="facilities[]"><span class="fa fa-check"></span> Fitness Assessment</label></div>
+                                    <div class="checkbox custom-checkbox"><label><input type="checkbox" class="filter-click" value="Lockers" name="facilities[]"><span class="fa fa-check"></span> Lockers</label></div>
                                 </div>
                             </div>
                         </div>
                     </form>
-                </div> -->
+                </div>
                 <div class="resultsList">
-                    <div class="row">
+                    <div class="row" id="list-gyms">
                         <% if @gyms.empty? %>
                             <b>We're sorry, there are no gyms registered for this area yet.</b><br/>
                             Try searching for an other area. 

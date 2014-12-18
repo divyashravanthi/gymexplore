@@ -612,4 +612,43 @@
         }
     });
 
+    $(document).on('click','.filter-click', function(){
+        $.ajax({
+            url: '/gyms/filter',
+            type: 'POST',
+            data: $('#filter-form').serialize(),
+            success: function(data){
+                for (var i = 0; i < markers.length; i++) {
+                    markers[i].setMap(null);
+                  }
+                markers = [];
+                props = [];
+                $.each(data, function(i,v){
+                    var temp = {
+                        name: v.name,
+                        image: v.pictures[0].url_json,
+                        position: {
+                            lat : v.lang,
+                            lng : v.long
+                        },
+                        address: v.address,
+                        markerIcon: "marker-green.png",
+                        id: v.id
+                    }
+                    props.push(temp);
+                });
+
+                addMarkers(props, map);
+            }
+        });
+        $.ajax({
+            url: '/gyms/list',
+            type: 'POST',
+            data: $('#filter-form').serialize(),
+            success: function(data){
+                $("#list-gyms").html(data);
+            }
+        });
+    });
+
 })(jQuery);

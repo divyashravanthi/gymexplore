@@ -1,7 +1,7 @@
 class GymsController < ApplicationController
 
 	before_filter :authenticate_agency!, :only => [:new, :create, :edit, :update]
-	skip_before_filter :verify_authenticity_token, :only => [:get_gyms]
+	skip_before_filter :verify_authenticity_token, :only => [:get_gyms, :filter]
 
 	def explore
 		@lat = params[:form_lat]
@@ -87,5 +87,57 @@ class GymsController < ApplicationController
 
 	def contact
 		AgencyMailer.send_message(params[:name], params[:email], params[:message], params[:gym]).deliver
+	end
+
+	def filter
+		@lat = params[:filter_lat]
+		@lon = params[:filter_lon]
+		@gyms = Gym.where(:lang => (@lat.to_f-0.015)..(@lat.to_f+0.015), :long => (@lon.to_f-0.015)..(@lon.to_f+0.015), :verified => true)
+		@f_gyms = Array.new
+		if !params[:facilities].nil?
+			@gyms.each do |g|
+				flag = 0
+				params[:facilities].each do |f|
+					if !g.facility.include?(f)
+						flag = 0
+						break
+					else
+						flag = 1
+					end
+				end
+				if flag == 1
+					@f_gyms << g
+				end
+			end
+		else
+			@f_gyms = @gyms
+		end
+		render :json => @f_gyms.to_json(:include => {:pictures => {:methods => [:url_json]}})
+	end
+
+	def list
+		@lat = params[:filter_lat]
+		@lon = params[:filter_lon]
+		@gyms = Gym.where(:lang => (@lat.to_f-0.015)..(@lat.to_f+0.015), :long => (@lon.to_f-0.015)..(@lon.to_f+0.015), :verified => true)
+		@f_gyms = Array.new
+		if !params[:facilities].nil?
+			@gyms.each do |g|
+				flag = 0
+				params[:facilities].each do |f|
+					if !g.facility.include?(f)
+						flag = 0
+						break
+					else
+						flag = 1
+					end
+				end
+				if flag == 1
+					@f_gyms << g
+				end
+			end
+		else
+			@f_gyms = @gyms
+		end
+		render :layout => false
 	end
 end

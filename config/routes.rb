@@ -12,6 +12,8 @@ Rails.application.routes.draw do
       post :explore
       post :get_gyms
       post :contact
+      post :filter
+      post :list
     end
   end
 
