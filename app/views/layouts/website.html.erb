@@ -15,6 +15,64 @@
   <div class="hide notice-alert"><%= notice || alert %></div>
 <% end %>
 <%= yield %>
+<div class="home-footer">
+<div class="home-wrapper">
+    <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+            <div class="osLight footer-header">Company</div>
+            <ul class="footer-nav pb20">
+                <li><a href="#">About</a></li>
+                <li><a href="#">Jobs</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/terms">Terms & Conditions</a></li>
+                <li><a href="#">Team</a></li>
+                <li><a href="#"></a>Help</li>
+            </ul>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+            <div class="osLight footer-header">Discover</div>
+            <ul class="footer-nav pb20">
+                <li><a href="#">Become a Member</a></li>
+                <li><a href="#">Gym List</a></li>
+                <li><a href="#">Sign In</a></li>
+                <li><a href="#">Sign Up</a></li>
+                <li><a href="#">Explore</a></li>
+                <li><a href="#">Submit a property</a></li>
+                <!-- <li><a href="#">Lists</a></li> -->
+            </ul>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+            <div class="osLight footer-header">Get in Touch</div>
+            <ul class="footer-nav pb20">
+                <li class="footer-phone"><span class="fa fa-phone"></span> 8884117557 </li>
+                <li class="footer-address osLight">
+                    <p>#10, Cubic Business Centre, 7th cross,</p>
+                    <p>J extension, Koramangala 3rd block,</p>
+                    <p>Bangalore - 560034.</p>
+                </li>
+                <li>
+                    <a href="https://www.facebook.com/pages/GymExplore/1512745565665075" class="btn btn-sm btn-icon btn-round btn-o btn-white"><span class="fa fa-facebook"></span></a> 
+                    <a href="" class="btn btn-sm btn-icon btn-round btn-o btn-white"><span class="fa fa-twitter"></span></a> 
+                    <a href="#" class="btn btn-sm btn-icon btn-round btn-o btn-white"><span class="fa fa-google-plus"></span></a> 
+                    <!-- <a href="#" class="btn btn-sm btn-icon btn-round btn-o btn-white"><span class="fa fa-linkedin"></span></a> --> </li>
+            </ul>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+            <div class="osLight footer-header">Subscribe to Our Newsletter</div>
+            <form role="form">
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="Email Address">
+                </div>
+                <div class="form-group">
+                    <a href="#" class="btn btn-green btn-block">Subscribe</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="copyright">InZak Software Services Pvt Ltd<br> &copy; 2014</div>
+</div>
+</div>
 <script src="http://maps.googleapis.com/maps/api/js?sensor=true&amp;libraries=geometry&amp;libraries=places" type="text/javascript"></script>
  <%= javascript_include_tag 'application' %>
 </body>

@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
 
+  get 'privacy-policy' => 'home#privacy'
+  get 'terms' => 'home#terms'
+
   resources :gyms do
     collection do
       post :explore
