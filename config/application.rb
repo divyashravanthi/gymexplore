@@ -20,9 +20,9 @@ module Gymexplore
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.to_prepare do
-       Devise::SessionsController.layout "website" 
-       Devise::PasswordsController.layout "website"
-       Devise::RegistrationsController.layout proc{ |controller| agency_signed_in? ? "application" : "website" }
+       Devise::SessionsController.layout "sessions" 
+       Devise::PasswordsController.layout "sessions"
+       Devise::RegistrationsController.layout proc{ |controller| agency_signed_in? ? "application" : "sessions" }
     end
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
