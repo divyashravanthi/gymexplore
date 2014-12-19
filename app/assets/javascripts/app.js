@@ -234,7 +234,7 @@
                 position: new google.maps.LatLng(parseFloat($("#form_lat").val()),parseFloat($("#form_lon").val())),
                 map: map,
                 icon: new google.maps.MarkerImage( 
-                    '/assets/marker-magenta.png',
+                    '/assets/marker-center.png',
                     null,
                     null,
                     // new google.maps.Point(0,0),
