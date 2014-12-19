@@ -57,3 +57,5 @@ gem 'capistrano', '2.15.5'
 
 gem 'rails_12factor', group: :production
 
+gem 'nexmo'
+

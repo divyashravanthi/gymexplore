@@ -86,6 +86,13 @@ class GymsController < ApplicationController
 	end
 
 	def contact
+		@gym = Gym.find(params[:gym])
+		if @gym.featured
+			require 'nexmo'
+			nexmo = Nexmo::Client.new(key: 'ff382c77', secret: '31a903b3')
+			str = "Enquiry about #{@gym.name} from #{params[:name]} (#{params[:email]}). Message: #{params[:message]}"
+			nexmo.send_message(from: 'GymExplore', to: @gym.agency.mobile, text: str)
+		end
 		AgencyMailer.send_message(params[:name], params[:email], params[:message], params[:gym]).deliver
 	end
 
