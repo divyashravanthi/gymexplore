@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   get 'privacy-policy' => 'home#privacy'
   get 'terms' => 'home#terms'
+  post 'write' => 'home#write'
 
   resources :gyms do
     collection do

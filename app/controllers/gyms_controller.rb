@@ -93,7 +93,7 @@ class GymsController < ApplicationController
 			str = "Enquiry about #{@gym.name} from #{params[:name]} (#{params[:email]}). Message: #{params[:message]}"
 			nexmo.send_message(from: 'GymExplore', to: @gym.agency.mobile, text: str)
 		end
-		AgencyMailer.send_message(params[:name], params[:email], params[:message], params[:gym]).deliver
+		AgencyMailer.send_message(params[:name], params[:email], params[:message], params[:gym]).deliver_now
 	end
 
 	def filter

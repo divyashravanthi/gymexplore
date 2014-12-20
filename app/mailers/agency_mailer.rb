@@ -8,4 +8,10 @@ class AgencyMailer < ApplicationMailer
 		mail(to: @gym.agency.email, from: "GymExplore <#{email}>", subject: "New Enquiry about your Gym - GymExplore.com")
 	end
 
+	def write_to_us(email, message)
+		@message = message
+		@email = email
+		mail(to: 'ankitsamar@outlook.com', from: email, subject: "Query from #{email} - GymExplore.com")
+	end
+
 end

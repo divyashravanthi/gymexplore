@@ -60,17 +60,17 @@
         </div>
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
             <div class="osLight footer-header">Write to Us</div>
-            <form role="form">
+            <%= form_for :write, :url => write_path, :html => {:role => "form", :id=>"write_to_us_form"}, :remote => true do |f| %>
                 <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Email Address">
+                    <input type="email" class="form-control" name="email" required="required" placeholder="Email Address">
                 </div>
                 <div class="form-group">
-                    <textarea class="form-control" placeholder="Message"></textarea>
+                    <textarea class="form-control" name="message" required="required" placeholder="Message"></textarea>
                 </div>
                 <div class="form-group">
-                    <a href="#" class="btn btn-green btn-block">Send</a>
+                    <button type="submit" class="btn btn-green btn-block">Send</button>
                 </div>
-            </form>
+            <% end %>
         </div>
     </div>
     <div class="copyright">InZak Software Services Pvt Ltd<br> &copy; 2014</div>

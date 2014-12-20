@@ -10,4 +10,8 @@ class HomeController < ApplicationController
 
 	def terms
 	end
+
+	def write
+		AgencyMailer.write_to_us(params[:email], params[:message]).deliver_now
+	end
 end
