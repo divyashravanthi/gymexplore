@@ -88,7 +88,7 @@
                 <div class="description">
                     <h3>Pricing</h3>
                     <% @gym.pricings.each do |p| %>
-                        <p>Rs. <%=p.price%> for <%=p.duration%> months</p>
+                        <p>Rs. <%=p.price%> for <%=pluralize(p.duration, "Month")%></p>
                     <% end %>
                 </div>
                 <!-- <div class="share">

@@ -40,3 +40,7 @@ button.searchHandler {
 	text-align: center;
 	font-size: 18px;
 }
+
+table.table{
+	margin-bottom: 0px !important;
+}

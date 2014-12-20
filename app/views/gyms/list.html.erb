@@ -33,6 +33,11 @@
                 <li><span class="icon-drop"></span> 2</li>
                 <li><span class="icon-frame"></span> 3430 Sq Ft</li>
             </ul> -->
+            <table class="table">
+                <% g.pricings.each do |p| %>
+                    <tr> <td><%=pluralize(p.duration, "Month")%></td><td>Rs. <%=p.price%></td> </tr>    
+                <% end %>
+            </table>
             <div class="clearfix"></div>
         </a>
     </div>
