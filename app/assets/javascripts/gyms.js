@@ -33,14 +33,6 @@ $(document).ready(function() {
         
     }
 
-    // $('.search_form').keydown(function(event) {
-    //     if (event.keyCode == 13) {
-    //         event.preventDefault();
-    //         $('.search_form').submit();
-    //         return false;
-    //      }
-    // });
-
     $("#submit-search").click(function(){
         $(".search_form").submit();
     });

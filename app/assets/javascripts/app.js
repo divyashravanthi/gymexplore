@@ -693,12 +693,28 @@
 
     $('input, textarea').placeholder();
 
-    $(window).keydown(function(event){
-        if(event.keyCode == 13) {
-          event.preventDefault();
-          return false;
-        }
-    });
+    if($(".enter-button").length > 0){
+        $(window).keydown(function(event){
+            if(event.keyCode == 13) {
+              event.preventDefault();
+              return false;
+            }
+        });
+
+        noty({
+            text: $(".enter-button").text(),
+            layout: 'top',
+            type: 'information',
+            animation: {
+                open: 'animated flipInX', // Animate.css class names
+                close: 'animated flipOutX', // Animate.css class names
+            },
+            theme: 'relax',
+            killer: false,
+            closeWith: ['click', 'button'],
+            timeout: 3000
+        });
+    }
 
     $(document).on('click','.filter-click', function(){
         $.ajax({

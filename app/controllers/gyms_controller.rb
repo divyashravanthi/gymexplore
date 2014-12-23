@@ -8,7 +8,7 @@ class GymsController < ApplicationController
 		@lon = params[:form_lon]
 		@locality = params[:gym_search][:locality]
 		@gyms = Gym.where(:lang => (@lat.to_f-0.015)..(@lat.to_f+0.015), :long => (@lon.to_f-0.015)..(@lon.to_f+0.015), :verified => true)
-		flash[:notice] = "Found #{@gyms.count} gyms. Zoom in to explore"
+		@message = "Found #{@gyms.count} gyms. Zoom in to explore"
 	end
 
 	def new

@@ -24,6 +24,7 @@
 //= require jquery.visible
 //= require infobox
 //= require clndr
+//= require jquery.noty.packaged.min
 //= require jquery.tagsinput.min
 //= require bootstrap-datepicker
 //= require fileinput.min
@@ -33,4 +34,3 @@
 //= require signin
 //= require signup
 //= require gyms
-//= require jquery.noty.packaged.min
