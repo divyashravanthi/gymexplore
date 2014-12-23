@@ -1,0 +1,12 @@
+<ol>
+<% @gyms.each do |gym| %>
+	<li>
+		<div class="row">
+			<div class="col-md-7 col-md-offset-1">
+			<a href="/gyms/<%=gym.id%>" target="_blank"/><%=gym.name%></a>
+			<a href="/verify_gym?gym=<%=gym.id%>" target="_blank" class="btn btn-info">Verify</a><br/><br/>
+			</div>
+		</div>
+	</li>
+<% end %>
+</ol>

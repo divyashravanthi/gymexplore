@@ -14,4 +14,8 @@ class HomeController < ApplicationController
 	def write
 		AgencyMailer.write_to_us(params[:email], params[:message]).deliver_now
 	end
+
+	def unverified_gyms
+		@gyms = Gym.where(:verified => false)
+	end
 end

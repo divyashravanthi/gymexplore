@@ -147,4 +147,10 @@ class GymsController < ApplicationController
 		end
 		render :layout => false
 	end
+
+	def verify_gym
+		gym = Gym.find(params[:gym])
+		gym.verified = true
+		gym.save
+	end
 end
