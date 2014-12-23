@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get 'privacy-policy' => 'home#privacy'
   get 'terms' => 'home#terms'
   post 'write' => 'home#write'
+  get 'unverified_gyms' => 'home#unverified_gyms'
+  get 'verify_gym' => 'gyms#verify_gym'
 
   resources :gyms do
     collection do
