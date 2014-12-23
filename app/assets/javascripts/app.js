@@ -229,12 +229,30 @@
         map.setCenter(new google.maps.LatLng(parseFloat($("#form_lat").val()),parseFloat($("#form_lon").val())));
         map.setZoom(16);
 
-        if ($('#mapView').length > 0) {
+        // if ($('#mapView').length > 0) {
+        //     newMarker = new google.maps.Marker({
+        //         position: new google.maps.LatLng(parseFloat($("#form_lat").val()),parseFloat($("#form_lon").val())),
+        //         map: map,
+        //         icon: new google.maps.MarkerImage( 
+        //             '/assets/marker-magenta.png',
+        //             null,
+        //             null,
+        //             // new google.maps.Point(0,0),
+        //             null,
+        //             new google.maps.Size(36, 36)
+        //         ),
+        //         animation: google.maps.Animation.DROP,
+        //     });
+
+        //     newMarker.setVisible(true);
+        // }
+
+        if (($('#common_locality').length > 0 || $('#mapView').length > 0) && !$('#address').length > 0) {
             newMarker = new google.maps.Marker({
                 position: new google.maps.LatLng(parseFloat($("#form_lat").val()),parseFloat($("#form_lon").val())),
                 map: map,
                 icon: new google.maps.MarkerImage( 
-                    '/assets/marker-center.png',
+                    '/assets/marker-magenta.png',
                     null,
                     null,
                     // new google.maps.Point(0,0),
@@ -245,6 +263,7 @@
             });
 
             newMarker.setVisible(true);
+
         }
 
         if ($('#address').length > 0) {
@@ -270,6 +289,8 @@
                 $('#longitude').val(this.position.lng());
             });
         }
+
+        
 
         addMarkers(props, map);
     }, 300);
@@ -577,6 +598,69 @@
             $('#latitude').val(newMarker.getPosition().lat());
             $('#longitude').val(newMarker.getPosition().lng());
 
+
+            return false;
+        });
+    }
+
+    if ($('#common_locality').length > 0) {
+        var address2 = document.getElementById('common_locality');
+        var addressAuto2 = new google.maps.places.Autocomplete(address2);
+
+        google.maps.event.addListener(addressAuto2, 'place_changed', function() {
+            var place2 = addressAuto2.getPlace();
+
+            if (!place2.geometry) {
+                return;
+            }
+            if (place2.geometry.viewport) {
+                map.fitBounds(place2.geometry.viewport);
+            } else {
+                map.setCenter(place2.geometry.location);
+            }
+            newMarker.setPosition(place2.geometry.location);
+            newMarker.setVisible(true);
+
+            $('#latitude').val(newMarker.getPosition().lat());
+            $('#longitude').val(newMarker.getPosition().lng());
+
+            $.ajax({
+                url: '/gyms/filter',
+                type: 'POST',
+                data: {'filter_lat': newMarker.getPosition().lat(), 'filter_lon': newMarker.getPosition().lng()},
+                success: function(data){
+                    for (var i = 0; i < markers.length; i++) {
+                        markers[i].setMap(null);
+                      }
+                    markers = [];
+                    props = [];
+                    $.each(data, function(i,v){
+                        var temp = {
+                            name: v.name,
+                            image: v.pictures[0].url_json,
+                            position: {
+                                lat : v.lang,
+                                lng : v.long
+                            },
+                            address: v.address,
+                            markerIcon: "marker-green.png",
+                            id: v.id
+                        }
+                        props.push(temp);
+                    });
+
+                    addMarkers(props, map);
+                }
+            });
+            $.ajax({
+                url: '/gyms/list',
+                type: 'POST',
+                data: {'filter_lat': newMarker.getPosition().lat(), 'filter_lon': newMarker.getPosition().lng()},
+                success: function(data){
+                    $("#list-gyms").html(data);
+                }
+            });
+
             return false;
         });
     }
@@ -594,6 +678,8 @@
             $('#form_lat').val(place1.geometry.location['k']);
             $('#form_lon').val(place1.geometry.location['D']);
 
+            $(".search_form").submit();
+
             return false;
         });
 
@@ -601,6 +687,7 @@
             
             addMarkers(props, map);
         }
+
     }
 
     $('input, textarea').placeholder();

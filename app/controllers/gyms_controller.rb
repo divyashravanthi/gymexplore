@@ -1,7 +1,7 @@
 class GymsController < ApplicationController
 
 	before_filter :authenticate_agency!, :only => [:new, :create, :edit, :update]
-	skip_before_filter :verify_authenticity_token, :only => [:get_gyms, :filter]
+	skip_before_filter :verify_authenticity_token, :only => [:get_gyms, :filter, :list]
 
 	def explore
 		@lat = params[:form_lat]
