@@ -82,10 +82,6 @@
                 </div>
                 <div class="clearfix"></div>
                 <div class="description">
-                    <h3>Description</h3>
-                    <p><%=@gym.description%></p>
-                </div>
-                <div class="description">
                     <h3>Pricing</h3>
                     <% @gym.pricings.each do |p| %>
                         <p>Rs. <%=p.price%> for <%=pluralize(p.duration, "Month")%></p>
@@ -115,6 +111,11 @@
                          <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 amItem"> <%=f%></div>
                         <% end %>
                     </div>
+                </div>
+
+                <div class="description">
+                    <h3>Description</h3>
+                    <p><%=@gym.description%></p>
                 </div>
                 
                 <!-- <div class="comments">

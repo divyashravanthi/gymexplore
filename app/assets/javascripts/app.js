@@ -621,8 +621,8 @@
             newMarker.setPosition(place2.geometry.location);
             newMarker.setVisible(true);
 
-            $('#latitude').val(newMarker.getPosition().lat());
-            $('#longitude').val(newMarker.getPosition().lng());
+            $('#filter_lat').val(newMarker.getPosition().lat());
+            $('#filter_lon').val(newMarker.getPosition().lng());
 
             $.ajax({
                 url: '/gyms/filter',
