@@ -51,6 +51,7 @@
         $.ajax({
             type: 'POST',
             url: '/gyms/get_gyms',
+            async: false,
             data: {lan: parseFloat($("#form_lat").val()), lon: parseFloat($("#form_lon").val())},
             success: function(data){
                 $.each(data, function(i,v){
@@ -293,7 +294,7 @@
         
 
         addMarkers(props, map);
-    }, 300);
+    }, 500);
 
     if(!(('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch)) {
         $('body').addClass('no-touch');
