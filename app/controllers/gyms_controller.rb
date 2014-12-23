@@ -47,19 +47,19 @@ class GymsController < ApplicationController
 	end
 
 	def show
-		@gym = Gym.find(params[:id])
+		@gym = Gym.friendly.find(params[:id])
 		@lat = @gym.lang
 		@lon = @gym.long
 	end
 
 	def edit
-		@gym = Gym.find(params[:id])
+		@gym = Gym.friendly.find(params[:id])
 		@lat = @gym.lang
 		@lon = @gym.long
 	end
 
 	def update
-		gym = Gym.find(params[:id])
+		gym = Gym.friendly.find(params[:id])
 		gym.name = params[:name]
 		gym.description = params[:description]
 		gym.lang = params[:latitude]
@@ -67,7 +67,7 @@ class GymsController < ApplicationController
 		gym.address = params[:address]
 		gym.facility = params[:other_facilities]
 		if gym.save
-			if params[:gym][:images].count > 0
+			if params[:gym].present?
 				gym.pictures.destroy_all
 				params[:gym][:images].each do |img|
 					gym.pictures.create(:image => img)
@@ -86,14 +86,14 @@ class GymsController < ApplicationController
 	end
 
 	def contact
-		@gym = Gym.find(params[:gym])
+		@gym = Gym.friendly.find(params[:gym])
 		if @gym.featured
 			require 'nexmo'
 			nexmo = Nexmo::Client.new(key: 'ff382c77', secret: '31a903b3')
 			str = "Enquiry about #{@gym.name} from #{params[:name]} (#{params[:email]}). Message: #{params[:message]}"
 			nexmo.send_message(from: 'GymExplore', to: @gym.agency.mobile, text: str)
 		end
-		AgencyMailer.send_message(params[:name], params[:email], params[:message], params[:gym]).deliver_now
+		AgencyMailer.send_message(params[:name], params[:email], params[:message], @gym).deliver_now
 	end
 
 	def filter

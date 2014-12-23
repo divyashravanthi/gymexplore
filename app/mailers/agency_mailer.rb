@@ -2,7 +2,7 @@ class AgencyMailer < ApplicationMailer
 
 	def send_message(name, email, message, gym)
 		@message = message
-		@gym = Gym.find(gym)
+		@gym = gym
 		@name = name
 		@email = email
 		mail(to: @gym.agency.email, from: "GymExplore <#{email}>", subject: "New Enquiry about your Gym - GymExplore.com")

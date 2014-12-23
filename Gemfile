@@ -59,3 +59,5 @@ gem 'rails_12factor', group: :production
 
 gem 'nexmo'
 
+gem 'friendly_id'
+
