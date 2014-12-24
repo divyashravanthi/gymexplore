@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   get 'unverified_gyms' => 'home#unverified_gyms'
   get 'verify_gym' => 'gyms#verify_gym'
 
+  get "sitemap.xml" => "home#sitemap", format: :xml, as: :sitemap
+  get "robots.txt" => "home#robots", format: :text, as: :robots
+
   resources :gyms do
     collection do
       post :explore

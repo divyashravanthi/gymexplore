@@ -63,3 +63,5 @@ gem 'friendly_id'
 
 gem 'metamagic'
 
+gem "dynamic_sitemaps"
+
