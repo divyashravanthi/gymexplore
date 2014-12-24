@@ -57,5 +57,6 @@ namespace :sitemaps do
     run "mkdir -p #{shared_path}/sitemaps"
     run "rm -rf #{release_path}/public/sitemaps"
     run "ln -s #{shared_path}/sitemaps #{release_path}/public/sitemaps"
+    run " cd #{release_path} && RAILS_ENV=production bundle exec rake sitemap:generate"
   end
 end
