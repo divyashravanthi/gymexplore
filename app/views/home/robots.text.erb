@@ -1,1 +1,9 @@
-Sitemap: <%= sitemap_url %>
+<% if Rails.env == "production" %>
+  User-Agent: *
+  Allow: /
+  Disallow: /admin
+  Sitemap: <%= sitemap_url %>
+<% else %>
+  User-Agent: *
+  Disallow: /
+<% end %>

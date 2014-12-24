@@ -29,5 +29,6 @@ class HomeController < ApplicationController
 	end
 
 	def robots
+		respond_to :text
 	end
 end
