@@ -61,3 +61,5 @@ gem 'nexmo'
 
 gem 'friendly_id'
 
+gem 'metamagic'
+
