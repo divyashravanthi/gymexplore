@@ -1,7 +1,23 @@
 <%
 meta title: @gym.name,
      description: @gym.description,
-     keywords: %w(gymexplore gyms gymnearme workout findgym)
+     keywords: %w(gymexplore gyms gymnearme workout findgym),
+     og: {
+        title: @gym.name,
+        site_name: "GymExplore.com",
+        url: gym_url(@gym),
+        description: @gym.description,
+        image: "http://gymexplore.com"+@gym.pictures.first.image.url,
+        type: "website"
+     },
+     twitter: {
+        card: "summary",
+        title: @gym.name,
+        description: @gym.description,
+        creator: "@GymExplore",
+        url: gym_url(@gym),
+        image: "http://gymexplore.com"+@gym.pictures.first.image.url
+     }
 %>
 <div id="wrapper">
             <div id="mapView" class="mob-min"><div class="mapPlaceholder"><span class="fa fa-spin fa-spinner"></span> Loading map...</div></div>
@@ -92,23 +108,7 @@ meta title: @gym.name,
                         <p>Rs. <%=p.price%> for <%=pluralize(p.duration, "Month")%></p>
                     <% end %>
                 </div>
-                <!-- <div class="share">
-                    <h3>Share on Social Networks</h3>
-                    <div class="row">
-                        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 shareItem">
-                            <a href="#" class="btn btn-sm btn-round btn-o btn-facebook"><span class="fa fa-facebook"></span> Facebook</a>
-                        </div>
-                        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 shareItem">
-                            <a href="#" class="btn btn-sm btn-round btn-o btn-twitter"><span class="fa fa-twitter"></span> Twitter</a>
-                        </div>
-                        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 shareItem">
-                            <a href="#" class="btn btn-sm btn-round btn-o btn-google"><span class="fa fa-google-plus"></span> Google+</a>
-                        </div>
-                        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 shareItem">
-                            <a href="#" class="btn btn-sm btn-round btn-o btn-pinterest"><span class="fa fa-pinterest"></span> Pinterest</a>
-                        </div>
-                    </div>
-                </div> -->
+                
                 <div class="amenities">
                     <h3>Facilities</h3>
                     <div class="row">
@@ -121,6 +121,24 @@ meta title: @gym.name,
                 <div class="description">
                     <h3>Description</h3>
                     <p><%=@gym.description%></p>
+                </div>
+
+                <div class="share">
+                    <h3>Share on Social Networks</h3>
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 shareItem">
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=<%=gym_url(@gym)%>&t=<%=@gym.name%>" class="btn btn-sm btn-round btn-o btn-facebook" target="_blank"><span class="fa fa-facebook"></span> Facebook</a>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 shareItem">
+                            <a href="https://twitter.com/intent/tweet?source=<%=gym_url(@gym)%>&text=<%=@gym.name%>:<%=gym_url(@gym)%>" class="btn btn-sm btn-round btn-o btn-twitter" target="_blank"><span class="fa fa-twitter"></span> Twitter</a>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 shareItem">
+                            <a href="https://plus.google.com/share?url=<%=gym_url(@gym)%>" class="btn btn-sm btn-round btn-o btn-google"><span class="fa fa-google-plus" target="_blank"></span> Google+</a>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 shareItem">
+                            <a href="http://pinterest.com/pin/create/button/?url=<%=gym_url(@gym)%>&media=http://gymexplore.com<%=@gym.pictures.first.image.url%>&description=<%=@gym.description%>" class="btn btn-sm btn-round btn-o btn-pinterest" target="_blank"><span class="fa fa-pinterest"></span> Pinterest</a>
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- <div class="comments">
