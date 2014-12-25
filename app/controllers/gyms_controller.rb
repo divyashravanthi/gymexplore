@@ -7,7 +7,7 @@ class GymsController < ApplicationController
 		@lat = params[:form_lat]
 		@lon = params[:form_lon]
 		@locality = params[:gym_search][:locality]
-		@gyms = Gym.where(:lang => (@lat.to_f-0.015)..(@lat.to_f+0.015), :long => (@lon.to_f-0.015)..(@lon.to_f+0.015), :verified => true)
+		@gyms = Gym.nearest_gyms(@lat, @lon)
 		@message = "Found #{@gyms.count} gyms. Zoom in to explore"
 	end
 
@@ -42,7 +42,7 @@ class GymsController < ApplicationController
 	def get_gyms
 		@lat = params[:lan]
 		@lon = params[:lon]
-		@gyms = Gym.where(:lang => (@lat.to_f-0.015)..(@lat.to_f+0.015), :long => (@lon.to_f-0.015)..(@lon.to_f+0.015), :verified => true)
+		@gyms = Gym.nearest_gyms(@lat, @lon)
 		render :json => @gyms.to_json(:include => {:pictures => {:methods => [:url_json]}})
 	end
 
@@ -99,7 +99,7 @@ class GymsController < ApplicationController
 	def filter
 		@lat = params[:filter_lat]
 		@lon = params[:filter_lon]
-		@gyms = Gym.where(:lang => (@lat.to_f-0.015)..(@lat.to_f+0.015), :long => (@lon.to_f-0.015)..(@lon.to_f+0.015), :verified => true)
+		@gyms = Gym.nearest_gyms(@lat, @lon)
 		@f_gyms = Array.new
 		if !params[:facilities].nil?
 			@gyms.each do |g|
@@ -125,7 +125,7 @@ class GymsController < ApplicationController
 	def list
 		@lat = params[:filter_lat]
 		@lon = params[:filter_lon]
-		@gyms = Gym.where(:lang => (@lat.to_f-0.015)..(@lat.to_f+0.015), :long => (@lon.to_f-0.015)..(@lon.to_f+0.015), :verified => true)
+		@gyms = Gym.nearest_gyms(@lat, @lon)
 		@f_gyms = Array.new
 		if !params[:facilities].nil?
 			@gyms.each do |g|
