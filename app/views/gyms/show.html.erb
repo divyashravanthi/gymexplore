@@ -16,7 +16,9 @@ meta title: @gym.name,
         description: @gym.description,
         creator: "@GymExplore",
         url: gym_url(@gym),
-        image: "http://gymexplore.com"+@gym.pictures.first.image.url
+        image: {
+            src: "http://gymexplore.com"+@gym.pictures.first.image.url(:thumb)
+        }
      }
 %>
 <div id="wrapper">
