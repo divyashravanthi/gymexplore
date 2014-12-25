@@ -37,4 +37,9 @@ $(document).ready(function() {
         $(".search_form").submit();
     });
 
+    $(document).on('click', "#back-button", function(){
+        window.history.back();
+        return false;
+    });
+
 });
