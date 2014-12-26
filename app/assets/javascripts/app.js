@@ -3,7 +3,7 @@
 
     // Custom options for map
     var options = {
-            zoom : 14,
+            zoom : 15,
             // mapTypeId : 'Styled',
             disableDefaultUI: true,
             mapTypeControlOptions : {
@@ -228,7 +228,7 @@
 
         map.mapTypes.set('Styled', styledMapType);
         map.setCenter(new google.maps.LatLng(parseFloat($("#form_lat").val()),parseFloat($("#form_lon").val())));
-        map.setZoom(16);
+        map.setZoom(15);
 
         // if ($('#mapView').length > 0) {
         //     newMarker = new google.maps.Marker({
