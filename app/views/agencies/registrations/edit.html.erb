@@ -41,7 +41,7 @@ meta title: "Edit Profile",
                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                         <a href="<%=edit_gym_path(g)%>" class="card">
                             <div class="figure">
-                                <img src="<%=g.pictures.first.image.url(:thumb)%>" alt="image">
+                                <img src="<%=if g.pictures.count > 0 then g.pictures.first.image.url(:thumb) else '/assets/prop/1-1-thmb.png' end%>" alt="image">
                                 <!-- <div class="figCaption">
                                     <div>$1,550,000</div>
                                     <span class="icon-eye"> 200</span>
