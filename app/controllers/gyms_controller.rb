@@ -79,9 +79,9 @@ class GymsController < ApplicationController
 					gym.pricings.create(:duration => params[:duration][index], :price => params[:price][index])
 				end
 			end
-			redirect_to new_gym_path, :notice => "Successfully Updated."
+			redirect_to edit_gym_path(gym), :notice => "Successfully Updated."
 		else
-			redirect_to new_gym_path, :notice => "Something Went Wrong."
+			redirect_to edit_gym_path(gym), :notice => "Something Went Wrong."
 		end
 	end
 
