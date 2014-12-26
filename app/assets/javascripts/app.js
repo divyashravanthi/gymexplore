@@ -4,7 +4,7 @@
     // Custom options for map
     var options = {
             zoom : 14,
-            mapTypeId : 'Styled',
+            // mapTypeId : 'Styled',
             disableDefaultUI: true,
             mapTypeControlOptions : {
                 mapTypeIds : [ 'Styled' ]
