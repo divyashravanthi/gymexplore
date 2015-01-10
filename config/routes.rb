@@ -1,3 +1,4 @@
+require 'api_constraints'
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :agencies
@@ -23,6 +24,16 @@ Rails.application.routes.draw do
       post :contact
       post :filter
       post :list
+    end
+  end
+
+  namespace :api, defaults: {format: 'json'} do
+    scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
+      resources :gyms do
+        collection do
+          post :explore
+        end
+      end
     end
   end
 
