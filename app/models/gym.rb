@@ -22,8 +22,12 @@ class Gym < ActiveRecord::Base
 	    self.id
 	end
 
+	def facilities_available
+		self.facility.split(",")
+	end
+
 	def as_json(options={})
-	    options.merge!(:methods => [:id_])
+	    options.merge!(:methods => [:id_, :facilities_available])
 	    super(options)
 	end
 end
