@@ -18,9 +18,12 @@ class GymsController < ApplicationController
 	def create
 		gym = Gym.new
 		gym.name = params[:name]
+		gym.website = params[:website]
 		gym.description = params[:description]
 		gym.lang = params[:latitude]
 		gym.long = params[:longitude]
+		gym.male_trainers = params[:male_trainers]
+		gym.female_trainers = params[:female_trainers]
 		gym.address = params[:address]
 		gym.facility = [params[:facilities].join(","), params[:other_facilities]].join(",")
 		gym.agency_id = current_agency.id
@@ -61,9 +64,12 @@ class GymsController < ApplicationController
 	def update
 		gym = Gym.friendly.find(params[:id])
 		gym.name = params[:name]
+		gym.website = params[:website]
 		gym.description = params[:description]
 		gym.lang = params[:latitude]
 		gym.long = params[:longitude]
+		gym.male_trainers = params[:male_trainers]
+		gym.female_trainers = params[:female_trainers]
 		gym.address = params[:address]
 		gym.facility = params[:other_facilities]
 		if gym.save

@@ -72,7 +72,9 @@ meta title: @gym.name,
                                 <div class="summaryItem">
                                     <h1 class="pageTitle"><%=@gym.name%></h1>
                                     <div class="address"><span class="icon-pointer"></span> <%=@gym.address%></div>
-                                    <div class="address"><span class="fa fa-phone"></span> <%=@gym.agency.mobile%></div>
+                                    <% if @gym.website.present? %>
+                                        <div class="address"><span class="fa fa-home"></span> <a href="<%=@gym.website%>" target="_blank"><%=@gym.website%></a></div>
+                                    <% end %>
                                     <% if @gym.featured %>
                                         <ul class="rating">
                                             <li><a href="#"><span class="fa fa-star"></span></a> Featured</li>
@@ -110,10 +112,12 @@ meta title: @gym.name,
                 </div>
                 <div class="clearfix"></div>
                 <div class="description">
-                    <h3>Pricing</h3>
-                    <% @gym.pricings.each do |p| %>
-                        <p>Rs. <%=p.price%> for <%=pluralize(p.duration, "Month")%></p>
-                    <% end %>
+                    <h3>Pricings</h3>
+                    <table class="table">
+                        <% @gym.pricings.each do |p| %>
+                        <tr><td><%=pluralize(p.duration, "Month")%></td><td>Rs. <%=p.price%></td></tr>
+                        <% end %>
+                    </table>
                 </div>
                 
                 <div class="amenities">
@@ -129,6 +133,12 @@ meta title: @gym.name,
                     <h3>Description</h3>
                     <p><%=@gym.description%></p>
                 </div>
+
+                <% if @gym.male_trainers.present? %>
+                    <div class="description">
+                        <h3>Number of Trainers - <span class="fa fa-male"></span> <%=@gym.male_trainers%> <span class="fa fa-female"></span> <%=@gym.female_trainers%></h3>
+                    </div>
+                <% end %>
 
                 <div class="share">
                     <h3>Share on Social Networks</h3>

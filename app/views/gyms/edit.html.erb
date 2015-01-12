@@ -20,14 +20,26 @@ meta title: @gym.name,
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="form-group">
+                                    <label>Website</label>
+                                    <input type="url" class="form-control" name="website" value="<%=@gym.website%>">
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label>Description</label>
                             <textarea class="form-control" rows="4" name="description"><%=@gym.description%></textarea>
                         </div>
                         <div class="form-group">
                             <label>Address <input type="hidden" id="latitude" name="latitude" value="<%=@gym.lang%>" /> <input type="hidden" id="longitude" name="longitude" value="<%=@gym.long%>" /></label>
-                            <input class="form-control" type="text" id="address" name="address" placeholder="Enter a Location" autocomplete="off" value="<%=@gym.address%>">
+                            <input class="form-control" type="text" id="address" placeholder="Start Typing Any Famous Landmark Near By" autocomplete="off">
                             <p class="help-block">You can drag the black marker to gym position</p>
+                        </div>
+                        <div class="form-group">
+                            <label>Full Address</label>
+                            <textarea class="form-control" rows="4" name="address"><%=@gym.address%></textarea>
                         </div>
                         <div class="pricing-wrapper">
                             <% @gym.pricings.each_with_index do |p,i| %>
@@ -85,6 +97,26 @@ meta title: @gym.name,
                                     <%= f.file_field :images, :class => "file", :multiple => true, :data => { :'show-upload' => "false", :'show-caption' => "false", :'show-remove' => "false", :'browse-class' => "btn btn-o btn-default", :'browse-label' => "Browse Images" }, :accept => "image/jpeg,image/png" %>
                                     <!-- <input type="file" class="file" multiple data-show-upload="false" data-show-caption="false" data-show-remove="false" accept="image/jpeg,image/png" data-browse-class="btn btn-o btn-default" data-browse-label="Browse Images" name="images[]"> -->
                                     <p class="help-block">You can select multiple images at once</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label>Number of Trainers</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">Male</div>
+                                        <input class="form-control" type="number" placeholder="Ex: 4" name="male_trainers" value="<%=@gym.male_trainers%>">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label>&nbsp;</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">Female</div>
+                                        <input class="form-control" type="number" placeholder="Ex: 2" name="female_trainers" value="<%=@gym.female_trainers%>">
+                                    </div>
                                 </div>
                             </div>
                         </div>
