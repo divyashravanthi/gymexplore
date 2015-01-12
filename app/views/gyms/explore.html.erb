@@ -100,11 +100,20 @@ meta title: "Find Gyms",
                                         <li><span class="icon-drop"></span> 2</li>
                                         <li><span class="icon-frame"></span> 3430 Sq Ft</li>
                                     </ul> -->
-                                    <table class="table">
-                                        <% g.pricings.each do |p| %>
-                                            <tr> <td><%=pluralize(p.duration, "Month")%></td><td>Rs. <%=p.price%></td> </tr>    
-                                        <% end %>
-                                    </table>
+                                    <!-- <table class="table">
+                                        <tr>
+                                            <td>Month(s)</td>
+                                            <%# g.pricings.each do |p| %>
+                                                <td><%#= p.duration %></td>
+                                            <%# end %>
+                                        </tr>
+                                        <tr>
+                                            <td>Price(Rs.)</td>
+                                             <%# g.pricings.each do |p| %>
+                                                <td><%#= p.price %></td>
+                                             <%# end %>
+                                        </tr>
+                                    </table> -->
                                     <div class="clearfix"></div>
                                 </a>
                             </div>
