@@ -42,4 +42,6 @@ $(document).ready(function() {
         return false;
     });
 
+    $('.filterForm').slideToggle(200);
+
 });

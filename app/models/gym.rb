@@ -26,8 +26,16 @@ class Gym < ActiveRecord::Base
 		self.facility.split(",")
 	end
 
+	def images_url
+		images = Array.new
+		self.pictures.each do |p|
+			images << p.image.url(:thumb)
+		end
+		return images
+	end
+
 	def as_json(options={})
-	    options.merge!(:methods => [:id_, :facilities_available])
+	    options.merge!(:methods => [:id_, :facilities_available, :images_url])
 	    super(options)
 	end
 end

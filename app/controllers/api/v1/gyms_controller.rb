@@ -11,7 +11,7 @@ module Api
         @lan = params[:search_latitude]
         @lon = params[:search_longitude]
         @gyms = Gym.nearest_gyms_mobile(@lan, @lon)
-        render :json => @gyms.to_json(:include => [:pricings, :pictures, :agency]), :status => 202
+        render :json => @gyms.to_json(:include => [:pricings, :agency]), :status => 202
       end
       
     end
