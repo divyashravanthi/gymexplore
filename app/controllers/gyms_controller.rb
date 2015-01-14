@@ -1,6 +1,6 @@
 class GymsController < ApplicationController
 
-	before_filter :authenticate_agency!, :only => [:new, :create, :edit, :update]
+	# before_filter :authenticate_agency!, :only => [:new, :create, :edit, :update]
 	skip_before_filter :verify_authenticity_token, :only => [:get_gyms, :filter, :list]
 
 	def explore
@@ -26,7 +26,9 @@ class GymsController < ApplicationController
 		gym.female_trainers = params[:female_trainers]
 		gym.address = params[:address]
 		gym.facility = [params[:facilities].join(","), params[:other_facilities]].join(",")
-		gym.agency_id = current_agency.id
+		gym.email = params[:email]
+		gym.mobile = params[:mobile]
+		# gym.agency_id = current_agency.id
 		if gym.save
 			if params[:gym][:images].count > 0
 				params[:gym][:images].each do |img|
@@ -97,7 +99,7 @@ class GymsController < ApplicationController
 			require 'nexmo'
 			nexmo = Nexmo::Client.new(key: 'ff382c77', secret: '31a903b3')
 			str = "Enquiry about #{@gym.name} from #{params[:name]} (#{params[:email]}). Message: #{params[:message]}"
-			nexmo.send_message(from: 'GymExplore', to: @gym.agency.mobile, text: str)
+			nexmo.send_message(from: 'GymExplore', to: @gym.mobile, text: str)
 		end
 		AgencyMailer.send_message(params[:name], params[:email], params[:message], @gym).deliver_now
 	end
