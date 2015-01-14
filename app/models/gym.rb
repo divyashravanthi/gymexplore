@@ -34,8 +34,20 @@ class Gym < ActiveRecord::Base
 		return images
 	end
 
+	def gym_description
+		self.description
+	end
+
+	def gym_longitude
+		self.long
+	end
+
+	def gym_latitude
+		self.lang
+	end
+
 	def as_json(options={})
-	    options.merge!(:methods => [:id_, :facilities_available, :images_url])
+	    options.merge!(:methods => [:id_, :gym_description, :gym_latitude, :gym_longitude, :facilities_available, :images_url])
 	    super(options)
 	end
 end
