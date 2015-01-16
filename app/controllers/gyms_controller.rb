@@ -28,7 +28,7 @@ class GymsController < ApplicationController
 		gym.facility = [params[:facilities].join(","), params[:other_facilities]].join(",")
 		gym.email = params[:email]
 		gym.mobile = params[:mobile]
-		# gym.agency_id = current_agency.id
+		gym.agency_id = 1
 		if gym.save
 			if params[:gym][:images].count > 0
 				params[:gym][:images].each do |img|
