@@ -74,6 +74,9 @@ class GymsController < ApplicationController
 		gym.female_trainers = params[:female_trainers]
 		gym.address = params[:address]
 		gym.facility = params[:other_facilities]
+		if (gym.verified.nil? || !gym.verified) && params[:verified].present? && !params[:verified].blank?
+			gym.verified = true
+	    end
 		if gym.save
 			if params[:gym].present?
 				gym.pictures.destroy_all
