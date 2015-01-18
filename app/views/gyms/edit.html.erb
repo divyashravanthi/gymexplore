@@ -23,6 +23,22 @@ meta title: @gym.name,
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                 <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" class="form-control" name="email" value="<%=@gym.email%>">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="form-group">
+                                    <label>Mobile</label>
+                                    <input type="text" value="+91" class="form-control" name="mobile" placeholder="+919632xxxxxx" value="<%=@gym.mobile%>">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="form-group">
                                     <label>Website</label>
                                     <input type="url" class="form-control" name="website" value="<%=@gym.website%>">
                                 </div>
@@ -40,6 +56,13 @@ meta title: @gym.name,
                         <div class="form-group">
                             <label>Full Address</label>
                             <textarea class="form-control" rows="4" name="address"><%=@gym.address%></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Registration Fees</label>
+                            <div class="input-group">
+                                <div class="input-group-addon">Rs.</div>
+                                <input class="form-control" type="text" placeholder="Ex: 500" name="fees" value="<%=@gym.registration_fee%>">
+                            </div>
                         </div>
                         <div class="pricing-wrapper">
                             <% @gym.pricings.each_with_index do |p,i| %>

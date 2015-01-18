@@ -74,6 +74,9 @@ class GymsController < ApplicationController
 		gym.male_trainers = params[:male_trainers]
 		gym.female_trainers = params[:female_trainers]
 		gym.address = params[:address]
+		gym.email = params[:email]
+		gym.mobile = params[:mobile]
+		gym.registration_fee = params[:fees]
 		gym.facility = params[:other_facilities]
 		if (gym.verified.nil? || !gym.verified) && params[:verified].present? && !params[:verified].blank?
 			gym.verified = true
