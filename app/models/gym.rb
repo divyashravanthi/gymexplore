@@ -1,6 +1,6 @@
 class Gym < ActiveRecord::Base
-	has_many :pictures
-	has_many :pricings
+	has_many :pictures, :dependent => :destroy
+	has_many :pricings, :dependent => :destroy
 	belongs_to :agency
 
 	extend FriendlyId
