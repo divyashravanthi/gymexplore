@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   get 'privacy-policy' => 'home#privacy'
   get 'terms' => 'home#terms'
   post 'write' => 'home#write'
-  get 'unverified_gyms' => 'home#unverified_gyms'
-  get 'verify_gym' => 'gyms#verify_gym'
+  # get 'unverified_gyms' => 'home#unverified_gyms'
+  # get 'verify_gym' => 'gyms#verify_gym'
 
   get "sitemap.xml" => "home#sitemap", format: :xml, as: :sitemap
   get "robots.:format" => "home#robots", as: :robots
