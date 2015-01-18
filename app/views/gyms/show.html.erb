@@ -113,6 +113,7 @@ meta title: @gym.name,
                 <div class="clearfix"></div>
                 <div class="description">
                     <h3>Pricings</h3>
+                    <p>Registration / Membership Fee(s) - <%=p.registration_fee%></p>
                     <table class="table">
                         <% @gym.pricings.each do |p| %>
                         <tr><td><%=pluralize(p.duration, "Month")%></td><td>Rs. <%=p.price%></td></tr>
