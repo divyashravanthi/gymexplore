@@ -28,9 +28,10 @@ class GymsController < ApplicationController
 		gym.facility = [params[:facilities].join(","), params[:other_facilities]].join(",")
 		gym.email = params[:email]
 		gym.mobile = params[:mobile]
+		gym.registration_fee = params[:fees]
 		gym.agency_id = 1
 		if gym.save
-			if params[:gym][:images].present? && params[:gym][:images].count > 0
+			if params[:gym].present? && params[:gym][:images].count > 0
 				params[:gym][:images].each do |img|
 					gym.pictures.create(:image => img)
 				end
