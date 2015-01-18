@@ -113,8 +113,8 @@ meta title: @gym.name,
                 <div class="clearfix"></div>
                 <div class="description">
                     <h3>Pricings</h3>
-                    <% if p.registration_fee != 0.0 %>
-                        <p>Registration / Membership Fee(s) - Rs.<%=p.registration_fee%></p>
+                    <% if @gym.registration_fee != 0.0 %>
+                        <p>Registration / Membership Fee(s) - Rs.<%=@gym.registration_fee%></p>
                     <% end %>
                     <table class="table">
                         <% @gym.pricings.each do |p| %>
