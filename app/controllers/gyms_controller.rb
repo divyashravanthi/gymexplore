@@ -25,7 +25,9 @@ class GymsController < ApplicationController
 		gym.male_trainers = params[:male_trainers]
 		gym.female_trainers = params[:female_trainers]
 		gym.address = params[:address]
-		gym.facility = [params[:facilities].join(","), params[:other_facilities]].join(",")
+		if params[:facility].present?
+			gym.facility = [params[:facilities].join(","), params[:other_facilities]].join(",")
+		end
 		gym.email = params[:email]
 		gym.mobile = params[:mobile]
 		gym.registration_fee = params[:fees]
