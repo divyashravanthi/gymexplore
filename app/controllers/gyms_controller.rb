@@ -25,7 +25,7 @@ class GymsController < ApplicationController
 		gym.male_trainers = params[:male_trainers]
 		gym.female_trainers = params[:female_trainers]
 		gym.address = params[:address]
-		if params[:facility].present?
+		if params[:facilities].present?
 			gym.facility = [params[:facilities].join(","), params[:other_facilities]].join(",")
 		end
 		gym.email = params[:email]
