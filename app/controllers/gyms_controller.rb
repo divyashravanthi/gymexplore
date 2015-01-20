@@ -17,6 +17,10 @@ class GymsController < ApplicationController
 
 	def create
 		gym = Gym.new
+		if current_agency.nil?
+			@password = SecureRandom.hex(4)
+			@agency = Agency.create(:email => params[:email], :password => @password, :password_confirmation => @password, :name=> params[:name], :mobile => params[:mobile])
+		end
 		gym.name = params[:name]
 		gym.website = params[:website]
 		gym.description = params[:description]
@@ -31,7 +35,11 @@ class GymsController < ApplicationController
 		gym.email = params[:email]
 		gym.mobile = params[:mobile]
 		gym.registration_fee = params[:fees]
-		gym.agency_id = 1
+		if current_agency.nil?
+			gym.agency_id = @agency.id
+		else
+			gym.agency_id = current_agency.id
+		end
 		if gym.save
 			if params[:gym].present? && params[:gym][:images].count > 0
 				params[:gym][:images].each do |img|
@@ -41,7 +49,11 @@ class GymsController < ApplicationController
 			params[:duration].each_with_index do |value, index|
 				gym.pricings.create(:duration => params[:duration][index], :price => params[:price][index])
 			end
-			redirect_to new_gym_path, :notice => "Your gym listing has been submitted for approval."
+			if current_agency.nil?
+				AgencyMailer.send_credentials(params[:email], @password).deliver_now
+				notice = " Check your email to edit."
+			end
+			redirect_to new_gym_path, :notice => "Submitted for approval.#{notice}"
 		else
 			redirect_to new_gym_path, :notice => "Something Went Wrong."
 		end
@@ -80,9 +92,6 @@ class GymsController < ApplicationController
 		gym.mobile = params[:mobile]
 		gym.registration_fee = params[:fees]
 		gym.facility = params[:other_facilities]
-		if (gym.verified.nil? || !gym.verified) && params[:verified].present? && !params[:verified].blank?
-			gym.verified = true
-	    end
 		if gym.save
 			if params[:gym].present?
 				gym.pictures.destroy_all

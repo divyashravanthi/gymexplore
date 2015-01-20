@@ -14,4 +14,10 @@ class AgencyMailer < ApplicationMailer
 		mail(to: 'ankitsamar@outlook.com', from: email, subject: "Query from #{email} - GymExplore.com")
 	end
 
+	def send_credentials(email, pass)
+		@email = email
+		@pass = pass
+		mail(to: email, from: 'info@gymexplore.com', subject: "Your GymExplore Credentials")
+	end
+
 end

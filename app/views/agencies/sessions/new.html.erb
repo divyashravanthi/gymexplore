@@ -37,7 +37,7 @@ meta title: "Login",
                                 <% end -%>
                             </div>
                             <div class="col-xs-6 align-right">
-                                <p class="help-block"><a href="#" class="text-green">Forgot password?</a></p>
+                                <p class="help-block"><a href="#" class="text-green" data-toggle="modal" data-target="#forgot_password">Forgot password?</a></p>
                             </div>
                         </div>
                     </div>
@@ -46,10 +46,32 @@ meta title: "Login",
                             <%= f.submit "Sign in", :class => "btn btn-lg btn-green width-100" %>
                         </div>
                     </div>
-                    <p class="help-block">Don't have an account? <a href="<%=new_agency_registration_path%>" class="modal-su text-green">Sign Up</a> or <a href="<%=root_path%>" class="text-green">Search</a></p>
+                    <p class="help-block"><!-- Don't have an account? <a href="<%=new_agency_registration_path%>" class="modal-su text-green">Sign Up</a> or --> Want to search gyms? <a href="<%=root_path%>" class="text-green">Search</a></p>
                 <% end %>
             </div>
         </div>
         <div class="signFooter">InZak Software Services Pvt Ltd<br>&copy; 2014</div>
+    </div>
+</div>
+
+<div class="modal fade" id="forgot_password" role="dialog" aria-labelledby="signupLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="signupLabel">Forgot Password?</h4>
+            </div>
+            <div class="modal-body">
+                <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, :role => "role" }) do |f| %>
+                    <div class="form-group">
+                        <%= f.email_field :email, autofocus: true, :class => "form-control", :placeholder => "Email Address" %>
+                    </div>
+                    <div class="form-group">
+                        <div class="btn-group-justified">
+                            <%= f.submit "Send reset password instructions", :class => "btn btn-lg btn-green width-100" %>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        </div>
     </div>
 </div>

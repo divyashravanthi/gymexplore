@@ -18,14 +18,15 @@ meta title: "Find Best Gyms Near me",
                 <div class="home-nav">
                     <ul>
                         <!-- <li>info@gymexplore.com</li> -->
-                        <%# if !agency_signed_in? %>
-                            <!-- <li><a href="#" data-toggle="modal" data-target="#signup">Sign Up</a></li>
-                            <li><a href="#" data-toggle="modal" data-target="#signin">Sign In</a></li> -->
-                        <%# else %>
-                            <!-- <li>Hello, <%#=current_agency.name%></li>
+                        <% if !agency_signed_in? %>
+                            <!-- <li><a href="#" data-toggle="modal" data-target="#signup">Sign Up</a></li> -->
+                            <li><a href="/blog" target="_blank">Blog</a></li>
+                            <li><a href="#" data-toggle="modal" data-target="#signin">Login</a></li>
+                        <% else %>
+                            <li>Hello, <%=current_agency.name%></li>
                             <li><a href="<%=edit_agency_registration_path%>">My Profile</a></li>
-                            <li><a href="<%=destroy_agency_session_path%>" data-method="delete">Sign Out</a></li> -->
-                        <%# end %>
+                            <li><a href="<%=destroy_agency_session_path%>" data-method="delete">Logout</a></li>
+                        <% end %>
                         <li><a href="<%=new_gym_path%>" class="btn btn-green">Submit Your Gym</a></li>
                     </ul>
                 </div>
@@ -409,7 +410,7 @@ meta title: "Find Best Gyms Near me",
                                         <% end -%>
                                     </div>
                                     <div class="col-xs-6 align-right">
-                                        <p class="help-block"><a href="#" class="text-green">Forgot password?</a></p>
+                                        <p class="help-block"><a href="#" class="text-green" data-toggle="modal" data-target="#forgot_password">Forgot password?</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -418,7 +419,7 @@ meta title: "Find Best Gyms Near me",
                                     <%= f.submit "Sign in", :class => "btn btn-lg btn-green width-100" %>
                                 </div>
                             </div>
-                            <p class="help-block">Don't have an account? <a href="#" class="modal-su text-green">Sign Up</a></p>
+                            <!-- <p class="help-block">Don't have an account? <a href="#" class="modal-su text-green">Sign Up</a></p> -->
                         <% end %>
                     </div>
                 </div>
@@ -454,6 +455,28 @@ meta title: "Find Best Gyms Near me",
                                 </div>
                             </div>
                             <p class="help-block">Already a registered agency? <a href="#" class="modal-si text-green">Sign In</a></p>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="forgot_password" role="dialog" aria-labelledby="signupLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="signupLabel">Forgot Password?</h4>
+                    </div>
+                    <div class="modal-body">
+                        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, :role => "role" }) do |f| %>
+                            <div class="form-group">
+                                <%= f.email_field :email, autofocus: true, :class => "form-control", :placeholder => "Email Address" %>
+                            </div>
+                            <div class="form-group">
+                                <div class="btn-group-justified">
+                                    <%= f.submit "Send reset password instructions", :class => "btn btn-lg btn-green width-100" %>
+                                </div>
+                            </div>
                         <% end %>
                     </div>
                 </div>
