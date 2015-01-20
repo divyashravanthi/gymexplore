@@ -46,8 +46,8 @@ meta title: @gym.name,
                                     <div class="item active">
                                         <img src="<%=p.image.url(:large)%>">
                                         <div class="container">
-                                            <div class="carousel-caption">
-                                                
+                                            <div class="carousel-caption" style="background-color: rgba(0,0,0,0.6);padding: 0px 0px 5px 0px;margin-bottom: 30px;">
+                                                <h2><%=@gym.name%></h2>
                                             </div>
                                         </div>
                                     </div>
@@ -55,8 +55,8 @@ meta title: @gym.name,
                                     <div class="item">
                                         <img src="<%=p.image.url(:large)%>">
                                         <div class="container">
-                                            <div class="carousel-caption">
-                                                
+                                            <div class="carousel-caption" style="background-color: rgba(0,0,0,0.6);padding: 0px 0px 5px 0px;margin-bottom: 30px;">
+                                                <h2><%=@gym.name%></h2>
                                             </div>
                                         </div>
                                     </div>
@@ -70,7 +70,7 @@ meta title: @gym.name,
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
                                 <div class="summaryItem">
-                                    <h1 class="pageTitle"><%=@gym.name%></h1>
+                                    <!-- <h1 class="pageTitle"><%#=@gym.name%></h1> -->
                                     <div class="address"><span class="icon-pointer"></span> <%=@gym.address%></div>
                                     <% if @gym.website.present? %>
                                         <div class="address"><span class="fa fa-home"></span> <a href="<%=@gym.website%>" target="_blank"><%=@gym.website%></a></div>
@@ -103,7 +103,7 @@ meta title: @gym.name,
                                 <div class="agentAvatar summaryItem">
                                      <div class="clearfix"></div>
                                     <!-- <img class="avatar agentAvatarImg" src="/assets/avatar-2.png" alt="avatar"> -->
-                                    <div class="agentName"><%=@gym.name%></div>
+                                    <!-- <div class="agentName"><%#=@gym.name%></div> -->
                                     <a data-toggle="modal" href="#contactAgent" class="btn btn-lg btn-round btn-green contactBtn">Send Message</a>
                                 </div>
                             </div>
