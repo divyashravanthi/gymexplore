@@ -65,3 +65,4 @@ gem 'metamagic'
 
 gem "dynamic_sitemaps"
 
+gem 'social-share-button'
