@@ -85,7 +85,7 @@ meta title: @gym.name,
                                             <!-- <li>(146)</li> -->
                                         </ul>
                                     <% end %>
-                                    <%= social_share_button_tag(@gym.name, :url => gym_url(@gym), :image => "http://localhost:3000"+@gym.pictures.first.image.url, desc: @gym.description) %>
+                                    
                                     <!-- <div class="favLink"><a href="#"><span class="icon-heart"></span></a>54</div>
                                     <ul class="stats">
                                         <li><span class="icon-eye"></span> 200</li>
@@ -106,6 +106,7 @@ meta title: @gym.name,
                                     <!-- <img class="avatar agentAvatarImg" src="/assets/avatar-2.png" alt="avatar"> -->
                                     <!-- <div class="agentName"><%#=@gym.name%></div> -->
                                     <a data-toggle="modal" href="#contactAgent" class="btn btn-lg btn-round btn-green contactBtn">Send Message</a>
+                                    <%= social_share_button_tag(@gym.name, :url => gym_url(@gym), :image => "http://localhost:3000"+@gym.pictures.first.image.url, desc: @gym.description) %>
                                 </div>
                             </div>
 
