@@ -73,7 +73,12 @@ meta title: @gym.name,
                                     <!-- <h1 class="pageTitle"><%#=@gym.name%></h1> -->
                                     <div class="address"><span class="icon-pointer"></span> <%=@gym.address%></div>
                                     <% if @gym.website.present? %>
-                                        <div class="address"><span class="fa fa-home"></span> <a href="<%=@gym.website%>" target="_blank"><%=@gym.website%></a></div>
+                                        <div class="address">
+                                            <span class="fa fa-home"></span> <a href="<%=@gym.website%>" target="_blank">Visit Website</a>
+                                            <% if @gym.male_trainers.present? %>
+                                                | Number of Trainers - <span class="fa fa-male"></span> <%=@gym.male_trainers%> <span class="fa fa-female"></span> <%=@gym.female_trainers%>
+                                            <% end %>
+                                        </div>
                                     <% end %>
                                     <% if @gym.featured %>
                                         <ul class="rating">
@@ -139,12 +144,6 @@ meta title: @gym.name,
                     <h3>Description</h3>
                     <p><%=@gym.description%></p>
                 </div>
-
-                <% if @gym.male_trainers.present? %>
-                    <div class="description">
-                        <h3>Number of Trainers - <span class="fa fa-male"></span> <%=@gym.male_trainers%> <span class="fa fa-female"></span> <%=@gym.female_trainers%></h3>
-                    </div>
-                <% end %>
 
                 <!-- <div class="share">
                     <h3>Share on Social Networks</h3>
