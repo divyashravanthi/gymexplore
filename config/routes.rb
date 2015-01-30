@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get "sitemap.xml" => "home#sitemap", format: :xml, as: :sitemap
   get "robots.:format" => "home#robots", as: :robots
 
+  resources :reviews
+  
   resources :gyms do
     collection do
       post :explore

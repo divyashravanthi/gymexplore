@@ -34,4 +34,5 @@
 //= require signin
 //= require signup
 //= require gyms
+//= require reviews
 //= require social-share-button

@@ -1,0 +1,13 @@
+<div class="comment">
+    <div class="commentContent">
+        <div class="commentName"><%=@review.name%></div>
+        <div class="commentBody">
+            <%=@review.comment%>
+        </div>
+        <div class="commentActions">
+            <div class="commentTime"><span class="icon-clock"></span> <%= time_ago_in_words(@review.created_at) %></div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>

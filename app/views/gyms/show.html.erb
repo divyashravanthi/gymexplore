@@ -164,23 +164,23 @@ meta title: @gym.name,
                 </div> -->
                 
                 <div class="comments">
-                    <h3><span>4</span> Comments</h3>
-                    <div class="comment">
-                        <!-- <div class="commentAvatar">
-                            <img class="avatar" src="/assets/avatar-1.png" alt="avatar">
-                            <div class="commentArrow"><span class="fa fa-caret-left"></span></div>
-                        </div> -->
-                        <div class="commentContent">
-                            <div class="commentName">Rust Cohle</div>
-                            <div class="commentBody">
-                                It is a long established fact that a reader will be distracted by the readable content
-                            </div>
-                            <div class="commentActions">
-                                <div class="commentTime"><span class="icon-clock"></span> 1 day ago</div>
+                    <h3><!-- <span id="comment_count">4</span> -->Comments</h3>
+                    <div class="prependReviews">
+                        <% @gym.reviews.order(created_at: :desc).each do |c| %>
+                            <div class="comment">
+                                <div class="commentContent">
+                                    <div class="commentName"><%=c.name%></div>
+                                    <div class="commentBody">
+                                        <%=c.comment%>
+                                    </div>
+                                    <div class="commentActions">
+                                        <div class="commentTime"><span class="icon-clock"></span> <%=time_ago_in_words(c.created_at)%></div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
                                 <div class="clearfix"></div>
                             </div>
-                        </div>
-                        <div class="clearfix"></div>
+                        <% end %>
                     </div>
                 </div>
             </div>
@@ -188,17 +188,18 @@ meta title: @gym.name,
                 <!-- <div class="cfAvatar">
                     <img class="avatar" src="/assets/avatar-1.png" alt="avatar">
                 </div> -->
-                <form class="commentsForm">
+                <form class="commentsForm" id="commentForm" action="#">
                     <div class="input-group" style="margin-bottom:20px; margin-left: 20px;">
                         <div class="row">
                             <div class="col-sm-3">
-                                <input type="text" class="form-control" placeholder="Name" required="required">
+                                <input type="text" id="name" class="form-control" name="name" placeholder="Name" required="required">
+                                <input type="hidden" name="gym_id" value="<%=@gym.id%>">
                             </div>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" placeholder="Write a comment..." required="required">
+                                <input type="text" id="comment" class="form-control" name="comment" placeholder="Write a comment..." required="required">
                             </div>
                         </div>
-                        <span class="input-group-btn"><a class="btn btn-green">Post</a></span>
+                        <span class="input-group-btn"><button type="submit" class="btn btn-green">Post</button></span>
                     </div>
                 </form>
                 <div class="clearfix"></div>
