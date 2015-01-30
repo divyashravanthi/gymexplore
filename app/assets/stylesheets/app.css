@@ -2175,10 +2175,10 @@ h1.pageTitle {
     padding: 10px;
 }
 .commentTime {
-    float: left;
+    float: right;
     font-size: 11px;
     color: #999;
-    float: left;
+    /*float: left;*/
 }
 .commentActions ul {
     list-style-type: none;
