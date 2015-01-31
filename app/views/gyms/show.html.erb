@@ -71,8 +71,10 @@ meta title: @gym.name,
                             <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
                                 <div class="summaryItem">
                                     <!-- <h1 class="pageTitle"><%#=@gym.name%></h1> -->
-                                    <div class="address"><span class="icon-pointer"></span> <%=@gym.address%></div>
-                                    <% if @gym.website.present? %>
+                                    <% if @gym.address.present? && !@gym.address.blank? %>
+                                        <div class="address"><span class="icon-pointer"></span> <%=@gym.address%></div>
+                                    <% end %>
+                                    <% if @gym.website.present? && !@gym.website.blank? %>
                                         <div class="address">
                                             <span class="fa fa-home"></span> <a href="<%=@gym.website%>" target="_blank">Visit Website</a>
                                             <% if @gym.male_trainers.present? %>
@@ -111,7 +113,7 @@ meta title: @gym.name,
                                     <!-- <img class="avatar agentAvatarImg" src="/assets/avatar-2.png" alt="avatar"> -->
                                     <!-- <div class="agentName"><%#=@gym.name%></div> -->
                                     <a data-toggle="modal" href="#contactAgent" class="btn btn-lg btn-round btn-green contactBtn">Send Message</a>
-                                    <%= social_share_button_tag(@gym.name, :url => gym_url(@gym), :image => "http://localhost:3000"+@gym.pictures.first.image.url, desc: @gym.description) %>
+                                    <%= social_share_button_tag(@gym.name, :url => gym_url(@gym), :image => "http://gymexplore.com"+@gym.pictures.first.image.url, desc: @gym.description) %>
                                 </div>
                             </div>
 
@@ -124,13 +126,14 @@ meta title: @gym.name,
                     <% if @gym.registration_fee != 0.0 %>
                         <p>Registration / Membership Fee(s) - Rs.<%=@gym.registration_fee%></p>
                     <% end %>
-                    <table class="table">
-                        <% @gym.pricings.each do |p| %>
-                        <tr><td><%=pluralize(p.duration, "Month")%></td><td>Rs. <%=p.price%></td></tr>
-                        <% end %>
-                    </table>
+                    <% if @gym.pricings.count > 0 %>
+                        <table class="table">
+                            <% @gym.pricings.each do |p| %>
+                            <tr><td><%=pluralize(p.duration, "Month")%></td><td>Rs. <%=p.price%></td></tr>
+                            <% end %>
+                        </table>
+                    <% end %>
                 </div>
-                
                 <div class="amenities">
                     <h3>Facilities</h3>
                     <div class="row">
@@ -139,49 +142,33 @@ meta title: @gym.name,
                         <% end %>
                     </div>
                 </div>
-
-                <div class="description">
-                    <h3>Description</h3>
-                    <p><%=@gym.description%></p>
-                </div>
-
-                <!-- <div class="share">
-                    <h3>Share on Social Networks</h3>
-                    <div class="row">
-                        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 shareItem">
-                            <a href="https://www.facebook.com/sharer/sharer.php?u=<%#=gym_url(@gym)%>&t=<%#=@gym.name%>" class="btn btn-sm btn-round btn-o btn-facebook" target="_blank"><span class="fa fa-facebook"></span> Facebook</a>
-                        </div>
-                        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 shareItem">
-                            <a href="https://twitter.com/intent/tweet?source=<%#=gym_url(@gym)%>&text=<%#=@gym.name%>:<%#=gym_url(@gym)%>" class="btn btn-sm btn-round btn-o btn-twitter" target="_blank"><span class="fa fa-twitter"></span> Twitter</a>
-                        </div>
-                        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 shareItem">
-                            <a href="https://plus.google.com/share?url=<%#=gym_url(@gym)%>" class="btn btn-sm btn-round btn-o btn-google"><span class="fa fa-google-plus" target="_blank"></span> Google+</a>
-                        </div>
-                        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 shareItem">
-                            <a href="http://pinterest.com/pin/create/button/?url=<%#=gym_url(@gym)%>&media=http://gymexplore.com<%#=@gym.pictures.first.image.url%>&description=<%#=@gym.description%>" class="btn btn-sm btn-round btn-o btn-pinterest" target="_blank"><span class="fa fa-pinterest"></span> Pinterest</a>
-                        </div>
+                <% if @gym.description.present? && !@gym.description.blank? %>
+                    <div class="description">
+                        <h3>Description</h3>
+                        <p><%=@gym.description%></p>
                     </div>
-                </div> -->
-                
-                <div class="comments">
-                    <h3><!-- <span id="comment_count">4</span> -->Comments</h3>
-                    <div class="prependReviews">
-                        <% @gym.reviews.order(created_at: :desc).each do |c| %>
-                            <div class="comment">
-                                <div class="commentContent">
-                                    <div class="commentName"><%=c.name%> <div class="commentTime"><span class="icon-clock"></span> <%=time_ago_in_words(c.created_at)%> ago</div></div>
-                                    <div class="commentBody">
-                                        <%=c.comment%>
+                <% end %>
+                <% if @gym.reviews.count > 0 %>
+                    <div class="comments">
+                        <h3><!-- <span id="comment_count">4</span> -->Comments</h3>
+                        <div class="prependReviews">
+                            <% @gym.reviews.order(created_at: :desc).each do |c| %>
+                                <div class="comment">
+                                    <div class="commentContent">
+                                        <div class="commentName"><%=c.name%> <div class="commentTime"><span class="icon-clock"></span> <%=time_ago_in_words(c.created_at)%> ago</div></div>
+                                        <div class="commentBody">
+                                            <%=c.comment%>
+                                        </div>
+                                        
                                     </div>
-                                    
+                                    <div class="clearfix"></div>
                                 </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        <% end %>
+                            <% end %>
+                        </div>
                     </div>
-                </div>
+                <% end %>
             </div>
-            <div class="commentsFormWrapper">
+            <div class="commentsFormWrapper active">
                 <!-- <div class="cfAvatar">
                     <img class="avatar" src="/assets/avatar-1.png" alt="avatar">
                 </div> -->

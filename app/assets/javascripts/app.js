@@ -492,16 +492,16 @@
         window.open($(this).attr('data-linkto'), '_self');
     });
 
-    $('#content').scroll(function() {
-        if ($('.comments').length > 0) {
-            var visible = $('.comments').visible(true);
-            if (visible) {
-                $('.commentsFormWrapper').addClass('active');
-            } else {
-                $('.commentsFormWrapper').removeClass('active');
-            }
-        }
-    });
+    // $('#content').scroll(function() {
+    //     if ($('.comments').length > 0) {
+    //         var visible = $('.comments').visible(true);
+    //         if (visible) {
+    //             $('.commentsFormWrapper').addClass('active');
+    //         } else {
+    //             $('.commentsFormWrapper').removeClass('active');
+    //         }
+    //     }
+    // });
 
     $('.btn').click(function() {
         if ($(this).is('[data-toggle-class]')) {
