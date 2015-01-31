@@ -495,6 +495,7 @@
     // $('#content').scroll(function() {
     //     if ($('.comments').length > 0) {
     //         var visible = $('.comments').visible(true);
+    //         console.log($('.comments').visible());
     //         if (visible) {
     //             $('.commentsFormWrapper').addClass('active');
     //         } else {
