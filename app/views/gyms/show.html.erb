@@ -114,7 +114,7 @@ meta title: @gym.name,
                                     <!-- <div class="agentName"><%#=@gym.name%></div> -->
                                     <a data-toggle="modal" href="#contactAgent" class="btn btn-sm btn-round btn-green contactBtn">Send Mail</a>
                                     <a data-toggle="modal" href="#giveReview" class="btn btn-sm btn-round btn-green contactBtn">Review</a>
-                                    <%= social_share_button_tag(@gym.name, :url => gym_url(@gym), :image => "http://gymexplore.com"+@gym.pictures.first.image.url, desc: @gym.description) %>
+                                    <%= social_share_button_tag(@gym.name, :url => gym_url(@gym), :image => "http://gymexplore.com"+@gym.pictures.first.image.url, desc: @gym.description, :popup => "true") %>
                                 </div>
                             </div>
 
