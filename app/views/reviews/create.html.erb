@@ -2,7 +2,7 @@
     <div class="commentContent">
         <div class="commentName"><%=@review.name%> <div class="commentTime"><span class="icon-clock"></span> <%= time_ago_in_words(@review.created_at) %></div></div>
         <div class="commentBody">
-            <%=@review.comment%>
+            <input data-show-caption="false" data-disabled="true" value="<%=@review.rating%>" type="number" class="rating showClear" min="0" max="5" step="0.5" data-size="xs" data-symbol="&#xe005;"> <%=@review.comment%>
         </div>
     </div>
     <div class="clearfix"></div>

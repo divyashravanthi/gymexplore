@@ -22,5 +22,6 @@
  *= require screen
  *= require animate
  *= require social-share-button
+ *= require star-rating.min
  *= require_self
  */

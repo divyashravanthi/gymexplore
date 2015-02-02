@@ -47,7 +47,7 @@ meta title: @gym.name,
                                         <img src="<%=p.image.url(:large)%>">
                                         <div class="container">
                                             <div class="carousel-caption" style="background-color: rgba(0,0,0,0.6);padding: 0px 0px 5px 0px;margin-bottom: 30px;">
-                                                <h2><%=@gym.name%></h2>
+                                                <h5><%=@gym.name%></h5>
                                             </div>
                                         </div>
                                     </div>
@@ -56,7 +56,7 @@ meta title: @gym.name,
                                         <img src="<%=p.image.url(:large)%>">
                                         <div class="container">
                                             <div class="carousel-caption" style="background-color: rgba(0,0,0,0.6);padding: 0px 0px 5px 0px;margin-bottom: 30px;">
-                                                <h2><%=@gym.name%></h2>
+                                                <h5><%=@gym.name%></h5>
                                             </div>
                                         </div>
                                     </div>
@@ -112,7 +112,8 @@ meta title: @gym.name,
                                      <div class="clearfix"></div>
                                     <!-- <img class="avatar agentAvatarImg" src="/assets/avatar-2.png" alt="avatar"> -->
                                     <!-- <div class="agentName"><%#=@gym.name%></div> -->
-                                    <a data-toggle="modal" href="#contactAgent" class="btn btn-lg btn-round btn-green contactBtn">Send Message</a>
+                                    <a data-toggle="modal" href="#contactAgent" class="btn btn-sm btn-round btn-green contactBtn">Send Mail</a>
+                                    <a data-toggle="modal" href="#giveReview" class="btn btn-sm btn-round btn-green contactBtn">Review</a>
                                     <%= social_share_button_tag(@gym.name, :url => gym_url(@gym), :image => "http://gymexplore.com"+@gym.pictures.first.image.url, desc: @gym.description) %>
                                 </div>
                             </div>
@@ -157,7 +158,7 @@ meta title: @gym.name,
                                         <div class="commentContent">
                                             <div class="commentName"><%=c.name%> <div class="commentTime"><span class="icon-clock"></span> <%=time_ago_in_words(c.created_at)%> ago</div></div>
                                             <div class="commentBody">
-                                                <%=c.comment%>
+                                                <input data-show-caption="false" data-disabled="true" value="<%=c.rating%>" type="number" class="rating showClear" min="0" max="5" step="0.5" data-size="xs" data-symbol="&#xe005;"> <%=c.comment%>
                                             </div>
                                             
                                         </div>
@@ -168,16 +169,16 @@ meta title: @gym.name,
                     <% end %>
                 </div>
             </div>
-            <div class="commentsFormWrapper active">
-                <!-- <div class="cfAvatar">
+           <!--  <div class="commentsFormWrapper active">
+                <div class="cfAvatar">
                     <img class="avatar" src="/assets/avatar-1.png" alt="avatar">
-                </div> -->
+                </div>
                 <form class="commentsForm" id="commentForm" action="#">
                     <div class="input-group" style="margin-bottom:20px; margin-left: 20px;">
                         <div class="row">
                             <div class="col-sm-3">
                                 <input type="text" id="name" class="form-control" name="name" placeholder="Name" required="required">
-                                <input type="hidden" name="gym_id" value="<%=@gym.id%>">
+                                <input type="hidden" name="gym_id" value="<%#=@gym.id%>">
                             </div>
                             <div class="col-sm-9">
                                 <input type="text" id="comment" class="form-control" name="comment" placeholder="Write a comment..." required="required">
@@ -187,7 +188,7 @@ meta title: @gym.name,
                     </div>
                 </form>
                 <div class="clearfix"></div>
-            </div>
+            </div> -->
             <div class="clearfix"></div>
         </div>
 
@@ -218,6 +219,36 @@ meta title: @gym.name,
                             <button type="submit" class="btn btn-round btn-green">Send</button>
                         </div>
                     <% end %>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="giveReview" role="dialog" aria-labelledby="contactLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form class="contactForm" id="commentForm" action="#">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 class="modal-title" id="contactLabel">Give review</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cfItem">
+                                    <input type="text" id="name" class="form-control" name="name" placeholder="Name" required="required">
+                                 </div>
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cfItem">
+                                    <input id="rating" type="number" class="rating" min="0" max="5" step="0.5" data-size="xs" data-symbol="&#xe005;" data-default-caption="{rating} hearts" data-star-captions="{}" name="rating">
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cfItem">
+                                    <textarea placeholder="Write a comment..." id="comment" rows="3" name="comment" class="form-control"></textarea>
+                                </div>
+                                <input type="hidden" name="gym_id" value="<%=@gym.id%>">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#" data-dismiss="modal" class="btn btn-round btn-o btn-gray">Close</a>
+                            <button type="submit" class="btn btn-round btn-green">Post</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

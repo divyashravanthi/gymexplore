@@ -44,4 +44,6 @@ $(document).ready(function() {
 
     $('.filterForm').slideToggle(200);
 
+    $(".showClear").rating({disabled: true, showClear: false});
+
 });
