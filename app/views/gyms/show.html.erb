@@ -150,23 +150,23 @@ meta title: @gym.name,
                     </div>
                 <% end %>
                 <div class="comments">
-                    <% if @gym.reviews.count > 0 %>
-                            <h3><!-- <span id="comment_count">4</span> -->Comments</h3>
-                            <div class="prependReviews">
-                                <% @gym.reviews.order(created_at: :desc).each do |c| %>
-                                    <div class="comment">
-                                        <div class="commentContent">
-                                            <div class="commentName"><%=c.name%> <div class="commentTime"><span class="icon-clock"></span> <%=time_ago_in_words(c.created_at)%> ago</div></div>
-                                            <div class="commentBody">
-                                                <input data-show-caption="false" data-disabled="true" value="<%=c.rating%>" type="number" class="rating showClear" min="0" max="5" step="0.5" data-size="xs" data-symbol="&#xe005;"> <%=c.comment%>
-                                            </div>
-                                            
+                    <h3><!-- <span id="comment_count">4</span> -->Comments</h3>
+                    <div class="prependReviews">
+                        <% if @gym.reviews.count > 0 %>
+                            <% @gym.reviews.order(created_at: :desc).each do |c| %>
+                                <div class="comment">
+                                    <div class="commentContent">
+                                        <div class="commentName"><%=c.name%> <div class="commentTime"><span class="icon-clock"></span> <%=time_ago_in_words(c.created_at)%> ago</div></div>
+                                        <div class="commentBody">
+                                            <input data-show-caption="false" data-disabled="true" value="<%=c.rating%>" type="number" class="rating showClear" min="0" max="5" step="0.5" data-size="xs" data-symbol="&#xe005;"> <%=c.comment%>
                                         </div>
-                                        <div class="clearfix"></div>
+                                        
                                     </div>
-                                <% end %>
-                            </div>
-                    <% end %>
+                                    <div class="clearfix"></div>
+                                </div>
+                            <% end %>
+                        <% end %>
+                    </div>
                 </div>
             </div>
            <!--  <div class="commentsFormWrapper active">
