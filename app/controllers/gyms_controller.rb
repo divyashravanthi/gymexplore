@@ -18,8 +18,11 @@ class GymsController < ApplicationController
 	def create
 		gym = Gym.new
 		if current_agency.nil?
-			@password = SecureRandom.hex(4)
-			@agency = Agency.create(:email => params[:email], :password => @password, :password_confirmation => @password, :name=> params[:name], :mobile => params[:mobile])
+			@agency = Agency.find_by(:email => params[:email])
+			if @agency.nil?
+				@password = SecureRandom.hex(4)
+				@agency = Agency.create(:email => params[:email], :password => @password, :password_confirmation => @password, :name=> params[:name], :mobile => params[:mobile])
+			end
 		end
 		gym.name = params[:name]
 		gym.website = params[:website]
