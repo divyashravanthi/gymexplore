@@ -94,7 +94,9 @@ class GymsController < ApplicationController
 		gym.email = params[:email]
 		gym.mobile = params[:mobile]
 		gym.registration_fee = params[:fees]
-		gym.facility = params[:other_facilities]
+		if params[:facilities].present?
+			gym.facility = [params[:facilities].join(","), params[:other_facilities]].join(",")
+		end
 		if gym.save
 			if params[:gym].present?
 				gym.pictures.destroy_all

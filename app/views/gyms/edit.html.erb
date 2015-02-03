@@ -143,11 +143,217 @@ meta title: @gym.name,
                                 </div>
                             </div>
                         </div>
+                        <% all_facilities = @gym.facility.split(",") rescue [] %>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <label>Facilities</label>
+                                    <% if all_facilities.include?("Personal Training") %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Personal Training" name="facilities[]" checked="checked"><span class="fa fa-check"></span> Personal Training</label></div>
+                                    <% else %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Personal Training" name="facilities[]"><span class="fa fa-check"></span> Personal Training</label></div>
+                                    <% end %>
+                                    <% if all_facilities.include?("Cardio") %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Cardio" name="facilities[]" checked="checked"><span class="fa fa-check"></span> Cardio</label></div>
+                                    <% else %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Cardio" name="facilities[]"><span class="fa fa-check"></span> Cardio</label></div>
+                                    <% end %>
+                                    <% if all_facilities.include?("Group Exercise / Aerobics") %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Group Exercise / Aerobics" name="facilities[]" checked="checked"><span class="fa fa-check"></span> Group Exercise / Aerobics</label></div>
+                                    <% else %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Group Exercise / Aerobics" name="facilities[]"><span class="fa fa-check"></span> Group Exercise / Aerobics</label></div>
+                                    <% end %>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <label>&nbsp;</label>
+                                    <% if all_facilities.include?("Steam Room") %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Steam Room" name="facilities[]" checked="checked"><span class="fa fa-check"></span> Steam Room</label></div>
+                                    <% else %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Steam Room" name="facilities[]"><span class="fa fa-check"></span> Steam Room</label></div>
+                                    <% end %>
+                                    <% if all_facilities.include?("Physiotherapist") %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Physiotherapist" name="facilities[]"><span class="fa fa-check"></span> Physiotherapist</label></div>
+                                    <% else %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Physiotherapist" name="facilities[]"><span class="fa fa-check"></span> Physiotherapist</label></div>
+                                    <% end %>
+                                    <% if all_facilities.include?("Nutrition / Dietitian") %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Nutrition / Dietitian" name="facilities[]"><span class="fa fa-check"></span> Nutrition / Dietitian</label></div>
+                                    <% else %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Nutrition / Dietitian" name="facilities[]"><span class="fa fa-check"></span> Nutrition / Dietitian</label></div>
+                                    <% end %>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <label>&nbsp;</label>
+                                    <% if all_facilities.include?("Fitness Assessment") %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Fitness Assessment" name="facilities[]" checked="checked"><span class="fa fa-check"></span> Fitness Assessment</label></div>
+                                    <% else %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Fitness Assessment" name="facilities[]"><span class="fa fa-check"></span> Fitness Assessment</label></div>
+                                    <% end %>
+                                    <% if all_facilities.include?("Lockers") %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Lockers" name="facilities[]" checked="checked"><span class="fa fa-check"></span> Lockers</label></div>
+                                    <% else %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Lockers" name="facilities[]"><span class="fa fa-check"></span> Lockers</label></div>
+                                    <% end %>
+                                    <% if all_facilities.include?("Yoga") %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Yoga" name="facilities[]" checked="checked"><span class="fa fa-check"></span> Yoga</label></div>
+                                    <% else %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Yoga" name="facilities[]"><span class="fa fa-check"></span> Yoga</label></div>
+                                    <% end %>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <label>&nbsp;</label>
+                                    <% if all_facilities.include?("Kickboxing") %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Kickboxing" name="facilities[]" checked="checked"><span class="fa fa-check"></span> Kickboxing</label></div>
+                                    <% else %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Kickboxing" name="facilities[]"><span class="fa fa-check"></span> Kickboxing</label></div>
+                                    <% end %>
+                                    <% if all_facilities.include?("Karate") %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Karate" name="facilities[]" checked="checked"><span class="fa fa-check"></span> Karate</label></div>
+                                    <% else %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Karate" name="facilities[]"><span class="fa fa-check"></span> Karate</label></div>
+                                    <% end %>
+                                    <% if all_facilities.include?("Muay Thai") %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Muay Thai" name="facilities[]" checked="checked"><span class="fa fa-check"></span> Muay Thai</label></div>
+                                    <% else %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Muay Thai" name="facilities[]"><span class="fa fa-check"></span> Muay Thai</label></div>
+                                    <% end %>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <label>&nbsp;</label>
+                                    <% if all_facilities.include?("AC") %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="AC" name="facilities[]" checked="checked"><span class="fa fa-check"></span> AC</label></div>
+                                    <% else %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="AC" name="facilities[]"><span class="fa fa-check"></span> AC</label></div>
+                                    <% end %>
+                                    <% if all_facilities.include?("Zumba") %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Zumba" name="facilities[]" checked="checked"><span class="fa fa-check"></span> Zumba</label></div>
+                                    <% else %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Zumba" name="facilities[]"><span class="fa fa-check"></span> Zumba</label></div>
+                                    <% end %>
+                                    <% if all_facilities.include?("Cycle Studio") %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Cycle Studio" name="facilities[]" checked="checked"><span class="fa fa-check"></span> Cycle Studio</label></div>
+                                    <% else %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Cycle Studio" name="facilities[]"><span class="fa fa-check"></span> Cycle Studio</label></div>
+                                    <% end %>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <label>&nbsp;</label>
+                                    <% if all_facilities.include?("Certified Trainers") %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Certified Trainers" name="facilities[]" checked="checked"><span class="fa fa-check"></span> Certified Trainers</label></div>
+                                    <% else %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Certified Trainers" name="facilities[]"><span class="fa fa-check"></span> Certified Trainers</label></div>
+                                    <% end %>
+                                    <% if all_facilities.include?("Strengthening") %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Strengthening" name="facilities[]" checked="checked"><span class="fa fa-check"></span> Strengthening</label></div>
+                                    <% else %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Strengthening" name="facilities[]"><span class="fa fa-check"></span> Strengthening</label></div>
+                                    <% end %>
+                                    <% if all_facilities.include?("Body Building") %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Body Building" name="facilities[]" checked="checked"><span class="fa fa-check"></span> Body Building</label></div>
+                                    <% else %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Body Building" name="facilities[]"><span class="fa fa-check"></span> Body Building</label></div>
+                                    <% end %>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <label>&nbsp;</label>
+                                    <% if all_facilities.include?("Weight Loss / Weight Gain") %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Weight Loss / Weight Gain" name="facilities[]" checked="checked"><span class="fa fa-check"></span> Weight Loss / Weight Gain</label></div>
+                                    <% else %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Weight Loss / Weight Gain" name="facilities[]"><span class="fa fa-check"></span> Weight Loss / Weight Gain</label></div>
+                                    <% end %>
+                                    <% if all_facilities.include?("Spinning") %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Spinning" name="facilities[]" checked="checked"><span class="fa fa-check"></span> Spinning</label></div>
+                                    <% else %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Spinning" name="facilities[]"><span class="fa fa-check"></span> Spinning</label></div>
+                                    <% end %>
+                                    <% if all_facilities.include?("Circuit Training") %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Circuit Training" name="facilities[]" checked="checked"><span class="fa fa-check"></span> Circuit Training</label></div>
+                                    <% else %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Circuit Training" name="facilities[]"><span class="fa fa-check"></span> Circuit Training</label></div>
+                                    <% end %>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <label>&nbsp;</label>
+                                    <% if all_facilities.include?("Membership Transfer") %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Membership Transfer" name="facilities[]" checked="checked"><span class="fa fa-check"></span> Membership Transfer</label></div>
+                                    <% else %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Membership Transfer" name="facilities[]"><span class="fa fa-check"></span> Membership Transfer</label></div>
+                                    <% end %>
+                                    <% if all_facilities.include?("First Aid Kit") %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="First Aid Kit" name="facilities[]" checked="checked"><span class="fa fa-check"></span> First Aid Kit</label></div>
+                                    <% else %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="First Aid Kit" name="facilities[]"><span class="fa fa-check"></span> First Aid Kit</label></div>
+                                    <% end %>
+                                    <% if all_facilities.include?("Kettlebell Training") %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Kettlebell Training" name="facilities[]" checked="checked"><span class="fa fa-check"></span> Kettlebell Training</label></div>
+                                    <% else %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Kettlebell Training" name="facilities[]"><span class="fa fa-check"></span> Kettlebell Training</label></div>
+                                    <% end %>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <label>&nbsp;</label>
+                                    <% if all_facilities.include?("Crossfit") %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Crossfit" name="facilities[]" checked="checked"><span class="fa fa-check"></span> Crossfit</label></div>
+                                    <% else %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Crossfit" name="facilities[]"><span class="fa fa-check"></span> Crossfit</label></div>
+                                    <% end %>
+                                    <% if all_facilities.include?("3D Max Rack") %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="3D Max Rack" name="facilities[]" checked="checked"><span class="fa fa-check"></span> 3D Max Rack</label></div>
+                                    <% else %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="3D Max Rack" name="facilities[]"><span class="fa fa-check"></span> 3D Max Rack</label></div>
+                                    <% end %>
+                                    <% if all_facilities.include?("TRX") %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="TRX" name="facilities[]" checked="checked"><span class="fa fa-check"></span> TRX</label></div>
+                                    <% else %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="TRX" name="facilities[]"><span class="fa fa-check"></span> TRX</label></div>
+                                    <% end %>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <label>&nbsp;</label>
+                                    <% if all_facilities.include?("Free Parking") %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Free Parking" name="facilities[]" checked="checked"><span class="fa fa-check"></span> Free Parking</label></div>
+                                    <% else %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Free Parking" name="facilities[]"><span class="fa fa-check"></span> Free Parking</label></div>
+                                    <% end %>
+                                    <% if all_facilities.include?("Resistance Machines") %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Resistance Machines" name="facilities[]" checked="checked"><span class="fa fa-check"></span> Resistance Machines</label></div>
+                                    <% else %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Resistance Machines" name="facilities[]"><span class="fa fa-check"></span> Resistance Machines</label></div>
+                                    <% end %>
+                                    <% if all_facilities.include?("Pilates") %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Pilates" name="facilities[]" checked="checked"><span class="fa fa-check"></span> Pilates</label></div>
+                                    <% else %>
+                                        <div class="checkbox custom-checkbox"><label><input type="checkbox" value="Pilates" name="facilities[]"><span class="fa fa-check"></span> Pilates</label></div>
+                                    <% end %>
+                                </div>
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                 <div class="form-group">
                                     <label>Other Facilities</label>
-                                    <input type="text" class="form-control" name="other_facilities" id="tags" placeholder="Add Facilities" value="<%=@gym.facility%>">
+                                    <input type="text" class="form-control" name="other_facilities" id="tags" placeholder="Add Facilities">
+                                    <p class="help-block">Press enter after every facility you type to add it.</p>
                                 </div>
                             </div>
                         </div>
