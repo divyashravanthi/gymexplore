@@ -27,6 +27,7 @@ meta title: "Find Best Gyms Near me",
                             <li><a href="<%=edit_agency_registration_path%>">My Profile</a></li>
                             <li><a href="<%=destroy_agency_session_path%>" data-method="delete">Logout</a></li>
                         <% end %>
+                        <li><a href="#" data-toggle="modal" data-target="#aboutus">About Us</a></li>
                         <li><a href="<%=new_gym_path%>" class="btn btn-green">Submit Your Gym</a></li>
                     </ul>
                 </div>
@@ -478,6 +479,19 @@ meta title: "Find Best Gyms Near me",
                                 </div>
                             </div>
                         <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="aboutus" role="dialog" aria-labelledby="signupLabel" aria-hidden="true">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="signupLabel">About GymExplore</h4>
+                    </div>
+                    <div class="modal-body">
+                        <!-- <p class="text-center"><%#= image_tag "logo.png" %></p> -->
+                        <p class="text-justify">GymExplore provides you with a one stop solution to put an end to all the hassles one goes through to find the best gyms in an area.  Apart from producing a comprehensive list of gyms for you to choose from, we also give you detailed information about every single gym including its facilities and pricings. We first make a visit to the gyms before listing them on gymexplore to make your experience worthwhile, hence you get the best of the lot. Getting in touch with the gym has never been easier and by putting it all together we enable you to find your best fit by just one click. For the growing number of new generation gymming enthusiasts, our goal is to help them have a great experience and in some way be a small part of their fitness journey.</p>
                     </div>
                 </div>
             </div>
