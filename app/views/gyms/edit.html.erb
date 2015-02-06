@@ -57,11 +57,37 @@ meta title: @gym.name,
                             <label>Full Address</label>
                             <textarea class="form-control" rows="4" name="address"><%=@gym.address%></textarea>
                         </div>
-                        <div class="form-group">
-                            <label>Registration Fees</label>
-                            <div class="input-group">
-                                <div class="input-group-addon">Rs.</div>
-                                <input class="form-control" type="text" placeholder="Ex: 500" name="fees" value="<%=@gym.registration_fee%>">
+                        <div class="pricing-wrapper">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label>Registration Fees</label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon">Rs.</div>
+                                            <input class="form-control" type="text" placeholder="Ex: 500" name="fees" value="<%=@gym.registration_fee%>">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                    <div class="form-group">
+                                        <label>Gender</label>
+                                        <select class="form-control" name="gender">
+                                            <% if @gym.gender == 0 %>
+                                                <option value="1">Male</option>
+                                                <option value="2">Female</option>
+                                                <option value="0" selected="selected">Both</option>
+                                            <% elsif @gym.gender == 1 %>
+                                                <option value="1" selected="selected">Male</option>
+                                                <option value="2">Female</option>
+                                                <option value="0">Both</option>
+                                            <% else %>
+                                                <option value="1">Male</option>
+                                                <option value="2" selected="selected">Female</option>
+                                                <option value="0">Both</option>
+                                            <% end %>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="pricing-wrapper">

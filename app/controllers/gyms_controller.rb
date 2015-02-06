@@ -36,6 +36,7 @@ class GymsController < ApplicationController
 			gym.facility = [params[:facilities].join(","), params[:other_facilities]].join(",")
 		end
 		gym.email = params[:email]
+		gym.gender = params[:gender]
 		gym.mobile = params[:mobile]
 		gym.registration_fee = params[:fees]
 		if current_agency.nil?
@@ -93,6 +94,7 @@ class GymsController < ApplicationController
 		gym.address = params[:address]
 		gym.email = params[:email]
 		gym.mobile = params[:mobile]
+		gym.gender = params[:gender]
 		gym.registration_fee = params[:fees]
 		if params[:facilities].present?
 			gym.facility = [params[:facilities].join(","), params[:other_facilities]].join(",")

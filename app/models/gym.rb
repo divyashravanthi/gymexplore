@@ -27,6 +27,16 @@ class Gym < ActiveRecord::Base
 		self.facility.split(",")
 	end
 
+	def get_gender
+		if self.gender == 1
+			return "Male"
+		elsif self.gender == 2
+			return "Female"
+		else
+			return "Both"
+		end
+	end
+
 	def images_url
 		images = Array.new
 		self.pictures.each do |p|

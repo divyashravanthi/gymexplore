@@ -80,6 +80,9 @@ meta title: @gym.name,
                                             <% if @gym.male_trainers.present? %>
                                                 | Number of Trainers - <span class="fa fa-male"></span> <%=@gym.male_trainers%> <span class="fa fa-female"></span> <%=@gym.female_trainers%>
                                             <% end %>
+                                            <% if @gym.gender.present? %>
+                                                | Gender - <%= @gym.get_gender %>
+                                            <% end %>
                                         </div>
                                     <% end %>
                                     <% if @gym.featured %>
