@@ -58,20 +58,20 @@ meta title: @gym.name,
                             <textarea class="form-control" rows="4" name="address"><%=@gym.address%></textarea>
                         </div>
                         <div class="form-group">
-                            <label>Gender</label>
+                            <label>Gymmers</label>
                             <select class="form-control" name="gender">
                                 <% if @gym.gender == 0 %>
                                     <option value="1">Male</option>
                                     <option value="2">Female</option>
-                                    <option value="0" selected="selected">Both</option>
+                                    <option value="0" selected="selected">Male and Female</option>
                                 <% elsif @gym.gender == 1 %>
                                     <option value="1" selected="selected">Male</option>
                                     <option value="2">Female</option>
-                                    <option value="0">Both</option>
+                                    <option value="0">Male and Female</option>
                                 <% else %>
                                     <option value="1">Male</option>
                                     <option value="2" selected="selected">Female</option>
-                                    <option value="0">Both</option>
+                                    <option value="0">Male and Female</option>
                                 <% end %>
                             </select>
                         </div>

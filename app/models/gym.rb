@@ -33,7 +33,7 @@ class Gym < ActiveRecord::Base
 		elsif self.gender == 2
 			return "Female"
 		else
-			return "Both"
+			return "Male and Female"
 		end
 	end
 
