@@ -16,7 +16,6 @@ class GymsController < ApplicationController
 	end
 
 	def create
-		binding.pry
 		gym = Gym.new
 		if current_agency.nil? && params[:email].present? && !params[:email].blank?
 			@agency = Agency.find_by(:email => params[:email])
