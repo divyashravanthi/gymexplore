@@ -37,3 +37,4 @@
 //= require reviews
 //= require social-share-button
 //= require star-rating.min
+//= require jquery.timepicker.js

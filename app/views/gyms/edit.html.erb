@@ -132,6 +132,46 @@ meta title: @gym.name,
                             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3"><button id="add-pricing" class="btn btn-green btn-xs margin-b-10">Add Field</button></div>
                         </div>
                         <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label>Weekday(s) Timings</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">From</div>
+                                        <input class="form-control timepicker" type="text" value="<%=@gym.weekday_from%>" name="weekday_from">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+                                <div class="form-group">
+                                    <label>&nbsp;</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">To</div>
+                                        <input class="form-control timepicker" type="text" value="<%=@gym.weekday_to%>" name="weekday_to">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label>Weekend(s) Timings</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">From</div>
+                                        <input class="form-control timepicker" type="text" value="<%=@gym.weekend_from%>" name="weekend_from">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+                                <div class="form-group">
+                                    <label>&nbsp;</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">To</div>
+                                        <input class="form-control timepicker" type="text" value="<%=@gym.weekend_to%>" name="weekend_to">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                 <div class="form-group">
                                     <label>Image Gallery</label>

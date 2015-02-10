@@ -23,5 +23,6 @@
  *= require animate
  *= require social-share-button
  *= require star-rating.min
+ *= require jquery.timepicker.css
  *= require_self
  */

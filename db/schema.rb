@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150206155613) do
+ActiveRecord::Schema.define(version: 20150210095020) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,10 @@ ActiveRecord::Schema.define(version: 20150206155613) do
     t.string   "mobile"
     t.float    "registration_fee", default: 0.0
     t.integer  "gender",           default: 0
+    t.string   "weekday_from"
+    t.string   "weekday_to"
+    t.string   "weekend_from"
+    t.string   "weekend_to"
   end
 
   add_index "gyms", ["agency_id"], name: "index_gyms_on_agency_id", using: :btree

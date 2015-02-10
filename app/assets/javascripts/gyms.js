@@ -46,4 +46,6 @@ $(document).ready(function() {
 
     $(".showClear").rating({disabled: true, showClear: false});
 
+    $('.timepicker').timepicker();
+
 });

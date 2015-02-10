@@ -16,6 +16,7 @@ class GymsController < ApplicationController
 	end
 
 	def create
+		binding.pry
 		gym = Gym.new
 		if current_agency.nil? && params[:email].present? && !params[:email].blank?
 			@agency = Agency.find_by(:email => params[:email])
@@ -38,6 +39,10 @@ class GymsController < ApplicationController
 		gym.email = params[:email]
 		gym.gender = params[:gender]
 		gym.mobile = params[:mobile]
+		gym.weekend_from = params[:weekend_from]
+		gym.weekend_to = params[:weekend_to]
+		gym.weekday_from = params[:weekday_from]
+		gym.weekday_to = params[:weekday_to]
 		gym.registration_fee = params[:fees]
 		if @agency.present?
 			if current_agency.nil?
@@ -99,6 +104,10 @@ class GymsController < ApplicationController
 		gym.email = params[:email]
 		gym.mobile = params[:mobile]
 		gym.gender = params[:gender]
+		gym.weekend_from = params[:weekend_from]
+		gym.weekend_to = params[:weekend_to]
+		gym.weekday_from = params[:weekday_from]
+		gym.weekday_to = params[:weekday_to]
 		gym.registration_fee = params[:fees]
 		if params[:facilities].present?
 			gym.facility = [params[:facilities].join(","), params[:other_facilities]].join(",")

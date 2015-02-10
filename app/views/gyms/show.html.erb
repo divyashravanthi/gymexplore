@@ -152,6 +152,13 @@ meta title: @gym.name,
                         <p><%=@gym.description%></p>
                     </div>
                 <% end %>
+                <% if !@gym.weekday_from.blank? && !@gym.weekend_from.blank? %>
+                    <div class="description">
+                        <h3>Timings</h3>
+                        <p>Weekday(s) - <%=@gym.weekday_from%> to <%=@gym.weekday_to%></p>
+                        <p>Weekend(s) - <%=@gym.weekend_from%> to <%=@gym.weekend_to%></p>
+                    </div>
+                <% end %>
                 <div class="comments">
                     <h3><!-- <span id="comment_count">4</span> -->Comments</h3>
                     <div class="prependReviews">
