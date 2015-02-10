@@ -29,6 +29,9 @@ class GymsController < ApplicationController
 		gym.description = params[:description]
 		gym.lang = params[:latitude]
 		gym.long = params[:longitude]
+		if params[:is_payment_enabled].present?
+			gym.is_payment_enabled = true
+		end
 		gym.male_trainers = params[:male_trainers]
 		gym.female_trainers = params[:female_trainers]
 		gym.address = params[:address]
