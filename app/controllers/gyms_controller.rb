@@ -17,7 +17,7 @@ class GymsController < ApplicationController
 
 	def create
 		gym = Gym.new
-		if current_agency.nil?
+		if current_agency.nil? && params[:email].present? && !params[:email].blank?
 			@agency = Agency.find_by(:email => params[:email])
 			if @agency.nil?
 				@password = SecureRandom.hex(4)
@@ -39,10 +39,14 @@ class GymsController < ApplicationController
 		gym.gender = params[:gender]
 		gym.mobile = params[:mobile]
 		gym.registration_fee = params[:fees]
-		if current_agency.nil?
-			gym.agency_id = @agency.id
+		if @agency.present?
+			if current_agency.nil?
+				gym.agency_id = @agency.id
+			else
+				gym.agency_id = current_agency.id
+			end
 		else
-			gym.agency_id = current_agency.id
+			gym.agency_id = 1
 		end
 		if gym.save
 			if params[:gym].present? && params[:gym][:images].count > 0
@@ -53,7 +57,7 @@ class GymsController < ApplicationController
 			params[:duration].each_with_index do |value, index|
 				gym.pricings.create(:duration => params[:duration][index], :price => params[:price][index])
 			end
-			if current_agency.nil?
+			if current_agency.nil? && @agency.present?
 				AgencyMailer.send_credentials(params[:email], @password).deliver_now
 				notice = " Check your email to edit."
 			end
