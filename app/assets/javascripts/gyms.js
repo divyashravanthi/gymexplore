@@ -16,6 +16,22 @@ $(document).ready(function() {
         e.preventDefault(); $(this).parent('div').remove(); x--;
     });
 
+    var wrapper1         = $(".pass-wrapper"); //Fields wrapper
+    var add_button1     = $("#add-pass"); //Add button ID
+    
+    var y = 1; //initlal text box count
+    $(add_button1).click(function(e){ //on add input button click
+        e.preventDefault();
+        if(y < max_fields){ //max input box allowed
+            y++; //text box increment
+            $(wrapper1).append('<div class="row"> <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"> <div class="form-group"> <div class="input-group"> <input class="form-control" type="number" placeholder="Ex: 3" name="pass_duration[]"> <div class="input-group-addon">Day(s)</div></div></div></div><div class="col-xs-12 col-sm-12 col-md-5 col-lg-5"> <div class="form-group"> <div class="input-group"> <div class="input-group-addon">Rs.</div><input class="form-control" type="text" placeholder="Ex: 5000.00" name="pass_price[]"> </div></div></div><a href="#" class="btn btn-danger remove-pass"> - </a></div>'); //add input box
+        }
+    });
+    
+    $(wrapper1).on("click",".remove-pass", function(e){ //user click on remove text
+        e.preventDefault(); $(this).parent('div').remove(); y--;
+    });
+
     if($(".notice-alert").length > 0){
         var n = noty({
             text: $(".notice-alert").text(),

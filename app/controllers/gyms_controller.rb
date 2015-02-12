@@ -64,6 +64,9 @@ class GymsController < ApplicationController
 			params[:duration].each_with_index do |value, index|
 				gym.pricings.create(:duration => params[:duration][index], :price => params[:price][index])
 			end
+			params[:pass_duration].each_with_index do |value, index|
+				gym.pricings.create(:duration => params[:pass_duration][index], :price => params[:pass_price][index], :pricing_type => "pass")
+			end
 			if current_agency.nil? && @agency.present?
 				AgencyMailer.send_credentials(params[:email], @password).deliver_now
 				notice = " Check your email to edit."
@@ -122,9 +125,15 @@ class GymsController < ApplicationController
 				end
 			end
 			if params[:duration].count > 0
-				gym.pricings.destroy_all
+				gym.pricings.where(:pricing_type => "regular").destroy_all
 				params[:duration].each_with_index do |value, index|
 					gym.pricings.create(:duration => params[:duration][index], :price => params[:price][index])
+				end
+			end
+			if params[:pass_duration].count > 0
+				gym.pricings.where(:pricing_type => "pass").destroy_all
+				params[:pass_duration].each_with_index do |value, index|
+					gym.pricings.create(:duration => params[:pass_duration][index], :price => params[:pass_price][index], :pricing_type => "pass")
 				end
 			end
 			redirect_to edit_gym_path(gym), :notice => "Successfully Updated."

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150210192548) do
+ActiveRecord::Schema.define(version: 20150212062522) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,8 +90,9 @@ ActiveRecord::Schema.define(version: 20150210192548) do
     t.integer  "duration"
     t.float    "price"
     t.integer  "gym_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.string   "pricing_type", default: "regular"
   end
 
   add_index "pricings", ["gym_id"], name: "index_pricings_on_gym_id", using: :btree

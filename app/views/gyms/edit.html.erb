@@ -83,7 +83,7 @@ meta title: @gym.name,
                             </div>
                         </div>
                         <div class="pricing-wrapper">
-                            <% @gym.pricings.each_with_index do |p,i| %>
+                            <% @gym.pricings.where(:pricing_type => "regular").each_with_index do |p,i| %>
                                 <% if i==0 %>
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
@@ -129,7 +129,56 @@ meta title: @gym.name,
                             <% end %>
                         </div>
                         <div class="row">
-                            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3"><button id="add-pricing" class="btn btn-green btn-xs margin-b-10">Add Field</button></div>
+                            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3"><button id="add-pricing" class="btn btn-green btn-xs margin-b-10">Add New Pricing</button></div>
+                        </div>
+                        <div class="pass-wrapper">
+                            <% @gym.pricings.where(:pricing_type => "pass").each_with_index do |p,i| %>
+                                <% if i==0 %>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label>Pass Duration</label>
+                                                <div class="input-group">
+                                                    <input class="form-control" type="number" placeholder="Ex: 3" name="pass_duration[]" value="<%=p.duration%>">
+                                                    <div class="input-group-addon">Day(s)</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+                                            <div class="form-group">
+                                                <label>Pass Price</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">Rs.</div>
+                                                    <input class="form-control" type="text" placeholder="Ex: 5000.00" name="pass_price[]" value="<%=p.price%>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <% else %>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <input class="form-control" type="number" placeholder="Ex: 3" name="pass_duration[]" value="<%=p.duration%>">
+                                                    <div class="input-group-addon">Day(s)</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">Rs.</div>
+                                                    <input class="form-control" type="text" placeholder="Ex: 5000.00" name="pass_price[]" value="<%=p.price%>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="#" class="btn btn-danger remove-pass"> - </a>
+                                    </div>
+                                <% end %>
+                            <% end %>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3"><button id="add-pass" class="btn btn-green btn-xs margin-b-10">Add New Pass</button></div>
                         </div>
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
