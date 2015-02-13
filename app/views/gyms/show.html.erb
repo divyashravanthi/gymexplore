@@ -125,67 +125,87 @@ meta title: @gym.name,
                     </div>
                 </div>
                 <div class="clearfix"></div>
-                <div class="description">
-                    <h3>Pricings</h3>
-                    <% if @gym.registration_fee != 0.0 %>
-                        <p>Registration / Membership Fee(s) - Rs.<%=@gym.registration_fee%></p>
-                    <% end %>
-                    <% if @gym.pricings.where(:pricing_type => "regular").count > 0 %>
-                        <table class="table">
-                            <% @gym.pricings.where(:pricing_type => "regular").each do |p| %>
-                            <tr><td><%=pluralize(p.duration, "Month")%></td><td>Rs. <%=p.price%></td></tr>
-                            <% end %>
-                        </table>
-                    <% end %>
-                </div>
-                <% if @gym.pricings.where(:pricing_type => "pass").count > 0 %>
-                    <div class="description">
-                        <h3>Passes</h3>
-                        <table class="table">
-                            <% @gym.pricings.where(:pricing_type => "pass").each do |p| %>
-                            <tr><td><%=pluralize(p.duration, "Day")%></td><td>Rs. <%=p.price%></td></tr>
-                            <% end %>
-                        </table>
-                    </div>
-                <% end %>
-                <div class="amenities">
-                    <h3>Facilities</h3>
-                    <div class="row">
-                        <% @gym.facility.split(",").each do |f| %>
-                         <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 amItem"> <%=f%></div>
-                        <% end %>
-                    </div>
-                </div>
-                <% if @gym.description.present? && !@gym.description.blank? %>
-                    <div class="description">
-                        <h3>Description</h3>
-                        <p><%=@gym.description%></p>
-                    </div>
-                <% end %>
-                <% if !@gym.weekday_from.blank? && !@gym.weekend_from.blank? %>
-                    <div class="description">
-                        <h3>Timings</h3>
-                        <p>Weekday(s) - <%=@gym.weekday_from%> to <%=@gym.weekday_to%></p>
-                        <p>Weekend(s) - <%=@gym.weekend_from%> to <%=@gym.weekend_to%></p>
-                    </div>
-                <% end %>
-                <div class="comments">
-                    <h3><!-- <span id="comment_count">4</span> -->Comments</h3>
-                    <div class="prependReviews">
-                        <% if @gym.reviews.count > 0 %>
-                            <% @gym.reviews.order(created_at: :desc).each do |c| %>
-                                <div class="comment">
-                                    <div class="commentContent">
-                                        <div class="commentName"><%=c.name%> <div class="commentTime"><span class="icon-clock"></span> <%=time_ago_in_words(c.created_at)%> ago</div></div>
-                                        <div class="commentBody">
-                                            <input data-show-caption="false" data-disabled="true" value="<%=c.rating%>" type="number" class="rating showClear" min="0" max="5" step="0.5" data-size="xs" data-symbol="&#xe005;"> <%=c.comment%>
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="clearfix"></div>
+                <div class="tabsContainer">
+                    <ul class="nav nav-tabs nav-justified" role="tablist">
+                        <li class="active"><a href="#profile" role="tab" data-toggle="tab"><span class="icon-home"></span> PROFILE</a></li>
+                        <li class=""><a href="#pricing_pass" role="tab" data-toggle="tab"><span class="icon-user"></span> PRICINGS/PASSES</a></li>
+                        <li class=""><a href="#timings" role="tab" data-toggle="tab"><span class="icon-user"></span> TIMINGS</a></li>
+                        <li class=""><a href="#reviews" role="tab" data-toggle="tab"><span class="icon-bubbles"></span> REVIEWS</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane fade active in" id="profile">
+                            <div class="amenities">
+                                <h3>Facilities</h3>
+                                <div class="row">
+                                    <% @gym.facility.split(",").each do |f| %>
+                                     <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 amItem"> <%=f%></div>
+                                    <% end %>
+                                </div>
+                            </div>
+                            <% if @gym.description.present? && !@gym.description.blank? %>
+                                <div class="description">
+                                    <h3>Description</h3>
+                                    <p><%=@gym.description%></p>
                                 </div>
                             <% end %>
-                        <% end %>
+                        </div>
+                        <div class="tab-pane fade" id="pricing_pass">
+                            <div class="description">
+                                <h3>Pricings</h3>
+                                <% if @gym.registration_fee != 0.0 %>
+                                    <p>Registration / Membership Fee(s) - Rs.<%=@gym.registration_fee%></p>
+                                <% end %>
+                                <% if @gym.pricings.where(:pricing_type => "regular").count > 0 %>
+                                    <table class="table">
+                                        <% @gym.pricings.where(:pricing_type => "regular").each do |p| %>
+                                        <tr><td><%=pluralize(p.duration, "Month")%></td><td>Rs. <%=p.price%></td></tr>
+                                        <% end %>
+                                    </table>
+                                <% end %>
+                            </div>
+                            <% if @gym.pricings.where(:pricing_type => "pass").count > 0 %>
+                                <div class="description">
+                                    <h3>Passes</h3>
+                                    <table class="table">
+                                        <% @gym.pricings.where(:pricing_type => "pass").each do |p| %>
+                                        <tr><td><%=pluralize(p.duration, "Day")%></td><td>Rs. <%=p.price%></td></tr>
+                                        <% end %>
+                                    </table>
+                                </div>
+                            <% end %>
+                        </div>
+                        <div class="tab-pane fade" id="timings">
+                            <% if !@gym.weekday_from.blank? && !@gym.weekend_from.blank? %>
+                                <div class="description">
+                                    <h3>Timings</h3>
+                                    <p>Weekday(s) - <%=@gym.weekday_from%> to <%=@gym.weekday_to%></p>
+                                    <p>Weekend(s) - <%=@gym.weekend_from%> to <%=@gym.weekend_to%></p>
+                                </div>
+                            <% else %>
+                                Not Available
+                            <% end %>
+                        </div>
+                        <div class="tab-pane fade" id="reviews">
+                            <div class="comments">
+                                <div class="prependReviews">
+                                    <% if @gym.reviews.count > 0 %>
+                                        <% @gym.reviews.order(created_at: :desc).each do |c| %>
+                                            <div class="comment">
+                                                <div class="commentContent">
+                                                    <div class="commentName"><%=c.name%> <div class="commentTime"><span class="icon-clock"></span> <%=time_ago_in_words(c.created_at)%> ago</div></div>
+                                                    <div class="commentBody">
+                                                        <input data-show-caption="false" data-disabled="true" value="<%=c.rating%>" type="number" class="rating showClear" min="0" max="5" step="0.5" data-size="xs" data-symbol="&#xe005;"> <%=c.comment%>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        <% end %>
+                                    <% else %>
+                                        No Reviews Yet. Be First to Review.
+                                    <% end %>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
