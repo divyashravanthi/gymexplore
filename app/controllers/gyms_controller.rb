@@ -225,8 +225,8 @@ class GymsController < ApplicationController
 		@productinfo["paymentParts"][0]["description"] = "abcd"
 		@productinfo["paymentParts"][0]["value"] = "5"
 		@productinfo["paymentParts"][0]["isRequired"] = "true"
-		@productinfo["paymentParts"][0]["“settlementEvent”"] = "EmailConfirmation"
+		@productinfo["paymentParts"][0]["settlementEvent"] = "EmailConfirmation"
 
-		@hash = Digest::SHA512.hexdigest("rgbKgd|@txnid|5|#{@productinfo}|#{@name}|#{@email}|||||||||||e9Dk0fUj")
+		@hash = Digest::SHA512.hexdigest("rgbKgd|#{@txnid}|5|#{@productinfo}|#{@name}|#{@email}|||||||||||e9Dk0fUj")
 	end
 end
