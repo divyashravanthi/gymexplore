@@ -217,5 +217,13 @@ class GymsController < ApplicationController
 		@name = params[:name]
 		@mobile = params[:phone]
 		@email = params[:email]
+		@productinfo = Hash.new
+		@productinfo["paymentParts"] = Array.new
+		@productinfo["paymentParts"][0] = Hash.new
+		@productinfo["paymentParts"][0]["name"] = "abc"
+		@productinfo["paymentParts"][0]["description"] = "abcd"
+		@productinfo["paymentParts"][0]["value"] = "100"
+		@productinfo["paymentParts"][0]["isRequired"] = "true"
+		@productinfo["paymentParts"][0]["“settlementEvent”"] = "“EmailConfirmation”"
 	end
 end
