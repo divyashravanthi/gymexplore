@@ -210,4 +210,12 @@ class GymsController < ApplicationController
 		gym.verified = true
 		gym.save
 	end
+
+	def make_payment
+		@gym = Gym.find(params[:gym_id])
+		@plan = @gym.pricings.find(params[:plan])
+		@name = params[:name]
+		@mobile = params[:phone]
+		@email = params[:email]
+	end
 end

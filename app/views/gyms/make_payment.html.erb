@@ -1,0 +1,20 @@
+<div class="container" style="margin-top: 50px;">
+<h2>Thanks For Choosing Us.</h2>
+
+<h3>Gym Details Below:</h3>
+<p>Gym Name: <%=@gym.name%></p>
+<p>Address: <%=@gym.address%></p>
+<% if @plan.pricing_type == "regular" %>
+<p>Plan: <%= pluralize(@plan.duration, "Month") %> - Rs. <%=@plan.price%></p>
+<% else %>
+<p>Plan: <%= pluralize(@plan.duration, "Day") %> - Rs. <%=@plan.price%></p>
+<% end %>
+<h3>Your Details</h3>
+<p>Name: <%=@name%></p>
+<p>Email: <%=@email%></p>
+<p>Mobile: <%=@mobile%></p>
+<br/>
+<p>
+	Feel free to contact us for any queries at info@gymexplore.com.
+</p>
+</div>
