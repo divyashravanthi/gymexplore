@@ -175,7 +175,7 @@ meta title: @gym.name,
                             <% end %>
                         </div>
                         <div class="tab-pane fade" id="timings">
-                            <% if !@gym.weekday_from.blank? && !@gym.weekend_from.blank? %>
+                            <% if !@gym.weekday_from.blank? || !@gym.weekend_from.blank? %>
                                 <div class="description">
                                     <h3>Timings</h3>
                                     <p>Weekday(s) - <%=@gym.weekday_from%> to <%=@gym.weekday_to%></p>
