@@ -21,15 +21,15 @@
 
 <form action="https://secure.payu.in/_payment" method="post">
 	<input type="hidden" value="rgbKgd" name="key" />
-	<input type="hidden" value="1" name="txnid" />
+	<input type="hidden" value="<%=@txnid%>" name="txnid" />
 	<input type="hidden" value="5" name="amount" />
-	<input type="hidden" value="" name="productinfo" />
+	<input type="hidden" value="<%=@productinfo%>" name="productinfo" />
 	<input type="hidden" value="<%=@name%>" name="firstname" />
 	<input type="hidden" value="<%=@email%>" name="email" />
 	<input type="hidden" value="<%=@mobile%>" name="phone" />
 	<input type="hidden" value="<%=root_url%>" name="surl" />
 	<input type="hidden" value="<%=root_url%>" name="furl" />
-	<input type="hidden" value="9edcddf5d21aaa90dc4a7c8e24af49142dc2a2607d4f01066011ba9546017cf07694e4b7955422b03f2936852315ba4b39a598d0fb5f070d861f8c37b0d2d9b5" name="hash" />
+	<input type="hidden" value="@hash" name="hash" />
 	<input type="hidden" value="payu_paisa" name="service_provider" />
 	<input type="submit" value="pay" />
 </form>
