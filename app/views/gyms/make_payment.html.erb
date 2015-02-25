@@ -18,3 +18,18 @@
 	Feel free to contact us for any queries at info@gymexplore.com.
 </p>
 </div>
+
+<form action="https://test.payu.in/_payment" method="post">
+	<input type="hidden" value="rgbKgd" name="key" />
+	<input type="hidden" value="1" name="txnid" />
+	<input type="hidden" value="100" name="amount" />
+	<input type="hidden" value="" name="productinfo" />
+	<input type="hidden" value="<%=@name%>" name="firstname" />
+	<input type="hidden" value="<%=@email%>" name="email" />
+	<input type="hidden" value="<%=@mobile%>" name="phone" />
+	<input type="hidden" value="<%=root_url%>" name="surl" />
+	<input type="hidden" value="<%=root_url%>" name="furl" />
+	<input type="hidden" value="7a7e54cf6bba8227059276e1499dd22e29f1d9faaf16a23eef24ac156fd9bcbbd9821e33321132fbb0a8cac49956982b45be5b454ebae60b89ece52cdb04263e" name="hash" />
+	<input type="hidden" value="payu_paisa" name="service_provider" />
+	<input type="submit" value="pay" />
+</form>
