@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150212062522) do
+ActiveRecord::Schema.define(version: 20150226075451) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,24 @@ ActiveRecord::Schema.define(version: 20150212062522) do
   add_index "gyms", ["agency_id"], name: "index_gyms_on_agency_id", using: :btree
   add_index "gyms", ["slug"], name: "index_gyms_on_slug", using: :btree
 
+  create_table "payments", force: true do |t|
+    t.string   "mihpayid"
+    t.string   "mode"
+    t.string   "status"
+    t.string   "txnid"
+    t.string   "firstname"
+    t.string   "email"
+    t.string   "phone"
+    t.integer  "gym_id"
+    t.integer  "plan_id"
+    t.string   "payuMoneyId"
+    t.boolean  "transferred", default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "payments", ["gym_id"], name: "index_payments_on_gym_id", using: :btree
+
   create_table "pictures", force: true do |t|
     t.integer  "gym_id"
     t.string   "image_file_name"
@@ -109,6 +127,7 @@ ActiveRecord::Schema.define(version: 20150212062522) do
   add_index "reviews", ["gym_id"], name: "index_reviews_on_gym_id", using: :btree
 
   add_foreign_key "gyms", "agencies"
+  add_foreign_key "payments", "gyms"
   add_foreign_key "pictures", "gyms"
   add_foreign_key "pricings", "gyms"
   add_foreign_key "reviews", "gyms"

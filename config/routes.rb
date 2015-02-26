@@ -29,7 +29,13 @@ Rails.application.routes.draw do
     end
   end
 
-  post 'make-payment' => "gyms#make_payment"
+  resources :payments do
+    collection do
+      post :make_payment
+      post :success
+      post :failure
+    end
+  end
 
   namespace :api, defaults: {format: 'json'} do
     scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do

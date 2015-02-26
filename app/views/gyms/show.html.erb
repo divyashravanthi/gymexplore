@@ -275,7 +275,7 @@ meta title: @gym.name,
         <div class="modal fade" id="makePayment" role="dialog" aria-labelledby="contactLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <%= form_for :payment, :url => "/make-payment", :html => {:class=>"contactForm"} do |f| %>
+                    <%= form_for :payment, :url => "/payments/make_payment", :html => {:class=>"contactForm"} do |f| %>
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             <h4 class="modal-title" id="contactLabel">Your Details</h4>

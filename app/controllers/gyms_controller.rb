@@ -211,22 +211,4 @@ class GymsController < ApplicationController
 		gym.save
 	end
 
-	def make_payment
-		@gym = Gym.find(params[:gym_id])
-		@plan = @gym.pricings.find(params[:plan])
-		@name = params[:name]
-		@mobile = params[:phone]
-		@email = params[:email]
-		@txnid = rand(1..420000)
-		@productinfo = Hash.new
-		@productinfo["paymentParts"] = Array.new
-		@productinfo["paymentParts"][0] = Hash.new
-		@productinfo["paymentParts"][0]["name"] = "abc"
-		@productinfo["paymentParts"][0]["description"] = "abcd"
-		@productinfo["paymentParts"][0]["value"] = "5"
-		@productinfo["paymentParts"][0]["isRequired"] = "true"
-		@productinfo["paymentParts"][0]["settlementEvent"] = "EmailConfirmation"
-
-		@hash = Digest::SHA512.hexdigest("JBZaLc|#{@txnid}|5|#{@productinfo}|#{@name}|#{@email}|||||||||||GQs7yium")
-	end
 end

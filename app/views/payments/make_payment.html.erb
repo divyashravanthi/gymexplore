@@ -1,5 +1,5 @@
-<div class="container" style="margin-top: 50px;">
-<h2>Thanks For Choosing Us.</h2>
+<div class="container" style="margin-top: 80px;">
+<h2>Please verify the details and make payment.</h2>
 
 <h3>Gym Details Below:</h3>
 <p>Gym Name: <%=@gym.name%></p>
@@ -14,22 +14,29 @@
 <p>Email: <%=@email%></p>
 <p>Mobile: <%=@mobile%></p>
 <br/>
-<p>
-	Feel free to contact us for any queries at info@gymexplore.com.
-</p>
-</div>
+
 
 <form action="https://test.payu.in/_payment" method="post">
-	<input type="hidden" value="rgbKgd" name="key" />
+	<input type="hidden" value="JBZaLc" name="key" />
 	<input type="hidden" value="<%=@txnid%>" name="txnid" />
-	<input type="hidden" value="5" name="amount" />
+	<input type="hidden" value="<%=@plan.price%>" name="amount" />
 	<input type="hidden" value="<%=@productinfo%>" name="productinfo" />
 	<input type="hidden" value="<%=@name%>" name="firstname" />
 	<input type="hidden" value="<%=@email%>" name="email" />
 	<input type="hidden" value="<%=@mobile%>" name="phone" />
-	<input type="hidden" value="<%=root_url%>" name="surl" />
-	<input type="hidden" value="<%=root_url%>" name="furl" />
+	<input type="hidden" value="<%=success_payments_url%>" name="surl" />
+	<input type="hidden" value="<%=failure_payments_url%>" name="furl" />
 	<input type="hidden" value="<%=@hash%>" name="hash" />
+	<input type="hidden" value="<%=@udf1%>" name="udf1" />
+	<input type="hidden" value="<%=@udf2%>" name="udf2" />
 	<input type="hidden" value="payu_paisa" name="service_provider" />
-	<input type="submit" value="pay" />
+	<input type="submit" class="btn btn-round btn-green" value="Make Payment" />
+	<%= link_to "Go Back", :back, :class => "btn btn-round btn-green" %>
 </form>
+<br/>
+<p>
+	Feel free to contact us for any queries at info@gymexplore.com.
+</p>
+
+</div>
+

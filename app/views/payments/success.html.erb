@@ -1,0 +1,25 @@
+<div class="container" style="margin-top: 80px;">
+<h2>Thanks For Choosing Us.</h2>
+<br/>
+<p>Payment is successful. We will email you the Entry Ticket shortly.</p>
+<h3>Gym Details Below:</h3>
+<p>Gym Name: <%=@gym.name%></p>
+<p>Address: <%=@gym.address%></p>
+<% if @plan.pricing_type == "regular" %>
+<p>Plan: <%= pluralize(@plan.duration, "Month") %> - Rs. <%=@plan.price%></p>
+<% else %>
+<p>Plan: <%= pluralize(@plan.duration, "Day") %> - Rs. <%=@plan.price%></p>
+<% end %>
+<h3>Your Details</h3>
+<p>Name: <%=@name%></p>
+<p>Email: <%=@email%></p>
+<p>Mobile: <%=@mobile%></p>
+<br/>
+<p>
+	Feel free to contact us for any queries at info@gymexplore.com or call us on (+91)963-264-1012.
+</p>
+<p>
+	<%= link_to "Return to Home", root_path, :class => "btn btn-round btn-green" %>
+</p>
+</div>
+
