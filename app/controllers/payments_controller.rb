@@ -8,7 +8,7 @@ class PaymentsController < ApplicationController
 		@name = params[:name]
 		@mobile = params[:phone]
 		@email = params[:email]
-		@txnid = rand(1..420000)
+		@txnid = (Payment.last.id.to_i + 1) rescue 1
 		@productinfo = Hash.new
 		@productinfo["paymentParts"] = Array.new
 		@productinfo["paymentParts"][0] = Hash.new
