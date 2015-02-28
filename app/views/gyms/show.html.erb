@@ -148,6 +148,18 @@ meta title: @gym.name,
                                     <p><%=@gym.description%></p>
                                 </div>
                             <% end %>
+                            <% if @gym.additional_info.present? && !@gym.additional_info.blank? %>
+                                <div class="description">
+                                    <h3>Additional Information</h3>
+                                    <p><%=@gym.additional_info%></p>
+                                </div>
+                            <% end %>
+                            <% if @gym.special_offers.present? && !@gym.special_offers.blank? %>
+                                <div class="description">
+                                    <h3>Special Offers</h3>
+                                    <p><%=@gym.special_offers%></p>
+                                </div>
+                            <% end %>
                         </div>
                         <div class="tab-pane fade" id="pricing_pass">
                             <div class="description">
@@ -178,8 +190,12 @@ meta title: @gym.name,
                             <% if !@gym.weekday_from.blank? || !@gym.weekend_from.blank? %>
                                 <div class="description">
                                     <h3>Timings</h3>
-                                    <p>Weekday(s) - <%=@gym.weekday_from%> to <%=@gym.weekday_to%></p>
-                                    <p>Weekend(s) - <%=@gym.weekend_from%> to <%=@gym.weekend_to%></p>
+                                    <% if !@gym.weekday_from.blank? %>
+                                        <p>Weekday(s) - <%=@gym.weekday_from%> to <%=@gym.weekday_to%></p>
+                                    <% end %>
+                                    <% if !@gym.weekend_from.blank? %>
+                                        <p>Weekend(s) - <%=@gym.weekend_from%> to <%=@gym.weekend_to%></p>
+                                    <% end %>
                                 </div>
                             <% else %>
                                 Not Available

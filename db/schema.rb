@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150226075451) do
+ActiveRecord::Schema.define(version: 20150228152220) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,8 @@ ActiveRecord::Schema.define(version: 20150226075451) do
     t.string   "weekend_from"
     t.string   "weekend_to"
     t.boolean  "is_payment_enabled", default: false
+    t.text     "additional_info"
+    t.text     "special_offers"
   end
 
   add_index "gyms", ["agency_id"], name: "index_gyms_on_agency_id", using: :btree

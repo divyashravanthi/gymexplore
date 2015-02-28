@@ -41,6 +41,8 @@ class GymsController < ApplicationController
 		gym.email = params[:email]
 		gym.gender = params[:gender]
 		gym.mobile = params[:mobile]
+		gym.additional_info = params[:additional_info]
+		gym.special_offers = params[:special_offers]
 		gym.weekend_from = params[:weekend_from]
 		gym.weekend_to = params[:weekend_to]
 		gym.weekday_from = params[:weekday_from]
@@ -62,10 +64,14 @@ class GymsController < ApplicationController
 				end
 			end
 			params[:duration].each_with_index do |value, index|
-				gym.pricings.create(:duration => params[:duration][index], :price => params[:price][index])
+				if !value.blank?
+					gym.pricings.create(:duration => params[:duration][index], :price => params[:price][index])
+				end
 			end
 			params[:pass_duration].each_with_index do |value, index|
-				gym.pricings.create(:duration => params[:pass_duration][index], :price => params[:pass_price][index], :pricing_type => "pass")
+				if !value.blank
+					gym.pricings.create(:duration => params[:pass_duration][index], :price => params[:pass_price][index], :pricing_type => "pass")
+				end
 			end
 			if current_agency.nil? && @agency.present?
 				AgencyMailer.send_credentials(params[:email], @password).deliver_now
@@ -109,6 +115,8 @@ class GymsController < ApplicationController
 		gym.email = params[:email]
 		gym.mobile = params[:mobile]
 		gym.gender = params[:gender]
+		gym.additional_info = params[:additional_info]
+		gym.special_offers = params[:special_offers]
 		gym.weekend_from = params[:weekend_from]
 		gym.weekend_to = params[:weekend_to]
 		gym.weekday_from = params[:weekday_from]
@@ -127,13 +135,17 @@ class GymsController < ApplicationController
 			if params[:duration].count > 0
 				gym.pricings.where(:pricing_type => "regular").destroy_all
 				params[:duration].each_with_index do |value, index|
-					gym.pricings.create(:duration => params[:duration][index], :price => params[:price][index])
+					if !value.blank?
+						gym.pricings.create(:duration => params[:duration][index], :price => params[:price][index])
+					end
 				end
 			end
 			if params[:pass_duration].count > 0
 				gym.pricings.where(:pricing_type => "pass").destroy_all
 				params[:pass_duration].each_with_index do |value, index|
-					gym.pricings.create(:duration => params[:pass_duration][index], :price => params[:pass_price][index], :pricing_type => "pass")
+					if !value.blank?
+						gym.pricings.create(:duration => params[:pass_duration][index], :price => params[:pass_price][index], :pricing_type => "pass")
+					end
 				end
 			end
 			redirect_to edit_gym_path(gym), :notice => "Successfully Updated."

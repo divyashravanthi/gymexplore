@@ -465,6 +465,14 @@ meta title: @gym.name,
                             </div>
                         </div>
                         <div class="form-group">
+                            <label>Additional Information</label>
+                            <textarea class="form-control" rows="4" name="additional_info"><%=@gym.additional_info%></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Special Offers</label>
+                            <textarea class="form-control" rows="4" name="special_offers"><%=@gym.special_offers%></textarea>
+                        </div>
+                        <div class="form-group">
                             <button type="submit" class="btn btn-green btn-lg">Update Gym</button>
                         </div>
                     <% end %>
