@@ -47,6 +47,10 @@ class GymsController < ApplicationController
 		gym.weekend_to = params[:weekend_to]
 		gym.weekday_from = params[:weekday_from]
 		gym.weekday_to = params[:weekday_to]
+		gym.weekend_secondary_from = params[:weekend_secondary_from]
+		gym.weekend_secondary_to = params[:weekend_secondary_to]
+		gym.weekday_secondary_from = params[:weekday_secondary_from]
+		gym.weekday_secondary_to = params[:weekday_secondary_to]
 		gym.registration_fee = params[:fees]
 		if @agency.present?
 			if current_agency.nil?
@@ -69,7 +73,7 @@ class GymsController < ApplicationController
 				end
 			end
 			params[:pass_duration].each_with_index do |value, index|
-				if !value.blank
+				if !value.blank?
 					gym.pricings.create(:duration => params[:pass_duration][index], :price => params[:pass_price][index], :pricing_type => "pass")
 				end
 			end
@@ -121,6 +125,10 @@ class GymsController < ApplicationController
 		gym.weekend_to = params[:weekend_to]
 		gym.weekday_from = params[:weekday_from]
 		gym.weekday_to = params[:weekday_to]
+		gym.weekend_secondary_from = params[:weekend_secondary_from]
+		gym.weekend_secondary_to = params[:weekend_secondary_to]
+		gym.weekday_secondary_from = params[:weekday_secondary_from]
+		gym.weekday_secondary_to = params[:weekday_secondary_to]
 		gym.registration_fee = params[:fees]
 		if params[:facilities].present?
 			gym.facility = [params[:facilities].join(","), params[:other_facilities]].join(",")

@@ -191,10 +191,16 @@ meta title: @gym.name,
                                 <div class="description">
                                     <h3>Timings</h3>
                                     <% if !@gym.weekday_from.blank? %>
-                                        <p>Weekday(s) - <%=@gym.weekday_from%> to <%=@gym.weekday_to%></p>
+                                        <p>Weekday(s) Morning - <%=@gym.weekday_from%> to <%=@gym.weekday_to%></p>
+                                    <% end %>
+                                    <% if !@gym.weekday_secondary_from.blank? %>
+                                        <p>Weekday(s) Evening - <%=@gym.weekday_secondary_from%> to <%=@gym.weekday_secondary_to%></p>
                                     <% end %>
                                     <% if !@gym.weekend_from.blank? %>
-                                        <p>Weekend(s) - <%=@gym.weekend_from%> to <%=@gym.weekend_to%></p>
+                                        <p>Weekend(s) Morning - <%=@gym.weekend_from%> to <%=@gym.weekend_to%></p>
+                                    <% end %>
+                                    <% if !@gym.weekend_secondary_from.blank? %>
+                                        <p>Weekend(s) Evening - <%=@gym.weekend_secondary_from%> to <%=@gym.weekend_secondary_to%></p>
                                     <% end %>
                                 </div>
                             <% else %>

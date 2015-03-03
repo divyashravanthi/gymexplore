@@ -180,13 +180,13 @@ meta title: @gym.name,
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3"><button id="add-pass" class="btn btn-green btn-xs margin-b-10">Add New Pass</button></div>
                         </div>
-                        <div class="row">
+                        <div class="row" id="timings-wdm">
                             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                                 <div class="form-group">
-                                    <label>Weekday(s) Timings</label>
+                                    <label>Weekday(s) Morning Schedule</label>
                                     <div class="input-group">
                                         <div class="input-group-addon">From</div>
-                                        <input class="form-control timepicker" type="text" value="<%=@gym.weekday_from%>" name="weekday_from">
+                                        <input class="form-control timepicker time start" type="text" value="<%=@gym.weekday_from%>" name="weekday_from">
                                     </div>
                                 </div>
                             </div>
@@ -195,18 +195,18 @@ meta title: @gym.name,
                                     <label>&nbsp;</label>
                                     <div class="input-group">
                                         <div class="input-group-addon">To</div>
-                                        <input class="form-control timepicker" type="text" value="<%=@gym.weekday_to%>" name="weekday_to">
+                                        <input class="form-control timepicker time end" type="text" value="<%=@gym.weekday_to%>" name="weekday_to">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" id="timings-wde">
                             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                                 <div class="form-group">
-                                    <label>Weekend(s) Timings</label>
+                                    <label>Weekday(s) Evening Schedule</label>
                                     <div class="input-group">
                                         <div class="input-group-addon">From</div>
-                                        <input class="form-control timepicker" type="text" value="<%=@gym.weekend_from%>" name="weekend_from">
+                                        <input class="form-control timepicker time start" type="text" value="<%=@gym.weekday_secondary_from%>" name="weekday_secondary_from">
                                     </div>
                                 </div>
                             </div>
@@ -215,7 +215,47 @@ meta title: @gym.name,
                                     <label>&nbsp;</label>
                                     <div class="input-group">
                                         <div class="input-group-addon">To</div>
-                                        <input class="form-control timepicker" type="text" value="<%=@gym.weekend_to%>" name="weekend_to">
+                                        <input class="form-control timepicker time end" type="text" value="<%=@gym.weekday_secondary_to%>" name="weekday_secondary_to">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" id="timings-wem">
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label>Weekend(s) Morning Schedule</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">From</div>
+                                        <input class="form-control timepicker time start" type="text" value="<%=@gym.weekend_from%>" name="weekend_from">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+                                <div class="form-group">
+                                    <label>&nbsp;</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">To</div>
+                                        <input class="form-control timepicker time end" type="text" value="<%=@gym.weekend_to%>" name="weekend_to">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" id="timings-wee">
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label>Weekend(s) Evening Schedule</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">From</div>
+                                        <input class="form-control timepicker time start" type="text" value="<%=@gym.weekend_secondary_from%>" name="weekend_secondary_from">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+                                <div class="form-group">
+                                    <label>&nbsp;</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">To</div>
+                                        <input class="form-control timepicker time end" type="text" value="<%=@gym.weekend_secondary_to%>" name="weekend_secondary_to">
                                     </div>
                                 </div>
                             </div>

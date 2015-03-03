@@ -62,6 +62,31 @@ $(document).ready(function() {
 
     $(".showClear").rating({disabled: true, showClear: false});
 
-    $('.timepicker').timepicker();
-
+    // $('.timepicker.time').timepicker();
+    // $('.time').datepair();
+    $('#timings-wdm .time').timepicker({
+        'showDuration': true,
+        'timeFormat': 'g:ia'
+    });
+    $('#timings-wde .time').timepicker({
+        'showDuration': true,
+        'timeFormat': 'g:ia'
+    });
+    $('#timings-wem .time').timepicker({
+        'showDuration': true,
+        'timeFormat': 'g:ia'
+    });
+    $('#timings-wee .time').timepicker({
+        'showDuration': true,
+        'timeFormat': 'g:ia'
+    });
+    // initialize datepair
+    var timingswdm = document.getElementById('timings-wdm');
+    var timingswde = document.getElementById('timings-wde');
+    var timingswem = document.getElementById('timings-wem');
+    var timingswee = document.getElementById('timings-wee');
+    var datepair = new Datepair(timingswdm);
+    var datepair = new Datepair(timingswde);
+    var datepair = new Datepair(timingswem);
+    var datepair = new Datepair(timingswee);
 });

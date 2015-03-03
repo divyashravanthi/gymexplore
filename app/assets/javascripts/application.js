@@ -38,3 +38,5 @@
 //= require social-share-button
 //= require star-rating.min
 //= require jquery.timepicker.js
+//= require datepair.js
+//= require jquery.datepair.js
